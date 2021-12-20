@@ -5,6 +5,7 @@
     <title>Hogwarts Institute of Technology</title>
 
     <link rel="stylesheet" href="css/mainStyle.css">
+    <link rel="icon" href="ResourceFolder/Icon.png">
 
     <style>
         .item img{
@@ -18,21 +19,14 @@
 <body>
 <header class="p-3 bg-dark text-white">
     <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <div class="d-flex flex-wrap align-items-center justify-content-center">
+            <a href="index.jsp" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
                 <img src="ResourceFolder/Logo.png" style="height: 100px">
             </a>
 
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-            </ul>
-
             <div class="text-end">
                 <button type="button" class="btn btn-warning">Student Portal</button>
+                <button type="button" class="btn btn-warning">Teacher Portal</button>
                 <button type="button" class="btn btn-warning">Teacher Portal</button>
             </div>
         </div>
@@ -69,5 +63,14 @@
             </a>
         </div>
 </div>
+
+<footer style="width: 100%; background-color: #343a40; color: white; padding: 20px; margin-top: 20px"><center>
+    <div class="border-bottom" style="width: 60%">
+        <b><h2>Contact Us:</h2></b>
+        <p>Email: hogwarts@hit.edu</p>
+        <p>Tel: +86 12345679812</p>
+    </div>
+    <p style="margin: 10px; color: lightgrey">Hogwarts Institute of Technology, 2021</p>
+</center></footer>
 </body>
 </html>
