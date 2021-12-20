@@ -32,8 +32,8 @@ public class ValidateAdmin extends HttpServlet {
             RequestDispatcher rd=request.getRequestDispatcher("Admin.jsp");
             rd.forward(request,response);
         }else{
-            String msg = "Invalid Username or Password";
-            response.sendRedirect("AdminLogin.jsp?msg="+msg);
+            RequestDispatcher rd=request.getRequestDispatcher("LoginFail.jsp");
+            rd.forward(request,response);
         }
     }
     }
