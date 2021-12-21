@@ -1,0 +1,17 @@
+@import "bootstrap.css";
+@import "bootstrap.rtl.css";
+@import "bootstrap-grid.css";
+@import "bootstrap-grid.rtl.css";
+@import "bootstrap-reboot.css";
+@import "bootstrap-reboot.rtl.css";
+@import "bootstrap-utilities.css";
+@import "bootstrap-utilities.rtl.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+*{
+    font-family: 'Merriweather', serif; !important;
+}
+
+button{
+    font-family: 'Merriweather', serif; !important;
+}
