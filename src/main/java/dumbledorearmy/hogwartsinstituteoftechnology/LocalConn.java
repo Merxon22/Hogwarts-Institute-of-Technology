@@ -2,11 +2,11 @@ package dumbledorearmy.hogwartsinstituteoftechnology;
 
 import java.sql.*;
 
-public class Provider {
+public class LocalConn {
     static Connection GetConn(){
-        final String DB_URL = "jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6459397";
-        final String USER = "sql6459397";
-        final String PASS = "nUmDxVi8LQ";
+        final String DB_URL = "jdbc:mysql://localhost/hit";
+        final String USER = "root";
+        final String PASS = "asdfgvcxz1";
         Connection conn = null;
 
         try{
@@ -22,9 +22,5 @@ public class Provider {
             System.out.println(e);
             return null;
         }
-    }
-
-    public static void main(String[] args) {
-        Provider.GetConn();
     }
 }

@@ -4,6 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Statement;
 
@@ -18,9 +19,13 @@ public class AddStu extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try{
-            Connection con = Provider.GetConn();
 
+
+        PrintWriter out = response.getWriter();
+        response.setContentType("text/html");
+
+        try{
+            Connection con = LocalConn.GetConn();
             Statement st = con.createStatement();
 
             String req = request.getParameter("names");
@@ -32,21 +37,19 @@ public class AddStu extends HttpServlet {
                 String Lastname = allinfos[1];
                 String email = allinfos[2];
                 String pwd = InitialPwGenerator.generate();
-                String grade = allinfos[3];
-                String cla = allinfos[4];
-                String query = "insert into Students (Firstname, Lastname, email, password, grade, class) values (" +
+                String query = "insert into Student (Firstname, Lastname, email, password) values (" +
                         "'" + Firstname + "'," +
                         "'" + Lastname + "'," +
                         "'" + email + "'," +
-                        "'" + pwd + "'," +
-                        "'" + grade + "'," +
-                        "'" + cla + "')";
+                        "'" + pwd + "')";
                 st.executeUpdate(query);
             }
 
-            RequestDispatcher rd =request.getRequestDispatcher("/AdminViewAccounts");
-            rd.forward(request, response);
+            RequestDispatcher rd =request.getRequestDispatcher("Admin.jsp");
 
+            rd.include(request, response);
+            out.println("<h3>Student(s) successfully added!</h3>");
+        con.close();
 
         } catch (Exception exe) {
             System.out.println("Exception caught" + exe);

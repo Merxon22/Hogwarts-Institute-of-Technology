@@ -13,13 +13,13 @@
 </head>
 <header>
     Instruction:
-    Enter the number of students you want to delete.
-    please enter the names of students you want to delete.
-    to enter another, separate by the break of line
+    Enter the email of students you want to delete.
+    To enter another, separate by the break of line.
+    If you enter a wrong email address, nothing will happen.
 </header>
 <body>
 <form action = "DelStu" method = "post">
-    <input type = "text" name = "names">
+    <textarea name = "names"></textarea>
     <input type="submit">
 </form>
 

@@ -5,23 +5,24 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import javax.swing.plaf.nimbus.State;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Statement;
 
 @WebServlet(name = "AddTea", value = "/AddTea")
 public class AddTea extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
+        response.setContentType("text/html");
+
         try{
-            Connection con = Provider.GetConn();
+            Connection con = LocalConn.GetConn();
             Statement st = con.createStatement();
 
-            String allinfo[] = request.getParameter("names").split("\n");
+            String req = request.getParameter("names");
+            String allinfo[] = req.split("\n");
 
             for (int i = 0; i < allinfo.length; i++){
                 String allinfos[] = allinfo[i].split("/");
@@ -37,13 +38,15 @@ public class AddTea extends HttpServlet {
                 st.executeUpdate(query);
             }
 
-            RequestDispatcher rd =request.getRequestDispatcher("/AdminViewAccounts");
-            rd.forward(request, response);
+            RequestDispatcher rd =request.getRequestDispatcher("Admin.jsp");
 
+            rd.include(request, response);
+            out.println("<h3>Teacher(s) successfully added!</h3>");
+            con.close();
 
-
-        }catch (Exception exe){
-            System.out.println(exe);
+        } catch (Exception exe) {
+            System.out.println("Exception caught" + exe);
         }
     }
 }
+

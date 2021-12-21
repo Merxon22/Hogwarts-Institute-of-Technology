@@ -11,14 +11,14 @@
     <title>Title</title>
 </head>
 <header>
-    Instruction: please enter the names of teachers you want to delete. Enter in the format of
-    First name/Last name/Email
-    for example: Tano/Ahsoka/ATano@hit.edu/10/A
-    to enter multiple, separate by the break of line
+    Instruction: please enter the names of students you want to add. Enter in the format of First name/Last name/Email
+    for example: Tano/Ahsoka/Tano@hit.edu
+    to enter another, separate by the break of line
+    Note that the replicated account (with same email address) will be ignore
 </header>
 <body>
     <form action = "AddTea" method = "post">
-        <input type = "text" name = "names">
+        <textarea name = "names"></textarea>
         <input type="submit">
     </form>
 

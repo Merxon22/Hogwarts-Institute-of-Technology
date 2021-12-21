@@ -6,9 +6,9 @@
             </a>
 
             <div class="text-end">
-                <button type="button" class="btn btn-warning">Student Portal</button>
+                <a href="StuLog.jsp"><button type="button" class="btn btn-warning">Student Portal</button></a>
                 <a href="TeaLog.jsp"><button type="button" class="btn btn-warning">Teacher Portal</button></a>
-                <button type="button" class="btn btn-warning">Admin Portal</button>
+                <a href="AdmLog.jsp"><button type="button" class="btn btn-warning">Admin Portal</button></a>
             </div>
         </div>
     </div>
