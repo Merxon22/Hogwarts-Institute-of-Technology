@@ -12,7 +12,11 @@
     <title>Title</title>
 </head>
 <header>
-    Instruction: please enter the names of students, seperated by break of line and our system will generate a default random 8 digits pwd for them
+    Instruction: please enter the names of students you want to delete. Enter in the format of
+    First name/Last name/Email/Grade/Class
+    for example: Tano/Ahsoka/ATano@hit.edu/10/A
+
+    to enter another, separate by the break of line
 </header>
 <body>
 <form action = "AddStu" method = "post">

@@ -12,7 +12,10 @@
     <title>Title</title>
 </head>
 <header>
-    Instruction: please enter the names of students you want to delete, seperated by break of line
+    Instruction:
+    Enter the number of students you want to delete.
+    please enter the names of students you want to delete.
+    to enter another, separate by the break of line
 </header>
 <body>
 <form action = "DelStu" method = "post">

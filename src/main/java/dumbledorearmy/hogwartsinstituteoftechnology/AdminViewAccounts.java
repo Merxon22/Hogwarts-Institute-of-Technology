@@ -35,7 +35,6 @@ public class AdminViewAccounts extends HttpServlet {
             ResultSet rs = stmt.executeQuery(x);
 
             //咱们左边放老师，右边放学生
-            //前端加油
 
             out.println("<a href = \"AddStudentAcc.jsp\"><button type=\"button\">Add Students</button></a>");
             out.println("<a href = \"AddTeacherAcc.jsp\"><button type=\"button\">Add Teachers</button></a>");
@@ -50,8 +49,10 @@ public class AdminViewAccounts extends HttpServlet {
                     "        </th>");
             while (rs.next()){
                 out.println("<tr>\n" +
-                        "            <td>" + rs.getString("acc") + "</td>\n" +
-                        "            <td>" + rs.getString("pwd") + "</td>\n" +
+                        "            <td>" + rs.getString("Firstname") + "</td>\n" +
+                        "            <td>" + rs.getString("Lastname") + "</td>\n" +
+                        "            <td>" + rs.getString("email") + "</td>\n" +
+                        "            <td>" + rs.getString("password") + "</td>\n" +
                         "        </tr>");
 
             }
@@ -65,8 +66,12 @@ public class AdminViewAccounts extends HttpServlet {
                     "        </th>");
             while (rs.next()){
                 out.println("<tr>\n" +
-                        "            <td>" + rs.getString("acc") + "</td>\n" +
-                        "            <td>" + rs.getString("pwd") + "</td>\n" +
+                        "            <td>" + rs.getString("Firstname") + "</td>\n" +
+                        "            <td>" + rs.getString("Lastname") + "</td>\n" +
+                        "            <td>" + rs.getString("email") + "</td>\n" +
+                        "            <td>" + rs.getString("password") + "</td>\n" +
+                        "            <td>" + rs.getString("grade") + "</td>\n" +
+                        "            <td>" + rs.getString("class") + "</td>\n" +
                         "        </tr>");
             }
 
