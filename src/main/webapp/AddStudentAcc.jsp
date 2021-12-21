@@ -5,13 +5,18 @@
   Time: 2:40 AM
   To change this template use File | Settings | File Templates.
 --%>
+//明早请把加减老师，学生搞完！
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <header>
-    Instruction: please enter the names of students, seperated by break of line and our system will generate a default random 8 digits pwd for them
+    Instruction: please enter the names of students you want to delete. Enter in the format of
+    First name/Last name/Email/Grade/Class
+    for example: Tano/Ahsoka/ATano@hit.edu/10/A
+
+    to enter another, separate by the break of line
 </header>
 <body>
 <form action = "AddStu" method = "post">

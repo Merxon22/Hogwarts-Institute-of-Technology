@@ -11,7 +11,10 @@
     <title>Title</title>
 </head>
 <header>
-    Instruction: please enter the names of teachers, seperated by break of line and our system will generate a default random 8 digits pwd for them
+    Instruction: please enter the names of teachers you want to delete. Enter in the format of
+    First name/Last name/Email
+    for example: Tano/Ahsoka/ATano@hit.edu/10/A
+    to enter multiple, separate by the break of line
 </header>
 <body>
     <form action = "AddTea" method = "post">
