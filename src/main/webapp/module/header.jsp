@@ -7,7 +7,7 @@
 
             <div class="text-end">
                 <button type="button" class="btn btn-warning">Student Portal</button>
-                <button type="button" class="btn btn-warning">Teacher Portal</button>
+                <a href="TeaLog.jsp"><button type="button" class="btn btn-warning">Teacher Portal</button></a>
                 <button type="button" class="btn btn-warning">Admin Portal</button>
             </div>
         </div>

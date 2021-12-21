@@ -16,7 +16,12 @@ button{
     font-family: 'Merriweather', serif; !important;
 }
 
-body{
-    position: relative; !important;
-    min-height: 100vh;
+html, body{
+    height: 100%;
+}
+
+#containerBox{
+    min-height: 100%;
+    overflow: auto;
+    padding-bottom: 200px;
 }
