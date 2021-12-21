@@ -16,12 +16,8 @@ public class StuLog extends HttpServlet {
         String pwd = request.getParameter("pwd");
         try{
             Connection con = Provider.GetConn();
-
             Statement st = con.createStatement();
-
             String query = "SELECT EXISTS(SELECT * from Teacher WHERE email=('" + acc + "')";
-
-
             ResultSet nRows = st.executeQuery(query);
             int a = nRows.getRow();
             System.out.println(a);
