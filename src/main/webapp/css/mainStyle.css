@@ -15,3 +15,8 @@
 button{
     font-family: 'Merriweather', serif; !important;
 }
+
+body{
+    position: relative; !important;
+    min-height: 100vh;
+}

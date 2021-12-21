@@ -8,15 +8,39 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Teacher Login</title>
+
+    <link rel="stylesheet" href="css/mainStyle.css">
+    <link rel="icon" href="ResourceFolder/Icon.png">
 </head>
-<form action = "TeaLog" method = "post">
-    email: <input type = "text" name = "email"><br>
-    password: <input type = "password" name = "pwd"><br>
-    <input type="submit">
+
+<body background="https://ww2.kqed.org/app/uploads/sites/23/2015/05/Beard-Algorithm-1440x811.jpg" style="background-size: cover"><center>
+<%@include file="module/header.jsp"%>
+
+<form style="background-color: white; width: 40%; border-radius: 5px; box-shadow: 0px 0px 8px 2px black; margin: 40px; padding: 40px 80px">
+    <h2><b>Teacher Login</b></h2>
+    <br>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" name="pwd" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
-<body>
-
-</body>
+<%--<form action = "TeaLog" method = "post">--%>
+<%--    email: <input type = "text" name = "email"><br>--%>
+<%--    password: <input type = "password" name = "pwd"><br>--%>
+<%--    <input type="submit">--%>
+<%--</form>--%>
+<%@include file="module/footer.jsp"%>
+</center></body>
 </html>
