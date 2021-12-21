@@ -27,6 +27,7 @@ public class DelStu extends HttpServlet {
 
             for (int i = 0; i < allname.length; i++){
                 String query = "delete from Student where names="+allname[i];
+                st.executeQuery(query);
             }
 
             RequestDispatcher rd =request.getRequestDispatcher("/AdminViewAccounts");
