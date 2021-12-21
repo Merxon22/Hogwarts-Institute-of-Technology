@@ -10,11 +10,17 @@
 <head>
     <title>Title</title>
 </head>
+<header>
+    Instruction: please enter the names of teachers you want to delete. Enter in the format of
+    First name/Last name/Email
+    for example: Tano/Ahsoka/ATano@hit.edu/10/A
+    to enter multiple, separate by the break of line
+</header>
 <body>
-
-<form method = post>
-    <input type = "text" width="30px" height="30px"
-</form>
+    <form action = "AddTea" method = "post">
+        <input type = "text" name = "names">
+        <input type="submit">
+    </form>
 
 </body>
 </html>

@@ -15,3 +15,13 @@
 button{
     font-family: 'Merriweather', serif; !important;
 }
+
+html, body{
+    height: 100%;
+}
+
+#containerBox{
+    min-height: 100%;
+    overflow: auto;
+    padding-bottom: 200px;
+}

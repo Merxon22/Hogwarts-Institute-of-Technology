@@ -17,27 +17,9 @@
     </style>
 </head>
 <body>
-<header class="p-3 bg-dark text-white">
-    <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center">
-            <a href="index.jsp" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                <img src="ResourceFolder/Logo.png" style="height: 100px">
-            </a>
-
-            <div class="text-end">
-                <button type="button" class="btn btn-warning">Student Portal</button>
-                <button type="button" class="btn btn-warning">Teacher Portal</button>
-                <button type="button" class="btn btn-warning">Teacher Portal</button>
-            </div>
-        </div>
-    </div>
-</header>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-<div class="container-fluid" style="margin: 20px 0px;">
+<%@include file="module/header.jsp"%>
+<div id="containerBox">
+    <div class="container-fluid" style="margin: 20px 0px;">
         <div class="carousel slide" data-ride="carousel" id="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carousel" data-slide to="0" class="active"></li>
@@ -62,15 +44,8 @@
                 <span class="glyphicon glyphicon-chevron-right"></span>
             </a>
         </div>
-</div>
-
-<footer style="width: 100%; background-color: #343a40; color: white; padding: 20px; margin-top: 20px"><center>
-    <div class="border-bottom" style="width: 60%">
-        <b><h2>Contact Us:</h2></b>
-        <p>Email: hogwarts@hit.edu</p>
-        <p>Tel: +86 12345679812</p>
     </div>
-    <p style="margin: 10px; color: lightgrey">Hogwarts Institute of Technology, 2021</p>
-</center></footer>
+</div>
+<%@include file="module/footer.jsp"%>
 </body>
 </html>
