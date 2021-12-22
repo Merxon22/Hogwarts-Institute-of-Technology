@@ -48,7 +48,7 @@ public class AdmLog extends HttpServlet {
 
             }
             else {
-                RequestDispatcher rd = request.getRequestDispatcher("AdmLog.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("AdminLog.jsp");
                 rd.include(request, response);
                 out.println("<h1>Wrong Com!</h1>");
             }

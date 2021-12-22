@@ -25,3 +25,14 @@ html, body{
     overflow: auto;
     padding-bottom: 200px;
 }
+
+.centerBox{
+    background-color: white;
+    width: 40%;
+    border-radius: 5px;
+    box-shadow: 0px 0px 8px 2px black;
+    margin: 10% 40px;
+    padding: 40px 80px;
+    align-content: center;
+    horiz-align: center;
+}
