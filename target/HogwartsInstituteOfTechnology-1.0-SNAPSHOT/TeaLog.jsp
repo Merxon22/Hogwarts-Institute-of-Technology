@@ -32,11 +32,6 @@
 </form>
 </div>
 
-<%--<form action = "TeaLog" method = "post">--%>
-<%--    email: <input type = "text" name = "email"><br>--%>
-<%--    password: <input type = "password" name = "pwd"><br>--%>
-<%--    <input type="submit">--%>
-<%--</form>--%>
 <%@include file="module/footer.jsp"%>
 </center></body>
 </html>

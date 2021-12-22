@@ -18,7 +18,6 @@
     <%@include file="module/header.jsp"%>
     <div id="containerBox">
         <form style="background-color: white; width: 40%; border-radius: 5px; box-shadow: 0px 0px 8px 2px black; margin: 10% 40px; padding: 40px 80px">
-
             <h2><b>Student Login</b></h2>
             <br>
             <div class="mb-3">
@@ -32,7 +31,6 @@
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
     </div>
-
 
     <%@include file="module/footer.jsp"%>
 </center></body>
