@@ -25,7 +25,7 @@ public class AddStu extends HttpServlet {
         response.setContentType("text/html");
 
         try{
-            Connection con = LocalConn.GetConn();
+            Connection con = Provider.GetConn();
             Statement st = con.createStatement();
 
             String req = request.getParameter("names");

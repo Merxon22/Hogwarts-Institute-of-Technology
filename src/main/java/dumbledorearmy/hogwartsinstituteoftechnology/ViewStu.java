@@ -17,7 +17,7 @@ public class ViewStu extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         try{
-            Connection con = LocalConn.GetConn();
+            Connection con = Provider.GetConn();
             Statement stmt = con.createStatement();
             String x;
             ResultSet rs;
@@ -25,7 +25,9 @@ public class ViewStu extends HttpServlet {
             rs = stmt.executeQuery(x);
             out.println("<table>\n" +
                     "        <th>\n" +
-                    "            <td>Account</td>\n" +
+                    "            <td>First Name</td>\n" +
+                    "            <td>Last Name</td>\n" +
+                    "            <td>Email</td>\n" +
                     "            <td>Password</td>\n" +
                     "        </th>");
             while (rs.next()){
@@ -34,8 +36,6 @@ public class ViewStu extends HttpServlet {
                         "            <td>" + rs.getString("Lastname") + "</td>\n" +
                         "            <td>" + rs.getString("email") + "</td>\n" +
                         "            <td>" + rs.getString("password") + "</td>\n" +
-                        "            <td>" + rs.getString("grade") + "</td>\n" +
-                        "            <td>" + rs.getString("class") + "</td>\n" +
                         "        </tr>");
             }
 

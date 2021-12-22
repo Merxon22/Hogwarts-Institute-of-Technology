@@ -19,7 +19,7 @@
     <%@include file="module/header.jsp"%>
     <div id="containerBox">
         <div class="centerBox">
-            <form>
+            <form action = AdmLog method = "get">
                 <h2><b>Admin Login</b></h2>
                 <br>
                 <div class="mb-3">

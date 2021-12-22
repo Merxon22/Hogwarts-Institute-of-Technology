@@ -15,7 +15,7 @@ public class DelStu extends HttpServlet {
         try{
             PrintWriter out = response.getWriter();
             response.setContentType("text/html");
-            Connection con = LocalConn.GetConn();
+            Connection con = Provider.GetConn();
             Statement st = con.createStatement();
             String req = request.getParameter("names");
             String allname[] = req.split("\n");

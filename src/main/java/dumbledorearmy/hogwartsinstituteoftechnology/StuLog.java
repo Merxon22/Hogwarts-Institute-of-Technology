@@ -20,7 +20,7 @@ public class StuLog extends HttpServlet {
         response.setContentType("text/html");
         try{
 
-            Connection con = LocalConn.GetConn();
+            Connection con = Provider.GetConn();
 
             Statement stmt1 = con.createStatement();
             ResultSet rp = stmt1.executeQuery("select * from Student");
@@ -57,8 +57,4 @@ public class StuLog extends HttpServlet {
     }
 
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 }

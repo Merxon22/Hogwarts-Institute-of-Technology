@@ -16,6 +16,9 @@
 </head>
 <body background="https://tjn-blog-images.s3.amazonaws.com/wp-content/uploads/2015/09/20003023/Which-Fields-Have-the-Highest-Paying-Administrative-Jobs.jpg" style="background-size: cover"><center>
     <%@include file="module/headerLoggedIn.jsp"%>
+    <%@include file="module/CheckLog.jsp"%>
+
+
     <div id="containerBox">
         <div class="centerBox">
             <h2><b>Welcome, admin!</b></h2>
@@ -28,6 +31,9 @@
                 <a href="ViewStu"><button class="btn btn-primary" style="width: 100%;" type="button">All students</button></a>
                 <a href="ViewTea"><button class="btn btn-primary" style="width: 100%;" type="button">All teachers</button></a>
                 <a href="ViewClassInfo"><button class="btn btn-primary" style="width: 100%;" type="button">View current classes</button></a>
+                <a href=Logout><button class="btn btn-primary" style="width: 100%;" type="button">Logout</button></a>
+
+
             </div>
         </div>
     </div>
