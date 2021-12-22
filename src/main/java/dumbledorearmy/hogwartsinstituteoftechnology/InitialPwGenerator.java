@@ -19,7 +19,7 @@ public class InitialPwGenerator {
             return fin;
         }
         int x = (int)(Math.random() * 61);
-        System.out.println(x);
+        //System.out.println(x);
         pwd = pwd + choices.substring(x, x + 1);
         return generate();
     }

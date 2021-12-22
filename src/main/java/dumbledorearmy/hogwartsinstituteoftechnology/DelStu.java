@@ -4,40 +4,31 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Statement;
 
 @WebServlet(name = "DelStu", value = "/DelStu")
 public class DelStu extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try{
-            Connection con = Provider.GetConn();
-
+            PrintWriter out = response.getWriter();
+            response.setContentType("text/html");
+            Connection con = LocalConn.GetConn();
             Statement st = con.createStatement();
-
             String req = request.getParameter("names");
             String allname[] = req.split("\n");
-            String name;
-
             for (int i = 0; i < allname.length; i++){
-                String query = "delete from Student where names="+allname[i];
-                st.executeQuery(query);
+                String query = "delete from Student where email='"+allname[i] + "'";
+                System.out.println(query);
+                st.executeUpdate(query);
             }
-
-            RequestDispatcher rd =request.getRequestDispatcher("/AdminViewAccounts");
-            rd.forward(request, response);
-
+            RequestDispatcher rd = request.getRequestDispatcher("Admin.jsp");
+            rd.include(request, response);
+            out.println("<h3>Deleted Student(s)!</h3>");
         } catch (Exception exe) {
             System.out.println("Exception caught" + exe);
         }
-
-
-
     }
 }

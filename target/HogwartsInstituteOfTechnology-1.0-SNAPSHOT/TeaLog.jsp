@@ -17,7 +17,7 @@
 <body background="https://ww2.kqed.org/app/uploads/sites/23/2015/05/Beard-Algorithm-1440x811.jpg" style="background-size: cover"><center>
 <%@include file="module/header.jsp"%>
 <div id="containerBox">
-<form style="background-color: white; width: 40%; border-radius: 5px; box-shadow: 0px 0px 8px 2px black; margin: 10% 40px; padding: 40px 80px">
+<form style="background-color: white; width: 40%; border-radius: 5px; box-shadow: 0px 0px 8px 2px black; margin: 10% 40px; padding: 40px 80px" action="TeaLog" method="get">
     <h2><b>Teacher Login</b></h2>
     <br>
     <div class="mb-3">

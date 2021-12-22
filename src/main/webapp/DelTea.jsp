@@ -11,11 +11,15 @@
     <title>Title</title>
 </head>
 <header>
-    Instruction: please enter the names of teachers you want to delete, seperated by break of line
+    Instruction:
+    Enter the email of teachers you want to delete.
+    To enter another, separate by the break of line.
+    If you enter a wrong email address, nothing will happen.
 </header>
+
 <body>
 <form action = "DelTea" method = "post">
-    <input type = "text" name = "names">
+    <textarea name = "names"></textarea>
     <input type="submit">
 </form>
 
