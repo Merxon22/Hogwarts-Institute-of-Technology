@@ -24,10 +24,8 @@
                 <a href="AddTeacherAcc.jsp"><button class="btn btn-primary" style="width: 100%;" type="button">View my schedule</button></a>
                 <a href="AddStudentAcc.jsp"><button class="btn btn-primary" style="width: 100%;" type="button">View my grade</button></a>
             </div>
-<%--            <a href="AddTeacherAcc.jsp"><button type = "button">View My Schedule</button></a>--%>
-<%--            <a href="AddStudentAcc.jsp"><button type = "button">View My Grades</button></a>--%>
         </div>
     </div>
     <%@include file="module/footer.jsp"%>
-</body>
+</center></body>
 </html>

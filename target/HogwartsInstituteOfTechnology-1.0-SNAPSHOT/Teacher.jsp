@@ -27,11 +27,6 @@
             <a href="AddStudentAcc.jsp"><button class="btn btn-primary" style="width: 100%;" type="button">Upload assignment</button></a>
             <a href="AddStudentAcc.jsp"><button class="btn btn-primary" style="width: 100%;" type="button">Give grades</button></a>
         </div>
-<%--        <a href="AddTeacherAcc.jsp"><button type = "button">View My Schedule</button></a><br>--%>
-<%--        <a href="AddStudentAcc.jsp"><button type = "button">View the participants of my class</button></a><br>--%>
-<%--        <a href="AddStudentAcc.jsp"><button type = "button">Check Attendence</button></a><br>--%>
-<%--        <a href="AddStudentAcc.jsp"><button type = "button">Upload Assignments</button></a><br>--%>
-<%--        <a href="AddStudentAcc.jsp"><button type = "button">Give Grades</button></a>--%>
     </div>
 </div>
 <%@include file="module/footer.jsp"%>
