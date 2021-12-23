@@ -32,11 +32,12 @@ public class ViewClass extends HttpServlet {
 
 
             while (rp.next()){
+
                 out.println("<tr>\n" +
                         "            <td>" + rp.getString("Subject") + "</td>\n" +
                         "            <td>" + rp.getString("teacher") + "</td>\n" +
-                        "            <td>" + rp.getString("Time") + "</td>\n" +
                         "            <td>" + rp.getString("Des") + "</td>\n" +
+                        "            <td>" + rp.getString("Time") + "</td>\n" +
                         "        </tr>");
             }
 
