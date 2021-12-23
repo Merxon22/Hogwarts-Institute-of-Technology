@@ -6,7 +6,7 @@
             </a>
 
             <div class="text-end">
-                <a href="index.jsp"><button type="button" class="btn btn-warning">Log out</button></a>
+                <a href=Logout><button type="button" class="btn btn-warning">Log out</button></a>
             </div>
         </div>
     </div>

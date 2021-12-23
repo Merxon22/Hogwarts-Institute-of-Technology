@@ -25,7 +25,7 @@ public class AddStu extends HttpServlet {
         response.setContentType("text/html");
 
         try{
-            Connection con = LocalConn.GetConn();
+            Connection con = Provider.GetConn();
             Statement st = con.createStatement();
 
             String req = request.getParameter("names");
@@ -48,7 +48,9 @@ public class AddStu extends HttpServlet {
             RequestDispatcher rd =request.getRequestDispatcher("Admin.jsp");
 
             rd.include(request, response);
-            out.println("<h3>Student(s) successfully added!</h3>");
+            out.println("<script>\n" +
+                    "alert(\"Student(s) added!\")" +
+                    "</script>");
         con.close();
 
         } catch (Exception exe) {

@@ -9,8 +9,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-@WebServlet(name = "ViewStu", value = "/ViewStu")
-public class ViewStu extends HttpServlet {
+@WebServlet(name = "ViewTea", value = "/ViewTea")
+public class ViewTea extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
@@ -21,7 +21,7 @@ public class ViewStu extends HttpServlet {
             Statement stmt = con.createStatement();
             String x;
             ResultSet rs;
-            x = "select * from Student";
+            x = "select * from Teacher";
             rs = stmt.executeQuery(x);
             out.println("<table>\n" +
                     "        <th>\n" +

@@ -15,7 +15,7 @@ public class DelStu extends HttpServlet {
         try{
             PrintWriter out = response.getWriter();
             response.setContentType("text/html");
-            Connection con = LocalConn.GetConn();
+            Connection con = Provider.GetConn();
             Statement st = con.createStatement();
             String req = request.getParameter("names");
             String allname[] = req.split("\n");
@@ -26,7 +26,11 @@ public class DelStu extends HttpServlet {
             }
             RequestDispatcher rd = request.getRequestDispatcher("Admin.jsp");
             rd.include(request, response);
-            out.println("<h3>Deleted Student(s)!</h3>");
+            out.println("<script>\n" +
+                    "function myFunction() {\n" +
+                    "  alert(\"Student(s) Deleted!\");\n" +
+                    "}\n" +
+                    "</script>");
         } catch (Exception exe) {
             System.out.println("Exception caught" + exe);
         }
