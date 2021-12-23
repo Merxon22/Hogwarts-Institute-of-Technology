@@ -10,20 +10,17 @@
     PrintWriter write = response.getWriter();
     Cookie cookie = null; Cookie[] cookies = request.getCookies();
 
-    if(cookies != null)
-    {
-        for (int i = 0; i < cookies.length; i++){
-            if (cookies[i].getName().equals("email")){
-                cookie = cookies[i];
-            }
-        }
-    }
+    if(cookies != null) cookie = cookies[0];
+
     else
     {
         RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
         rd.include(request,response);
-        write.println("<h3>Please login!</h3>");
+        write.println("<script>\n" +
+                "alert(\"Please login!\")" +
+                "</script>");
     };
-    write.println("<h3>Welcome, " + cookie.getValue() + "!</h3>");
+
+
 
 %>

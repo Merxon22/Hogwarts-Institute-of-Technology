@@ -53,6 +53,9 @@ public class CalculateDays { //HIT is a labor camp, so it doesn't have holidays
                 if (flag){
                     map.put(2, 28);
                 }
+                else if (eY % 4 == 0 && eY % 100 != 0){
+                    map.put(2, 29);
+                }
             }
             totalM--;
         }

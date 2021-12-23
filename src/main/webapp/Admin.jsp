@@ -16,23 +16,19 @@
 </head>
 <body background="https://tjn-blog-images.s3.amazonaws.com/wp-content/uploads/2015/09/20003023/Which-Fields-Have-the-Highest-Paying-Administrative-Jobs.jpg" style="background-size: cover"><center>
     <%@include file="module/headerLoggedIn.jsp"%>
-    <%@include file="module/CheckLog.jsp"%>
-
 
     <div id="containerBox">
         <div class="centerBox">
-            <h2><b>Welcome, admin!</b></h2>
+            <%@include file="module/CheckLog.jsp"%>
             <br>
             <div class="d-grid gap-4 mx-auto">
                 <a href="AddStudentAcc.jsp"><button class="btn btn-primary" style="width: 100%;" type="button">Add students</button></a>
                 <a href="AddTeacherAcc.jsp"><button class="btn btn-primary" style="width: 100%;" type="button">Add teachers</button></a>
                 <a href="DelStu.jsp"><button class="btn btn-primary" style="width: 100%;" type="button">Delete students</button></a>
                 <a href="DelTea.jsp"><button class="btn btn-primary" style="width: 100%;" type="button">Delete teachers</button></a>
-                <a href="ViewStu"><button class="btn btn-primary" style="width: 100%;" type="button">All students</button></a>
-                <a href="ViewTea"><button class="btn btn-primary" style="width: 100%;" type="button">All teachers</button></a>
-                <a href="ViewClassInfo"><button class="btn btn-primary" style="width: 100%;" type="button">View current classes</button></a>
-                <a href=Logout><button class="btn btn-primary" style="width: 100%;" type="button">Logout</button></a>
-
+                <a href=ViewStu><button class="btn btn-primary" style="width: 100%;" type="button">All students</button></a>
+                <a href=ViewTea><button class="btn btn-primary" style="width: 100%;" type="button">All teachers</button></a>
+                <a href=ViewClass><button class="btn btn-primary" style="width: 100%;" type="button">View current classes</button></a>
 
             </div>
         </div>

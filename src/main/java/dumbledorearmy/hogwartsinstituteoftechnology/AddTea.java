@@ -41,7 +41,9 @@ public class AddTea extends HttpServlet {
             RequestDispatcher rd =request.getRequestDispatcher("Admin.jsp");
 
             rd.include(request, response);
-            out.println("<h3>Teacher(s) successfully added!</h3>");
+            out.println("<script>\n" +
+                    "alert(\"Teacher(s) added!\")" +
+                    "</script>");
             con.close();
 
         } catch (Exception exe) {
