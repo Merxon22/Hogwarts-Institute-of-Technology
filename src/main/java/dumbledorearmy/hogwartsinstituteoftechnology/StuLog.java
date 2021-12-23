@@ -25,7 +25,7 @@ public class StuLog extends HttpServlet {
 
             Statement stmt1 = con.createStatement();
             ResultSet rp = stmt1.executeQuery("select * from Student");
-            String em;
+            String em=" ";
             String pwd = "";
 
             while (rp.next()){
