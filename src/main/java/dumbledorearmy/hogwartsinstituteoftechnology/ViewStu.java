@@ -23,6 +23,18 @@ public class ViewStu extends HttpServlet {
             ResultSet rs;
             x = "select * from Student";
             rs = stmt.executeQuery(x);
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>View Student</title>");
+            out.println("<link rel=\"stylesheet\" href=\"css/mainStyle.css\">");
+            out.println("<link rel=\"icon\" href=\"ResourceFolder/Icon.png\">");
+            out.println("</head>");
+
+            out.println("<body background=\"https://tjn-blog-images.s3.amazonaws.com/wp-content/uploads/2015/09/20003023/Which-Fields-Have-the-Highest-Paying-Administrative-Jobs.jpg\" style=\"background-size: cover\"><center>\n");
+            out.println("<%@include file=\"module/headerLoggedIn.jsp\"%>\n");
+            out.println("<div id=\"containerBox\">");
+            out.println("<div class=\"centerBox\">");
+            out.println("<%@include file=\"module/CheckLog.jsp\"%>");
             out.println("<table>\n" +
                     "        <th>\n" +
                     "            <td>First Name</td>\n" +
@@ -40,10 +52,11 @@ public class ViewStu extends HttpServlet {
             }
 
             out.println("</table>");
-
-
-
-
+            out.println("</div>");
+            out.println("</div>");
+            out.println("<%@include file=\"../webapp/module/footer.jsp\"%>\n");
+            out.println("</center></body>");
+            out.println("</html>");
         } catch (Exception exe) {
             System.out.println("Exception caught" + exe);
         }
