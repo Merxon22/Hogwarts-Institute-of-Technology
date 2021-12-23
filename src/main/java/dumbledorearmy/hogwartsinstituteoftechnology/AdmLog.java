@@ -21,7 +21,7 @@ public class AdmLog extends HttpServlet {
         response.setContentType("text/html");
         try{
 
-            Connection con = LocalConn.GetConn();
+            Connection con = Provider.GetConn();
 
             Statement stmt1 = con.createStatement();
             ResultSet rp = stmt1.executeQuery("select * from Admin");
@@ -44,21 +44,24 @@ public class AdmLog extends HttpServlet {
                 // Add both the cookies in the response header.
                 response.addCookie(email);
                 rd.include(request, response);
-                out.println("<h1>Welcome Admin</h1>");
+
+                out.println("<script>\n" +
+                        "alert(\"Welcome, " + em +
+                        "\");" +
+                        "</script>");
 
             }
             else {
-                RequestDispatcher rd = request.getRequestDispatcher("AdminLog.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("AdmLog.jsp");
                 rd.include(request, response);
-                out.println("<h1>Wrong Com!</h1>");
+                out.println("<script>\n" +
+                        "alert(\"You have entered the wrong combination.\")" +
+                        "</script>");
             }
 
             con.close();
         } catch(Exception exe){System.out.println("Exception caught"+exe);}
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    }
 }

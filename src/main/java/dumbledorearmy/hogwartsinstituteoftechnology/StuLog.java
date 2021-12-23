@@ -20,7 +20,7 @@ public class StuLog extends HttpServlet {
         response.setContentType("text/html");
         try{
 
-            Connection con = LocalConn.GetConn();
+            Connection con = Provider.GetConn();
 
             Statement stmt1 = con.createStatement();
             ResultSet rp = stmt1.executeQuery("select * from Student");
@@ -43,13 +43,18 @@ public class StuLog extends HttpServlet {
                 // Add both the cookies in the response header.
                 response.addCookie(email);
                 rd.include(request, response);
-                out.println("<h1>Welcome Student</h1>");
+                out.println("<script>\n" +
+                        "alert(\"Welcome, " + em +
+                        "\");" +
+                        "</script>");
 
             }
             else {
                 RequestDispatcher rd = request.getRequestDispatcher("StuLog.jsp");
                 rd.include(request, response);
-                out.println("<h1>Wrong Com!</h1>");
+                out.println("<script>\n" +
+                        "alert(\"You have entered the wrong combination.\")" +
+                        "</script>");
             }
 
             con.close();
@@ -57,8 +62,4 @@ public class StuLog extends HttpServlet {
     }
 
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 }

@@ -18,7 +18,7 @@
     <%@include file="module/header.jsp"%>
     <div id="containerBox">
         <div class="centerBox">
-            <form>
+            <form action = "StuLog" method = "get">
                 <h2><b>Student Login</b></h2>
                 <br>
                 <div class="mb-3">

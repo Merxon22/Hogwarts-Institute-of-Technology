@@ -20,7 +20,7 @@ public class TeaLog extends HttpServlet {
         response.setContentType("text/html");
         try{
 
-            Connection con = LocalConn.GetConn();
+            Connection con = Provider.GetConn();
 
             Statement stmt1 = con.createStatement();
             ResultSet rp = stmt1.executeQuery("select * from Teacher");
@@ -42,24 +42,23 @@ public class TeaLog extends HttpServlet {
                 email.setMaxAge(60 * 60 * 24);
                 // Add both the cookies in the response header.
                 response.addCookie(email);
-                rd.forward(request, response);
-                out.println("<h1>Welcome Teacher!</h1>");
+                rd.include(request, response);
+                out.println("<script>\n" +
+                        "alert(\"Welcome, " + em +
+                        "\");" +
+                        "</script>");
 
             }
             else {
                 RequestDispatcher rd = request.getRequestDispatcher("TeaLog.jsp");
                 rd.include(request, response);
-                out.println("<h1>Wrong Com!</h1>");
+                out.println("<script>\n" +
+                        "alert(\"You have entered the wrong combination.\")" +
+                        "</script>");
             }
 
             con.close();
         } catch(Exception exe){System.out.println("Exception caught"+exe);}
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-
-    }
 }

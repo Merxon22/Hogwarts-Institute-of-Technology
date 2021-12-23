@@ -16,12 +16,12 @@
 </head>
 <body background="https://ww2.kqed.org/app/uploads/sites/23/2015/05/Beard-Algorithm-1440x811.jpg" style="background-size: cover"><center>
 <%@include file="module/headerLoggedIn.jsp"%>
+<%@include file="module/CheckLog.jsp"%>
 <div id="containerBox">
     <div class="centerBox">
-        <h2><b>Welcome, teacher!</b></h2>
         <br>
         <div class="d-grid gap-4 mx-auto">
-            <a href="AddTeacherAcc.jsp"><button class="btn btn-primary" style="width: 100%;" type="button">View My Schedule</button></a>
+            <a href="AddTeacherAcc.jsp"><button class="btn btn-primary" style="width: 100%;" type="button">View my Schedule</button></a>
             <a href="AddStudentAcc.jsp"><button class="btn btn-primary" style="width: 100%;" type="button">View the participants of my class</button></a>
             <a href="AddStudentAcc.jsp"><button class="btn btn-primary" style="width: 100%;" type="button">Check attendance</button></a>
             <a href="AddStudentAcc.jsp"><button class="btn btn-primary" style="width: 100%;" type="button">Upload assignment</button></a>

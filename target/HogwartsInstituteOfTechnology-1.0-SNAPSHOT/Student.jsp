@@ -16,6 +16,7 @@
 </head>
 <body style="background-image: url('https://londoninformaticsacademy.com/wp-content/uploads/2019/01/Gordon-College.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center"><center>
     <%@include file="module/headerLoggedIn.jsp"%>
+    <%@include file="module/CheckLog.jsp"%>
     <div id="containerBox">
         <div class="centerBox">
             <h2><b>Welcome, student!</b></h2>
@@ -23,6 +24,7 @@
             <div class="d-grid gap-4 mx-auto">
                 <a href="AddTeacherAcc.jsp"><button class="btn btn-primary" style="width: 100%;" type="button">View my schedule</button></a>
                 <a href="AddStudentAcc.jsp"><button class="btn btn-primary" style="width: 100%;" type="button">View my grade</button></a>
+                <a href=Logout><button class="btn btn-primary" style="width: 100%;" type="button">Logout</button></a>
             </div>
         </div>
     </div>

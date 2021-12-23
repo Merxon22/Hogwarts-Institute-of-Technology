@@ -8,7 +8,7 @@
             <div class="text-end">
                 <a href="StuLog.jsp"><button type="button" class="btn btn-warning">Student Portal</button></a>
                 <a href="TeaLog.jsp"><button type="button" class="btn btn-warning">Teacher Portal</button></a>
-                <a href="AdminLog.jsp"><button type="button" class="btn btn-warning">Admin Portal</button></a>
+                <a href="AdmLog.jsp"><button type="button" class="btn btn-warning">Admin Portal</button></a>
             </div>
         </div>
     </div>
