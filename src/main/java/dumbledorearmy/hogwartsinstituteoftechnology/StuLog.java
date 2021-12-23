@@ -11,8 +11,9 @@ import java.sql.Statement;
 
 @WebServlet(name = "StuLog", value = "/StuLog")
 public class StuLog extends HttpServlet {
+
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         String acc = request.getParameter("email");
         String pw = request.getParameter("pwd");
@@ -24,7 +25,7 @@ public class StuLog extends HttpServlet {
 
             Statement stmt1 = con.createStatement();
             ResultSet rp = stmt1.executeQuery("select * from Student");
-            String em = "";
+            String em;
             String pwd = "";
 
             while (rp.next()){
@@ -36,6 +37,8 @@ public class StuLog extends HttpServlet {
                 }
             }
             if (flag){
+                HttpSession session = request.getSession();
+                session.setAttribute("email", acc);
                 RequestDispatcher rd =request.getRequestDispatcher("Student.jsp");
                 Cookie email = new Cookie("email", acc);
 
@@ -55,11 +58,11 @@ public class StuLog extends HttpServlet {
                 out.println("<script>\n" +
                         "alert(\"You have entered the wrong combination.\")" +
                         "</script>");
+
             }
 
             con.close();
         } catch(Exception exe){System.out.println("Exception caught"+exe);}
     }
-
 
 }
