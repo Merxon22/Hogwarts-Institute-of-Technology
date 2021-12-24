@@ -4,9 +4,9 @@ import java.sql.*;
 
 public class Provider {
     static Connection GetConn(){
-        final String DB_URL = "jdbc:mysql://db4free.net:3306/hituniversity12";
-        final String USER = "hituniversity12";
-        final String PASS = "20040713";
+        final String DB_URL = "jdbc:mysql://remotemysql.com:3306/cwE0Bj38Hg";
+        final String USER = "cwE0Bj38Hg";
+        final String PASS = "RmfHam4gf1";
         Connection conn = null;
 
         try{
