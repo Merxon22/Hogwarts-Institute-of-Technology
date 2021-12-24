@@ -29,7 +29,6 @@
                 <a href=ViewStu><button class="btn btn-primary" style="width: 100%;" type="button">All students</button></a>
                 <a href=ViewTea><button class="btn btn-primary" style="width: 100%;" type="button">All teachers</button></a>
                 <a href=ViewClass><button class="btn btn-primary" style="width: 100%;" type="button">View current classes</button></a>
-
             </div>
         </div>
     </div>

@@ -17,7 +17,7 @@
     <%@include file="module/headerLoggedIn.jsp"%>
     <div id="containerBox">
         <div class="centerBox">
-            <h2 style="padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey"><b>Delete student</b></h2>
+            <h2 style="padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey"><b>Delete teacher</b></h2>
             <h4><b>Instruction:</b></h4>
             <p>Enter the email of teachers you want to delete.</p>
             <p>To enter another, separate by the break of line.</p>
