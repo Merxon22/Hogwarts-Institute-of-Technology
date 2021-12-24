@@ -6,7 +6,7 @@ public class Provider {
     static Connection GetConn(){
         final String DB_URL = "jdbc:mysql://db4free.net:3306/hituniversity12";
         final String USER = "hituniversity12";
-        final String PASS = "G2011g1019";
+        final String PASS = "20040713";
         Connection conn = null;
 
         try{
