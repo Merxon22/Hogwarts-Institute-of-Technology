@@ -30,7 +30,7 @@ public class StudentGradeView extends HttpServlet {
             out.println("<center>");
             out.println("<table border=1 width=50% height=50%>");
             out.println("<tr><th>Subject</th><th>Mid-term</th><th>Final</th><th>Attendance</th></tr>");
-
+git
             for (int i = 0; i <6 ; i++) {
                 ResultSet rp = stmt1.executeQuery("select * from Student join "+S[i]+" on Student.email="+S[i]+".email where email='"+Email+"'");
                 while (rp.next())
