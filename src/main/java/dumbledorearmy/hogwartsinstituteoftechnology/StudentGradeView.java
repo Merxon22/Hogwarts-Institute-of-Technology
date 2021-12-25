@@ -24,7 +24,6 @@ public class StudentGradeView extends HttpServlet {
         String[] S={"MagicChinese","MagicEconomics","MagicMathematics","MagicChemistry","MagicPhysics","MagicComputerScience"};
 
         try{
-
             response.setContentType("text/html");
             Statement stmt1 = con.createStatement();
             out.println("<center>");
