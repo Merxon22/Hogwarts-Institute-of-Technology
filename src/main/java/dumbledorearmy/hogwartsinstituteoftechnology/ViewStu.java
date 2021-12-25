@@ -21,8 +21,8 @@ public class ViewStu extends HttpServlet {
             Statement stmt = con.createStatement();
             String x;
             ResultSet rs;
-//            x = "select * from Student";
-//            rs = stmt.executeQuery(x);
+            x = "select * from student";
+            rs = stmt.executeQuery(x);
             out.println("<html>");
             out.println("<head>");
             out.println("<title>View Student</title>");
@@ -35,26 +35,25 @@ public class ViewStu extends HttpServlet {
             out.println("<div class=\"centerBox\" style=\"width: 60%; !important;\">");
             request.getRequestDispatcher("module/CheckLog.jsp").include(request, response);
             out.println("<h2><b>View Student</b></h2>");
-            out.println("<table class=\"table table-striped\" style=\"margin-top: 20px;\">\n" +
+            out.println("<table class=\"table table-striped\" style=\"margin-top: 20px; text-align: center; !important;\">\n" +
                     "        <thead><tr>\n" +
-                    "            <th>First Name</td>\n" +
-                    "            <th>Last Name</td>\n" +
-                    "            <th>Email</td>\n" +
-                    "            <th>Password</td>\n" +
+                    "            <th class=\"text-center\">First Name</td>\n" +
+                    "            <th class=\"text-center\">Last Name</td>\n" +
+                    "            <th class=\"text-center\">Email</td>\n" +
+                    "            <th class=\"text-center\">Password</td>\n" +
                     "        </tr></thead>");
             out.println("<tbody>");
             out.println("<tr><td>First1</td><td>Last1</td><td>Email1</td><td>Name1</td></tr>");
             out.println("<tr><td>First2</td><td>Last2</td><td>Email2</td><td>Name2</td></tr>");
+            while (rs.next()){
+                out.println("<tr>\n" +
+                        "            <td>" + rs.getString("Firstname") + "</td>\n" +
+                        "            <td>" + rs.getString("Lastname") + "</td>\n" +
+                        "            <td>" + rs.getString("email") + "</td>\n" +
+                        "            <td>" + rs.getString("password") + "</td>\n" +
+                        "        </tr>");
+            }
             out.println("</tbody>");
-//            while (rs.next()){
-//                out.println("<tr>\n" +
-//                        "            <td>" + rs.getString("Firstname") + "</td>\n" +
-//                        "            <td>" + rs.getString("Lastname") + "</td>\n" +
-//                        "            <td>" + rs.getString("email") + "</td>\n" +
-//                        "            <td>" + rs.getString("password") + "</td>\n" +
-//                        "        </tr>");
-//            }
-//
             out.println("</table>");
             out.println("<input class=\"btn btn-primary\" type=\"button\" value=\"Back\" onclick=\"history.back();\" style=\"width: 80px; margin-top: 20px;\">\n");
             out.println("</div>");
