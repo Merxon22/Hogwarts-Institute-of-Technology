@@ -11,7 +11,12 @@
     <title>Upload Assignments</title>
 </head>
 <body>
-
-
+    <h3>Type the assignments you want to add, in the format of class name/assignment name.
+        e.g. math/final
+        To add multiple, separate by the break of line.</h3>
+    <form action = AddAss method = "post">
+        <textarea name = "ass"></textarea>
+        <input type="submit">
+    </form>
 </body>
 </html>

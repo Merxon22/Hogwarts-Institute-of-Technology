@@ -37,7 +37,7 @@ public class AddStu extends HttpServlet {
                 String Lastname = allinfos[1];
                 String email = allinfos[2];
                 String pwd = InitialPwGenerator.generate();
-                String query = "insert into Student (Firstname, Lastname, email, password) values (" +
+                String query = "insert into student (Firstname, Lastname, email, password) values (" +
                         "'" + Firstname + "'," +
                         "'" + Lastname + "'," +
                         "'" + email + "'," +
@@ -45,7 +45,7 @@ public class AddStu extends HttpServlet {
                 st.executeUpdate(query);
             }
 
-            RequestDispatcher rd =request.getRequestDispatcher("Admin.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("Admin.jsp");
 
             rd.include(request, response);
             out.println("<script>\n" +

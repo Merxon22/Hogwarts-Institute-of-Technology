@@ -4,11 +4,39 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.Statement;
 
 @WebServlet(name = "AddAss", value = "/AddAss")
 public class AddAss extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try{
+            PrintWriter out = response.getWriter();
+            response.setContentType("text/html");
+            Connection con = Provider.GetConn();
+            String allAss[] = request.getParameter("ass").split("\n");
+            String que;
+            Statement stmt = con.createStatement();
+            for (String as: allAss){
+                String sep[] = as.split("/");
+                String className = sep[0];
+                String assName = sep[1];
+                que = que = "ALTER TABLE " + className + "\n" +
+                        "ADD COLUMN " + assName + " int(11);";
+                stmt.executeUpdate(que);
+            }
+            RequestDispatcher rd = request.getRequestDispatcher("Teacher.jsp");
 
+            rd.include(request, response);
+            out.println("<script>\n" +
+                    "alert(\"Assignment(s) added!\")" +
+                    "</script>");
+            con.close();
+
+        }catch (Exception exe){
+            System.out.println(exe);
+        }
     }
 }

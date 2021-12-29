@@ -13,7 +13,7 @@ import java.sql.Statement;
 public class StuLog extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         String acc = request.getParameter("email");
         String pw = request.getParameter("pwd");
