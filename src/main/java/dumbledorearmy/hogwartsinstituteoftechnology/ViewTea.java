@@ -43,9 +43,6 @@ public class ViewTea extends HttpServlet {
                     "            <th class=\"text-center\">Password</td>\n" +
                     "        </tr></thead>");
             out.println("<tbody>");
-            out.println("<tr><td>First1</td><td>Last1</td><td>Email1</td><td>Name1</td></tr>");
-            out.println("<tr><td>First2</td><td>Last2</td><td>Email2</td><td>Name2</td></tr>");
-            out.println("</tbody>");
             while (rs.next()){
                 out.println("<tr>\n" +
                         "            <td>" + rs.getString("Firstname") + "</td>\n" +
@@ -54,6 +51,7 @@ public class ViewTea extends HttpServlet {
                         "            <td>" + rs.getString("password") + "</td>\n" +
                         "        </tr>");
             }
+            out.println("</tbody>");
             out.println("</table>");
             out.println("<input class=\"btn btn-primary\" type=\"button\" value=\"Back\" onclick=\"history.back();\" style=\"width: 80px; margin-top: 20px;\">\n");
             out.println("</div>");

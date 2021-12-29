@@ -43,8 +43,6 @@ public class ViewStu extends HttpServlet {
                     "            <th class=\"text-center\">Password</td>\n" +
                     "        </tr></thead>");
             out.println("<tbody>");
-            out.println("<tr><td>First1</td><td>Last1</td><td>Email1</td><td>Name1</td></tr>");
-            out.println("<tr><td>First2</td><td>Last2</td><td>Email2</td><td>Name2</td></tr>");
             while (rs.next()){
                 out.println("<tr>\n" +
                         "            <td>" + rs.getString("Firstname") + "</td>\n" +

@@ -20,8 +20,8 @@
             <h2 style="padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey"><b>Add teacher</b></h2>
             <h4><b>Instruction:</b></h4>
             <p>Please enter the names of teachers you want to add.</p>
-            <p>Enter in the format of First name/Last name/Email.</p>
-            <p>For example: <em><b><u>Tano/Ahsoka/tahsoka@hit.edu.</u></b></em></p>
+            <p>Enter in the format of First name/Last name/Email/class1,class2,class3,...</p>
+            <p>For example: <em><b><u>Tano/Ahsoka/tahsoka@hit.edu/math,english</u></b></em>.</p>
             <p>To enter another, separate by the break of line.</p>
             <p>Note that the replicated account (with same email address), and those who are added before will be ignored.</p>
             <form action = "AddTea" method = "post" style="padding: 20px 0px;">

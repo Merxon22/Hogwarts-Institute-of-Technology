@@ -19,10 +19,11 @@ public class ViewClass extends HttpServlet {
         Connection con = Provider.GetConn();
         try{
             Statement stmt1 = con.createStatement();
+            Statement stmt2 = con.createStatement();
             ResultSet rp = stmt1.executeQuery("select * from classinfo");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>View Teacher</title>");
+            out.println("<title>View Classes</title>");
             out.println("<link rel=\"stylesheet\" href=\"css/mainStyle.css\">");
             out.println("<link rel=\"icon\" href=\"ResourceFolder/Icon.png\">");
             out.println("</head>");
@@ -36,18 +37,41 @@ public class ViewClass extends HttpServlet {
                     "        <thead><tr>\n" +
                     "            <th class=\"text-center\">Subject</td>\n" +
                     "            <th class=\"text-center\">Teacher</td>\n" +
-                    "            <th class=\"text-center\">Time</td>\n" +
                     "            <th class=\"text-center\">Description</td>\n" +
+                    "            <th class=\"text-center\">Time</td>\n" +
                     "        </tr></thead>");
             out.println("<tbody>");
-            out.println("<tr><td>Subject1</td><td>Teacher1</td><td>Time1</td><td>Description1</td></tr>");
-            out.println("<tr><td>Subject2</td><td>Teacher2</td><td>Time2</td><td>Description2</td></tr>");
+            String query2 = "";
             while (rp.next()){
+//                String time[] = rp.getString("time").split(";");
+//                String tt = "";
+//                for (String t: time){
+//                    tt += t;
+//                    tt += "<br>";
+//                }
+//                tt = tt.substring(0, tt.length() - 2);
+//                System.out.println(tt);
+
+                int id = rp.getInt("id");
+                System.out.println(id);
+                query2 = "select * from teacher where id=" + id;
+                ResultSet rs = stmt2.executeQuery(query2);
+
+                String Fname = "";
+                String LName = "";
+                while(rs.next()){
+                    Fname = rs.getString("Firstname");
+                    LName = rs.getString("Lastname");
+                }
+
+                String wholeN = Fname + " " + LName;
+
+
                 out.println("<tr>\n" +
-                        "            <td>" + rp.getString("Subject") + "</td>\n" +
-                        "            <td>" + rp.getString("teacher") + "</td>\n" +
-                        "            <td>" + rp.getString("Des") + "</td>\n" +
-                        "            <td>" + rp.getString("Time") + "</td>\n" +
+                        "            <td>" + rp.getString("subject") + "</td>\n" +
+                        "            <td>" + wholeN + "</td>\n" +
+                        "            <td>" + rp.getString("des") + "</td>\n" +
+                        "            <td>" + rp.getString("time") + "</td>\n" +
                         "        </tr>");
             }            out.println("</table>");
             out.println("</tbody>");

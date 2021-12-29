@@ -13,7 +13,7 @@ import java.sql.Statement;
 public class StuLog extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         String acc = request.getParameter("email");
         String pw = request.getParameter("pwd");
@@ -24,7 +24,7 @@ public class StuLog extends HttpServlet {
             Connection con = Provider.GetConn();
 
             Statement stmt1 = con.createStatement();
-            ResultSet rp = stmt1.executeQuery("select * from Student");
+            ResultSet rp = stmt1.executeQuery("select * from student");
             String em=" ";
             String pwd = "";
 

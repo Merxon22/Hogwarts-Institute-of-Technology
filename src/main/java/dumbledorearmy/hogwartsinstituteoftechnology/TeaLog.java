@@ -16,14 +16,19 @@ public class TeaLog extends HttpServlet {
         PrintWriter out = response.getWriter();
         String acc = request.getParameter("email");
         String pw = request.getParameter("pwd");
+
+
+
         boolean flag = false;
         response.setContentType("text/html");
         try{
 
+
+
             Connection con = Provider.GetConn();
 
             Statement stmt1 = con.createStatement();
-            ResultSet rp = stmt1.executeQuery("select * from Teacher");
+            ResultSet rp = stmt1.executeQuery("select * from teacher");
             String em = "";
             String pwd = "";
 
@@ -36,10 +41,10 @@ public class TeaLog extends HttpServlet {
                 }
             }
             if (flag){
-                RequestDispatcher rd =request.getRequestDispatcher("Teacher.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("Teacher.jsp");
                 Cookie email = new Cookie("email", acc);
-
                 email.setMaxAge(60 * 60 * 24);
+
                 // Add both the cookies in the response header.
                 response.addCookie(email);
                 rd.include(request, response);

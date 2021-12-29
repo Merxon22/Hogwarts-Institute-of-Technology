@@ -10,7 +10,7 @@ public class Provider {
         Connection conn = null;
 
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             if(!conn.isClosed())

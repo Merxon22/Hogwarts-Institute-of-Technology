@@ -30,11 +30,15 @@ public class AddTea extends HttpServlet {
                 String Lastname = allinfos[1];
                 String email = allinfos[2];
                 String pwd = InitialPwGenerator.generate();
-                String query = "insert into Teacher (Firstname, Lastname, email, password) values (" +
+                String classes = allinfos[3];
+
+                String query = "insert into teacher (Firstname, Lastname, email, password, Class) values (" +
                         "'" + Firstname + "'," +
                         "'" + Lastname + "'," +
                         "'" + email + "'," +
-                        "'" + pwd + "')";
+                        "'" + pwd + "',"+
+                        "'" + classes + "" +
+                        "')";
                 st.executeUpdate(query);
             }
 
