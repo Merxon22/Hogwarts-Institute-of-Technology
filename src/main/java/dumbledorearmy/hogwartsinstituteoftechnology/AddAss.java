@@ -24,7 +24,7 @@ public class AddAss extends HttpServlet {
                 String className = sep[0];
                 String assName = sep[1];
                 que = que = "ALTER TABLE " + className + "\n" +
-                        "ADD COLUMN " + assName + " int(11);";
+                        "ADD COLUMN " + assName + " varchar(64) DEFAULT 'N/A';";
                 stmt.executeUpdate(que);
             }
             RequestDispatcher rd = request.getRequestDispatcher("Teacher.jsp");

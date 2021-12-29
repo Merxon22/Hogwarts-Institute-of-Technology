@@ -23,6 +23,8 @@ public class TeaLog extends HttpServlet {
         response.setContentType("text/html");
         try{
 
+
+
             Connection con = Provider.GetConn();
 
             Statement stmt1 = con.createStatement();
