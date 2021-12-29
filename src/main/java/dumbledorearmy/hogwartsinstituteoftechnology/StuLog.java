@@ -24,7 +24,7 @@ public class StuLog extends HttpServlet {
             Connection con = Provider.GetConn();
 
             Statement stmt1 = con.createStatement();
-            ResultSet rp = stmt1.executeQuery("select * from Student");
+            ResultSet rp = stmt1.executeQuery("select * from student");
             String em=" ";
             String pwd = "";
 

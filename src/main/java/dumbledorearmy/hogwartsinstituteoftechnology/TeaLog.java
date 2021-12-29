@@ -23,7 +23,7 @@ public class TeaLog extends HttpServlet {
             Connection con = Provider.GetConn();
 
             Statement stmt1 = con.createStatement();
-            ResultSet rp = stmt1.executeQuery("select * from Teacher");
+            ResultSet rp = stmt1.executeQuery("select * from teacher");
             String em = "";
             String pwd = "";
 

@@ -36,18 +36,25 @@ public class ViewClass extends HttpServlet {
                     "        <thead><tr>\n" +
                     "            <th class=\"text-center\">Subject</td>\n" +
                     "            <th class=\"text-center\">Teacher</td>\n" +
-                    "            <th class=\"text-center\">Time</td>\n" +
                     "            <th class=\"text-center\">Description</td>\n" +
+                    "            <th class=\"text-center\">Time</td>\n" +
                     "        </tr></thead>");
             out.println("<tbody>");
-            out.println("<tr><td>Subject1</td><td>Teacher1</td><td>Time1</td><td>Description1</td></tr>");
-            out.println("<tr><td>Subject2</td><td>Teacher2</td><td>Time2</td><td>Description2</td></tr>");
+
             while (rp.next()){
+//                String time[] = rp.getString("time").split(";");
+//                String tt = "";
+//                for (String t: time){
+//                    tt += t;
+//                    tt += "<br>";
+//                }
+//                tt = tt.substring(0, tt.length() - 2);
+//                System.out.println(tt);
                 out.println("<tr>\n" +
-                        "            <td>" + rp.getString("Subject") + "</td>\n" +
+                        "            <td>" + rp.getString("subject") + "</td>\n" +
                         "            <td>" + rp.getString("teacher") + "</td>\n" +
-                        "            <td>" + rp.getString("Des") + "</td>\n" +
-                        "            <td>" + rp.getString("Time") + "</td>\n" +
+                        "            <td>" + rp.getString("des") + "</td>\n" +
+                        "            <td>" + rp.getString("time") + "</td>\n" +
                         "        </tr>");
             }            out.println("</table>");
             out.println("</tbody>");

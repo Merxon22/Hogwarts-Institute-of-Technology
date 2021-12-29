@@ -24,7 +24,7 @@ public class AdmLog extends HttpServlet {
             Connection con = Provider.GetConn();
 
             Statement stmt1 = con.createStatement();
-            ResultSet rp = stmt1.executeQuery("select * from Admin");
+            ResultSet rp = stmt1.executeQuery("select * from admin");
             String em = "";
             String pwd = "";
 
