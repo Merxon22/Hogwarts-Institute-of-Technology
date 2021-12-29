@@ -32,13 +32,13 @@ public class ViewClass extends HttpServlet {
             out.println("<div id=\"containerBox\">");
             out.println("<div class=\"centerBox\" style=\"width: 60%; !important;\">");
             request.getRequestDispatcher("module/CheckLog.jsp").include(request, response);
-            out.println("<h2><b>View Teacher</b></h2>");
+            out.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>View Teacher</b></h2>");
             out.println("<table class=\"table table-striped\" style=\"margin-top: 20px; text-align: center; !important;\">\n" +
                     "        <thead><tr>\n" +
                     "            <th class=\"text-center\">Subject</td>\n" +
                     "            <th class=\"text-center\">Teacher</td>\n" +
                     "            <th class=\"text-center\">Description</td>\n" +
-                    "            <th class=\"text-center\">Time</td>\n" +
+                    "            <th class=\"text-center\" style=\"min-width: 300px\">Time</td>\n" +
                     "        </tr></thead>");
             out.println("<tbody>");
             String query2 = "";
@@ -67,11 +67,11 @@ public class ViewClass extends HttpServlet {
                 String wholeN = Fname + " " + LName;
 
 
-                out.println("<tr>\n" +
-                        "            <td>" + rp.getString("subject") + "</td>\n" +
-                        "            <td>" + wholeN + "</td>\n" +
-                        "            <td>" + rp.getString("des") + "</td>\n" +
-                        "            <td>" + rp.getString("time") + "</td>\n" +
+                out.println("<tr style=\"font-size: 13px;\">\n" +
+                        "            <td style=\"vertical-align: middle;\">" + rp.getString("subject") + "</td>\n" +
+                        "            <td style=\"vertical-align: middle;\">" + wholeN + "</td>\n" +
+                        "            <td style=\"vertical-align: middle;\">" + rp.getString("des") + "</td>\n" +
+                        "            <td style=\"vertical-align: middle;\">" + rp.getString("time") + "</td>\n" +
                         "        </tr>");
             }            out.println("</table>");
             out.println("</tbody>");
