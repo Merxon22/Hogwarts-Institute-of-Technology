@@ -3,6 +3,7 @@ package dumbledorearmy.hogwartsinstituteoftechnology;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import javax.xml.bind.SchemaOutputResolver;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -23,9 +24,14 @@ public class ViewParticipants extends HttpServlet {
         Statement stmt = con.createStatement();
 
         Cookie[] cookies = request.getCookies();
-        String em = cookies[0].getValue();
+        String em = "";
+        for (Cookie c: cookies){
+            if (c.getName().equals("email")){
+                em = c.getValue();
+            }
+        }
 
-        //System.out.println(em);
+        System.out.println(em);
 
         String[] classes = {};
 
@@ -41,9 +47,12 @@ public class ViewParticipants extends HttpServlet {
         //这里获得了一个(些)代表课的表，然后我们把它和student用fk（id）连起来，就可以得到firstn, lastn, email了
 
         for (String clasx: classes){ //注意这里前段得考虑一个老师教多个课的情况，虽然我们现在不需要
-            //System.out.println(clasx);
-            query = "select student.Firstname, student.Lastname, student.email from student" +
-                    " join " + clasx + " on " + clasx + ".student_id = student.id";
+            System.out.println(clasx);
+            query = "select student.Firstname, student.Lastname, student.email from student " +
+                    "join " + clasx + " on " + clasx + "." + "student_id = student.id";
+
+
+            System.out.println(query);
             rs = stmt.executeQuery(query);
 
 

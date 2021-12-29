@@ -19,10 +19,11 @@ public class ViewClass extends HttpServlet {
         Connection con = Provider.GetConn();
         try{
             Statement stmt1 = con.createStatement();
+            Statement stmt2 = con.createStatement();
             ResultSet rp = stmt1.executeQuery("select * from classinfo");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>View Teacher</title>");
+            out.println("<title>View Classes</title>");
             out.println("<link rel=\"stylesheet\" href=\"css/mainStyle.css\">");
             out.println("<link rel=\"icon\" href=\"ResourceFolder/Icon.png\">");
             out.println("</head>");
@@ -40,7 +41,7 @@ public class ViewClass extends HttpServlet {
                     "            <th class=\"text-center\">Time</td>\n" +
                     "        </tr></thead>");
             out.println("<tbody>");
-
+            String query2 = "";
             while (rp.next()){
 //                String time[] = rp.getString("time").split(";");
 //                String tt = "";
@@ -50,9 +51,25 @@ public class ViewClass extends HttpServlet {
 //                }
 //                tt = tt.substring(0, tt.length() - 2);
 //                System.out.println(tt);
+
+                int id = rp.getInt("id");
+                System.out.println(id);
+                query2 = "select * from teacher where id=" + id;
+                ResultSet rs = stmt2.executeQuery(query2);
+
+                String Fname = "";
+                String LName = "";
+                while(rs.next()){
+                    Fname = rs.getString("Firstname");
+                    LName = rs.getString("Lastname");
+                }
+
+                String wholeN = Fname + " " + LName;
+
+
                 out.println("<tr>\n" +
                         "            <td>" + rp.getString("subject") + "</td>\n" +
-                        "            <td>" + rp.getString("teacher") + "</td>\n" +
+                        "            <td>" + wholeN + "</td>\n" +
                         "            <td>" + rp.getString("des") + "</td>\n" +
                         "            <td>" + rp.getString("time") + "</td>\n" +
                         "        </tr>");

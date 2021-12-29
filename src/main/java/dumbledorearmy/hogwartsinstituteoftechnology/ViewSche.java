@@ -44,7 +44,12 @@ public class ViewSche extends HttpServlet {
             out.println("<html>");
 
             Cookie[] cookies = request.getCookies();
-            String em = cookies[0].getValue();
+            String em = "";
+            for (Cookie c: cookies){
+                if (c.getName().equals("email")){
+                    em = c.getValue();
+                }
+            }
             int id = 0;
             Connection con = Provider.GetConn();
             Statement stmt = con.createStatement();
@@ -55,9 +60,10 @@ public class ViewSche extends HttpServlet {
                 id = rs.getInt("id");
             }
             System.out.println(id);
-            query = "select classinfo.time from classinfo" +
+            query = "select classinfo.time, classinfo.subject from classinfo" +
                     " join teacher on teacher_id = teacher.id where teacher_id=" + id;
 
+            System.out.println(query);
             rs = stmt.executeQuery(query);
             String[][] week = new String[5][7];//对应一整周，5天
             while(rs.next()) { //默认我们后期会一个老师教很多课，但只有1
@@ -93,7 +99,7 @@ public class ViewSche extends HttpServlet {
                     "        <td>8:30-9:25</td>");
 
             for (int per = 0; per < 5; per++){
-                if (!week[per][0].equals(null)){
+                if (!(week[per][0]==null)){
                     out.println("<td>" + week[0][per] + "</td>");
                 }
                 else{
@@ -106,8 +112,8 @@ public class ViewSche extends HttpServlet {
                     "        <td>9:30-10:25</td>");
 
             for (int per = 0; per < 5; per++){
-                if (!week[per][1].equals(null)){
-                    out.println("<td>" + week[0][per] + "</td>");
+                if (!(week[per][1] == null)){
+                    out.println("<td>" + week[per][1] + "</td>");
                 }
                 else{
                     out.println("<td>Free Period</td>");
@@ -119,8 +125,8 @@ public class ViewSche extends HttpServlet {
                     "        <td>10:30-11:25</td>");
 
             for (int per = 0; per < 5; per++){
-                if (!week[per][2].equals(null)){
-                    out.println("<td>" + week[0][per] + "</td>");
+                if (!(week[per][2]==null)){
+                    out.println("<td>" + week[per][2] + "</td>");
                 }
                 else{
                     out.println("<td>Free Period</td>");
@@ -131,8 +137,8 @@ public class ViewSche extends HttpServlet {
                     "        <td>11:30-12:25</td>");
 
             for (int per = 0; per < 5; per++){
-                if (!week[per][3].equals(null)){
-                    out.println("<td>" + week[0][per] + "</td>");
+                if (!(week[per][3]==null)){
+                    out.println("<td>" + week[per][3] + "</td>");
                 }
                 else{
                     out.println("<td>Free Period</td>");
@@ -141,15 +147,14 @@ public class ViewSche extends HttpServlet {
 
             out.println("</tr>\n" +
                     "    <tr>\n" +
-                    "        <td>Lunch Break</td>\n" +
-                    "        <td id = \"spec\" colspan=\"4\">Recharge Life Support System</td>\n" +
+                    "        <td id = \"spec\" colspan=\"6\">Lunch Break</td>\n" +
                     "    </tr>\n" +
                     "    <tr>\n" +
                     "        <td>13:15-14:10</td>");
 
             for (int per = 0; per < 5; per++){
-                if (!week[per][4].equals(null)){
-                    out.println("<td>" + week[0][per] + "</td>");
+                if (!(week[per][4]==null)){
+                    out.println("<td>" + week[per][4] + "</td>");
                 }
                 else{
                     out.println("<td>Free Period</td>");
@@ -160,8 +165,8 @@ public class ViewSche extends HttpServlet {
                     "        <td>14:15-15:10</td>");
 
             for (int per = 0; per < 5; per++){
-                if (!week[per][5].equals(null)){
-                    out.println("<td>" + week[0][per] + "</td>");
+                if (!(week[per][5]==null)){
+                    out.println("<td>" + week[per][5] + "</td>");
                 }
                 else{
                     out.println("<td>Free Period</td>");
@@ -173,8 +178,8 @@ public class ViewSche extends HttpServlet {
                     "        <td>15:15-16:10</td>");
 
             for (int per = 0; per < 5; per++){
-                if (!week[per][6].equals(null)){
-                    out.println("<td>" + week[0][per] + "</td>");
+                if (!(week[per][6]==null)){
+                    out.println("<td>" + week[per][6] + "</td>");
                 }
                 else{
                     out.println("<td>Free Period</td>");

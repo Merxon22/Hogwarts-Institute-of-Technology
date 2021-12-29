@@ -21,7 +21,8 @@ public class AddAss extends HttpServlet {
             Statement stmt = con.createStatement();
             for (String as: allAss){
                 String sep[] = as.split("/");
-                String className = sep[0];
+                String cN = sep[0];
+                String className = cN.substring(0, 1).toUpperCase() + cN.substring(1, cN.length());
                 String assName = sep[1];
                 que = que = "ALTER TABLE " + className + "\n" +
                         "ADD COLUMN " + assName + " varchar(64) DEFAULT 'N/A';";
