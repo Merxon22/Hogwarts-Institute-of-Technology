@@ -35,10 +35,6 @@ public class ViewSche extends HttpServlet {
         mapClass.put("15:15-16:10", 6);
 
         try{
-            ScheduleHelper.initialize();
-            HashMap<String, Integer> map5= ScheduleHelper.getMapWeek();
-            HashMap<String, Integer> map7= ScheduleHelper.getMapClass();
-
             PrintWriter out = response.getWriter();
             response.setContentType("text/html");
             out.println("<html>");
@@ -189,7 +185,7 @@ public class ViewSche extends HttpServlet {
                     "    </tbody>\n" +
                     "</table>");
 
-            out.println("<html>");
+            out.println("</html>");
         con.close();
 
         }catch (Exception exe){
