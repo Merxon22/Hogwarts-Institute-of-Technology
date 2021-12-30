@@ -75,9 +75,23 @@
         <td>Sleep</td>
         <td>Sleep</td>
         <td>Sleep</td>
-        <td>Sleep</td>
+        <td><input type="checkbox"></td>
     </tr>
     </tbody>
 </table>
+<script>
+    function myFunction() {
+        var checkBox = document.getElementsByClassName("myCheck");
+
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true){
+            document.getElementsByClassName("myCheck").value = 1;
+        } else {
+            document.getElementsByClassName("myCheck").value = 0;
+        }
+    }
+</script>
+
+
 </body>
 </html>

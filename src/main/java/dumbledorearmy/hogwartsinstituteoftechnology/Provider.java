@@ -3,7 +3,7 @@ package dumbledorearmy.hogwartsinstituteoftechnology;
 import java.sql.*;
 
 public class Provider {
-    static Connection GetConn(){
+    public static Connection GetConn(){
         final String DB_URL = "jdbc:mysql://remotemysql.com:3306/cwE0Bj38Hg";
         final String USER = "cwE0Bj38Hg";
         final String PASS = "RmfHam4gf1";
