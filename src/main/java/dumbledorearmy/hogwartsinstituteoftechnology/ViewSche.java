@@ -34,14 +34,25 @@ public class ViewSche extends HttpServlet {
         mapClass.put("14:15-15:10", 5);
         mapClass.put("15:15-16:10", 6);
 
+        Connection con = Provider.GetConn();
         try{
             ScheduleHelper.initialize();
             HashMap<String, Integer> map5= ScheduleHelper.getMapWeek();
             HashMap<String, Integer> map7= ScheduleHelper.getMapClass();
 
             PrintWriter out = response.getWriter();
-            response.setContentType("text/html");
             out.println("<html>");
+            out.println("<head>");
+            out.println("<title>View Schedule</title>");
+            out.println("<link rel=\"stylesheet\" href=\"css/mainStyle.css\">");
+            out.println("<link rel=\"icon\" href=\"ResourceFolder/Icon.png\">");
+            out.println("</head>");
+            out.println("<body background=\"https://www.gozetim.com/images/kirtasiye-testleri.jpg\" style=\"background-size: cover\"><center>");
+            request.getRequestDispatcher("module/headerLoggedIn.jsp").include(request, response);
+            out.println("<div id=\"containerBox\">");
+            out.println("<div class=\"centerBox\" style=\"width: 60%; !important;\">");
+            request.getRequestDispatcher("module/CheckLog.jsp").include(request, response);
+            out.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>View Schedule</b></h2>");
 
             Cookie[] cookies = request.getCookies();
             String em = "";
@@ -51,7 +62,6 @@ public class ViewSche extends HttpServlet {
                 }
             }
             int id = 0;
-            Connection con = Provider.GetConn();
             Statement stmt = con.createStatement();
             String query = "select * from teacher where email='" + em + "';";
 
@@ -83,20 +93,19 @@ public class ViewSche extends HttpServlet {
                     week[weekday][period] = rs.getString("subject");
                 }
             }
-            out.println("<table>\n" +
-                    "    <thead>\n" +
-                    "    <tr>\n" +
-                    "        <th>Time/Weekday</th>\n" +
-                    "        <th>Monday</th>\n" +
-                    "        <th>Tuesday</th>\n" +
-                    "        <th>Wednesday</th>\n" +
-                    "        <th>Thursday</th>\n" +
-                    "        <th>Friday</th>\n" +
+            out.println("<table id=\"scheduleTable\" class=\"table table-striped\" style=\"margin-top: 20px; text-align: center; !important;\">\n" +
+                    "    <tr class=\"table-dark\">\n" +
+                    "        <th class=\"text-center\">Time/Weekday</th>\n" +
+                    "        <th class=\"text-center\">Monday</th>\n" +
+                    "        <th class=\"text-center\">Tuesday</th>\n" +
+                    "        <th class=\"text-center\">Wednesday</th>\n" +
+                    "        <th class=\"text-center\">Thursday</th>\n" +
+                    "        <th class=\"text-center\">Friday</th>\n" +
                     "    </tr>\n" +
                     "    </thead>\n" +
-                    "    <tbody>\n" +
+                    "    <tbody style=\"font-size: 13px\">\n" +
                     "    <tr>\n" +
-                    "        <td>8:30-9:25</td>");
+                    "        <td style=\"background: grey; !important; color: white; !important;\">8:30-9:25</td>");
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][0]==null)){
@@ -109,7 +118,7 @@ public class ViewSche extends HttpServlet {
 
             out.print("</tr>\n" +
                     "    <tr>\n" +
-                    "        <td>9:30-10:25</td>");
+                    "        <td style=\"background: grey; !important; color: white; !important;\">9:30-10:25</td>");
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][1] == null)){
@@ -122,7 +131,7 @@ public class ViewSche extends HttpServlet {
 
             out.println("</tr>\n" +
                     "    <tr>\n" +
-                    "        <td>10:30-11:25</td>");
+                    "        <td style=\"background: grey; !important; color: white; !important;\">10:30-11:25</td>");
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][2]==null)){
@@ -134,7 +143,7 @@ public class ViewSche extends HttpServlet {
             }
             out.println("</tr>\n" +
                     "    <tr>\n" +
-                    "        <td>11:30-12:25</td>");
+                    "        <td style=\"background: grey; !important; color: white; !important;\">11:30-12:25</td>");
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][3]==null)){
@@ -147,10 +156,11 @@ public class ViewSche extends HttpServlet {
 
             out.println("</tr>\n" +
                     "    <tr>\n" +
-                    "        <td id = \"spec\" colspan=\"6\">Lunch Break</td>\n" +
+                    "       <td style=\"background: grey; !important; color: white; !important;\">12:30-13:15</td>" +
+                    "       <td id = \"spec\" colspan=\"5\">Lunch Break</td>\n" +
                     "    </tr>\n" +
                     "    <tr>\n" +
-                    "        <td>13:15-14:10</td>");
+                    "        <td style=\"background: grey; !important; color: white; !important;\">13:15-14:10</td>");
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][4]==null)){
@@ -162,7 +172,7 @@ public class ViewSche extends HttpServlet {
             }
             out.println("</tr>\n" +
                     "    <tr>\n" +
-                    "        <td>14:15-15:10</td>");
+                    "        <td style=\"background: grey; !important; color: white; !important;\">14:15-15:10</td>");
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][5]==null)){
@@ -175,7 +185,7 @@ public class ViewSche extends HttpServlet {
 
             out.println("</tr>\n" +
                     "    <tr>\n" +
-                    "        <td>15:15-16:10</td>");
+                    "        <td style=\"background: grey; !important; color: white; !important;\">15:15-16:10</td>");
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][6]==null)){
@@ -189,11 +199,18 @@ public class ViewSche extends HttpServlet {
                     "    </tbody>\n" +
                     "</table>");
 
-            out.println("<html>");
-        con.close();
-
+            out.println("<input class=\"btn btn-primary\" type=\"button\" value=\"Back\" onclick=\"history.back();\" style=\"width: 80px; margin-top: 20px;\">\n");
+            out.println("</div>");
+            out.println("</div>");
+            request.getRequestDispatcher("module/footer.jsp").include(request, response);
+            out.println("</center></body>");
+            out.println("</html>");
         }catch (Exception exe){
             System.out.println(exe);
+        }finally {
+            try{
+                con.close();
+            }catch (Exception e){}
         }
     }
 

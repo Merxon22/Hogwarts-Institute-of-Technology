@@ -2,11 +2,10 @@
 
 <header class="p-3 bg-dark text-white">
     <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center">
+        <div class="d-flex flex-wrap align-items-center justify-content-between flex-column">
             <a href="index.jsp" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                <img src="ResourceFolder/Logo.png" style="height: 100px">
+                <img src="ResourceFolder/Logo.png" style="height: 100px;">
             </a>
-
             <div class="text-end">
                 <a href=Logout><button type="button" class="btn btn-warning">Log out</button></a>
             </div>

@@ -23,7 +23,7 @@ public class ViewClass extends HttpServlet {
             ResultSet rp = stmt1.executeQuery("select * from classinfo");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>View Classes</title>");
+            out.println("<title>View Class</title>");
             out.println("<link rel=\"stylesheet\" href=\"css/mainStyle.css\">");
             out.println("<link rel=\"icon\" href=\"ResourceFolder/Icon.png\">");
             out.println("</head>");
@@ -32,7 +32,7 @@ public class ViewClass extends HttpServlet {
             out.println("<div id=\"containerBox\">");
             out.println("<div class=\"centerBox\" style=\"width: 60%; !important;\">");
             request.getRequestDispatcher("module/CheckLog.jsp").include(request, response);
-            out.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>View Teacher</b></h2>");
+            out.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>View Class</b></h2>");
             out.println("<table class=\"table table-striped\" style=\"margin-top: 20px; text-align: center; !important;\">\n" +
                     "        <thead><tr>\n" +
                     "            <th class=\"text-center\">Subject</td>\n" +
