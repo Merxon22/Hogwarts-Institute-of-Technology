@@ -24,8 +24,12 @@ public class DelTea extends HttpServlet {
                 st.executeUpdate(query);
             }
             RequestDispatcher rd =request.getRequestDispatcher("Admin.jsp");
-            rd.forward(request, response);
-            out.println("<h3>Deleted Teacher(s)!</h3>");
+            rd.include(request, response);
+            out.println("<script>\n" +
+                    "function myFunction() {\n" +
+                    "  alert(\"Teacher(s) Deleted!\");\n" +
+                    "}\n" +
+                    "</script>");
         } catch (Exception exe) {
             System.out.println("Exception caught" + exe);
         }
