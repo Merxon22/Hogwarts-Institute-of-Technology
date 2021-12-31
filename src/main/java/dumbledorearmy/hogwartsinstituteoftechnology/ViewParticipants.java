@@ -16,11 +16,11 @@ import java.util.Locale;
 public class ViewParticipants extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    try{
+        Connection con = Provider.GetConn();
+        try{
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
         out.println("<html>");
-        Connection con = Provider.GetConn();
         Statement stmt = con.createStatement();
 
         Cookie[] cookies = request.getCookies();
@@ -45,47 +45,60 @@ public class ViewParticipants extends HttpServlet {
         System.out.println(classes[0]);
 
         //这里获得了一个(些)代表课的表，然后我们把它和student用fk（id）连起来，就可以得到firstn, lastn, email了
-
+        response.setContentType("text/html");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>View Participants</title>");
+        out.println("<link rel=\"stylesheet\" href=\"css/mainStyle.css\">");
+        out.println("<link rel=\"icon\" href=\"ResourceFolder/Icon.png\">");
+        out.println("</head>");
+        out.println("<body background=\"https://res.cloudinary.com/highereducation/image/upload/c_fill,f_auto,fl_lossy,q_auto,w_1200,h_630/v1626194848/BestColleges.com/Blog/BC-Blog_Small-Large-Classrooms_7.13.21_FTR.jpg\" style=\"background-size: cover\"><center>");
+        request.getRequestDispatcher("module/headerLoggedIn.jsp").include(request, response);
+        out.println("<div id=\"containerBox\">");
+        out.println("<div class=\"centerBox\" style=\"width: 60%; !important;\">");
+        request.getRequestDispatcher("module/CheckLog.jsp").include(request, response);
+        out.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>View Participants</b></h2>");
         for (String clasx: classes){ //注意这里前段得考虑一个老师教多个课的情况，虽然我们现在不需要
             System.out.println(clasx);
             query = "select student.Firstname, student.Lastname, student.email from student " +
                     "join " + clasx + " on " + clasx + "." + "student_id = student.id";
-
-
             System.out.println(query);
             rs = stmt.executeQuery(query);
 
-
-            out.println("<table>\n" +
+            out.println("<table class=\"table table-striped\" style=\"margin-top: 20px; text-align: center; !important;\">\n" +
                     "        <thead>\n" +
-                    "            <tr><th colspan = '3'>");
+                    "            <tr class=\"table-dark\"><th colspan = '3' class=\"text-center\">");
             out.println(clasx.substring(0, 1).toUpperCase(Locale.ROOT) + clasx.substring(1, clasx.length()));
 
-            out.println("</th><tr>\n" +
-                    "        </thead>\n" +
-                    "        <tbody>");
-
-            out.println("<tr><th>First Name</th>\n" +
-                    "            <th>\n" +
+            out.println("</th></tr>");
+            out.println("<tr><th class=\"text-center\" style=\"width: 33.33%;\">First Name</th>\n" +
+                    "            <th class=\"text-center\" style=\"width: 33.33%;\">\n" +
                     "                Last Name\n" +
                     "            </th>\n" +
-                    "            <th>\n" +
+                    "            <th class=\"text-center\" style=\"width: 33.33%;\">\n" +
                     "                Email\n" +
-                    "            </th><tr>");
+                    "            </th></tr>");
+            out.println("</thead><tbody>");
             while (rs.next()){
                 out.println("<tr><td>" + rs.getString("Firstname") + "</td>");
                 out.println("<td>" + rs.getString("Lastname") + "</td>");
-                out.println("<td>" + rs.getString("Email") + "</td><tr>");
+                out.println("<td>" + rs.getString("Email") + "</td></tr>");
             }
+            out.println("</tbody></table>");
         }
-        out.println("</html>");
-        con.close();
-
-
-
+            out.println("<input class=\"btn btn-primary\" type=\"button\" value=\"Back\" onclick=\"history.back();\" style=\"width: 80px; margin-top: 20px;\">\n");
+            out.println("</div>");
+            out.println("</div>");
+            request.getRequestDispatcher("module/footer.jsp").include(request, response);
+            out.println("</center></body>");
+            out.println("</html>");
     }catch (Exception exe){
         System.out.println(exe);
-    }
+    }finally {
+            try{
+                con.close();
+            }catch (Exception e){}
+        }
 
 
 
