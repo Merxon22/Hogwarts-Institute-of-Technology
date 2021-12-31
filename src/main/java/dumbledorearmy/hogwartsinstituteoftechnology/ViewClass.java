@@ -28,9 +28,9 @@ public class ViewClass extends HttpServlet {
             out.println("<link rel=\"icon\" href=\"ResourceFolder/Icon.png\">");
             out.println("</head>");
             out.println("<body background=\"https://tjn-blog-images.s3.amazonaws.com/wp-content/uploads/2015/09/20003023/Which-Fields-Have-the-Highest-Paying-Administrative-Jobs.jpg\" style=\"background-size: cover\"><center>");
-            request.getRequestDispatcher("module/headerLoggedIn.jsp").include(request, response);
             out.println("<div id=\"containerBox\">");
             out.println("<div class=\"centerBox\" style=\"width: 60%; !important;\">");
+            request.getRequestDispatcher("module/headerLoggedIn.jsp").include(request, response);
             request.getRequestDispatcher("module/CheckLog.jsp").include(request, response);
             out.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>View Class</b></h2>");
             out.println("<table class=\"table table-striped\" style=\"margin-top: 20px; text-align: center; !important;\">\n" +

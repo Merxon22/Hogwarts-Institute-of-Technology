@@ -8,7 +8,8 @@
 <%@ page import="java.io.PrintWriter" %>
 <%
     PrintWriter write = response.getWriter();
-    Cookie cookie = null; Cookie[] cookies = request.getCookies();
+    Cookie cookie = null;
+    Cookie[] cookies = request.getCookies();
 
     if(cookies != null) cookie = cookies[0];
 
