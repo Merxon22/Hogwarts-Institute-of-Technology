@@ -28,9 +28,9 @@
                 <div class="form-floating" style="text-align: left; !important;">
                     <textarea class="form-control" id="floatingTextarea2" name="names" style="height: 200px; resize: none"></textarea>
                 </div>
-                <input class="btn btn-primary" type="button" value="Back" onclick="history.back();" style="width: 80px; margin-top: 20px;">
                 <input class="btn btn-primary" type="submit" value="Submit" style="width: 80px; margin-top: 20px;">
             </form>
+            <a href=AdmBack><button class="btn btn-primary" style="width: 100%;" type="button">Back</button></a>
         </div>
     </div>
     <%@include file="module/footer.jsp"%>
