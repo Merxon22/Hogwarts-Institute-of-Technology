@@ -23,9 +23,9 @@
             <p>To add multiple, separate by the break of line.</p>
             <form action = AddAss method = "post" style="padding: 20px 0px;">
                 <textarea class="form-control" id="floatingTextarea2" name = "ass" style="height: 200px; resize: none"></textarea>
-                <input class="btn btn-primary" type="button" value="Back" onclick="history.back();" style="width: 80px; margin-top: 20px;">
                 <input type="submit" class="btn btn-primary" value="Submit" style="width: 80px; margin-top: 20px;">
             </form>
+            <a href=TeaBack><button class="btn btn-primary" style="width: 100%;" type="button">Back</button></a>
         </div>
     </div>
     <%@include file="module/footer.jsp"%>
