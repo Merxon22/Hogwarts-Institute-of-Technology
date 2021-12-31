@@ -49,6 +49,9 @@
             int teaid = 0;
             while (rs.next()) {
                 classes = rs.getString("Class").split(",");
+
+                //System.out.println(classes);
+
                 teaid = rs.getInt("id");
                 System.out.println("teacherid" + teaid);
             }
@@ -83,16 +86,23 @@
                 ArrayList<String> times = new ArrayList<>();
 
                 for (String clasx : classes) {
-                    query = "select classinfo.time from classinfo where subject='" + clasx + "'";
+//                    System.out.println(clasx);
+//                    System.out.println(clasx.length());
+
+                    query = "select time from classinfo where subject=\"" + clasx + "\"";
                     //如果对上weekday是今天的，那么把这节课加到subjects，time里
 
                     rs = stmt.executeQuery(query);
                     while (rs.next()) {
+                        System.out.println("enter!!");
                         String[] timx = rs.getString("time").split("<br>");
+                        for (String i: timx) System.out.println(i);
                         for (String t : timx) {
                             String[] whole = t.split(" ");
                             String weekdayx = whole[0];
                             String classtime = whole[1];
+                            System.out.println(weekdayx);
+                            //System.out.println(classtime);
 
                             if (weekdayx.equals(week)) {
                                 subjects.add(clasx);
