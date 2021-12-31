@@ -28,7 +28,7 @@
                 <div class="form-floating" style="text-align: left; !important;">
                     <textarea class="form-control" id="floatingTextarea2" name="names" style="height: 200px; resize: none"></textarea>
                 </div>
-                <input class="btn btn-primary" type="button" value="Back" onclick="history.back();" style="width: 80px; margin-top: 20px;">
+                <button class="btn btn-primary" style="width: 80px; margin-top: 20px;" type="button" onclick="history.back()">Back</button>
                 <input class="btn btn-primary" type="submit" value="Submit" style="width: 80px; margin-top: 20px;">
             </form>
         </div>
