@@ -95,16 +95,57 @@ try {
 
             rs = stmt.executeQuery(query);
             while (rs.next()) {
-                String[] timx = rs.getString("time").split("<br>");
-                for (String t : timx) {
-                    String[] whole = t.split(" ");
-                    String weekdayx = whole[0];
-                    String classtime = whole[1];
 
-                    if (weekdayx.equals(week)) {
-                        subjects.add(clasx);
-                        times.add(classtime);
-                        totalClass++;
+                String dd = rs.getString("date");
+                System.out.println(dd);
+                System.out.println(date);
+
+                int teId = rs.getInt("teacher_id");
+
+                System.out.println(teId);
+                System.out.println(teaid);
+                if (dd.equals(date) && teId == teaid) {
+                    RequestDispatcher rd = request.getRequestDispatcher("Teacher.jsp");
+                    System.out.println("Print something!!");
+                    flag = false;
+                    rd.include(request, response);
+                    writer.println("<script>\n" +
+                            "alert(\"You have already checked attendance today!\")" +
+                            "</script>");
+                }
+            }
+            if (flag){
+                writer.println("<h3>Today is " + date + ", " + week + "</h3>");
+                System.out.println(classes[0]);
+
+                ArrayList<String> subjects = new ArrayList<>();
+                ArrayList<String> times = new ArrayList<>();
+
+                for (String clasx : classes) {
+                    System.out.println(clasx);
+                    System.out.println(clasx.length());
+
+                    query = "select time from classinfo where subject=\"" + clasx + "\"";
+                    //如果对上weekday是今天的，那么把这节课加到subjects，time里
+
+                    rs = stmt.executeQuery(query);
+                    while (rs.next()) {
+                        System.out.println("enter!!");
+                        String[] timx = rs.getString("time").split("<br>");
+                        for (String i: timx) System.out.println(i);
+                        for (String t : timx) {
+                            String[] whole = t.split(" ");
+                            String weekdayx = whole[0];
+                            String classtime = whole[1];
+                            System.out.println(weekdayx);
+                            //System.out.println(classtime);
+
+                            if (weekdayx.equals(week)) {
+                                subjects.add(clasx);
+                                times.add(classtime);
+                                totalClass++;
+                            }
+                        }
                     }
                 }
             }
