@@ -125,7 +125,7 @@
                 writer.println("</tbody></table>");
             }
         }
-        writer.println("<button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\" onclick=\"history.back()\">Back</button>\n");
+        writer.println("<a href=\"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>\n");
         writer.println("<input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\" style=\"width: 80px; margin-top: 20px;\">\n");
         writer.println("</form>");
         writer.println("</div>");
