@@ -41,7 +41,6 @@ try {
     query = "select id, Class from teacher where email='" + em + "'";
 
     ResultSet rs = stmt.executeQuery(query);
-
     int teaid = 0;
     while (rs.next()) {
         classes = rs.getString("Class").split(",");
@@ -93,6 +92,7 @@ try {
             if (clasx.length() >= 2) {
                 query = "select classinfo.time from classinfo where subject='" + clasx + "'";
                 //如果对上weekday是今天的，那么把这节课加到subjects，time里
+
 
                 rs = stmt.executeQuery(query);
                 while (rs.next()) {

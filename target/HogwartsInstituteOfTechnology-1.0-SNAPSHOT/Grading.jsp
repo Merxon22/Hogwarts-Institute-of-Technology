@@ -56,11 +56,7 @@
         writer.println("<div class=\"centerBox\" style=\"width: 80%; !important;\">");
         writer.println("<form action=Grading method=\"post\">");
 
-        System.out.println(classes.length);
-        for (String clasx: classes){
-            System.out.println(clasx);
-            System.out.println(clasx.length());
-        }
+        //System.out.println(classes.length);
 
         for (String clasx: classes) {
             if (clasx.length() >= 2) {
@@ -98,7 +94,7 @@
                     rs1 = stmt3.executeQuery(query2);
 
                     while (rs1.next()) {
-                        System.out.println("Checkpoint1");
+                        //System.out.println("Checkpoint1");
                         String fn = rs1.getString("Firstname");
                         String ln = rs1.getString("Lastname");
 
@@ -114,11 +110,11 @@
                     for (int s = 0; s < stuids.size(); s++) {
                         query3 = "select " + assignments.get(as) + " from " + clasx + " where student_id=" + stuids.get(s);
                         ResultSet rs3 = stmt3.executeQuery(query3);
-                        System.out.println("Checkpoint2");
+                        //System.out.println("Checkpoint2");
                         String Grade = "";
                         while (rs3.next()) {
                             Grade = rs3.getString(assignments.get(as));
-                            System.out.println(Grade);
+                            //System.out.println(Grade);
                         }
                         writer.println("<td><input type=\"text\" name=\"" +
                                 clasx + assignments.get(as) + stuids.get(s) + "\"" +
