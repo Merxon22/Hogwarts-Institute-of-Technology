@@ -108,8 +108,7 @@
                 for (int as = 0; as < assignments.size(); as++) {
                     writer.println("<tr><th>" + assignments.get(as) + "</th>");
                     for (int s = 0; s < stuids.size(); s++) {
-                        query3 = "select " + assignments.get(as) + " from " + clasx + " where student_id=" + stuids.get(s);
-                        ResultSet rs3 = stmt3.executeQuery(query3);
+                        query3 = "select `" + assignments.get(as) + "` from " + clasx + " where student_id=" + stuids.get(s);                        ResultSet rs3 = stmt3.executeQuery(query3);
                         //System.out.println("Checkpoint2");
                         String Grade = "";
                         while (rs3.next()) {
@@ -125,7 +124,7 @@
                 writer.println("</tbody></table>");
             }
         }
-        writer.println("<button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\" onclick=\"history.back()\">Back</button>\n");
+        writer.println("<a href=\"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>\n");
         writer.println("<input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\" style=\"width: 80px; margin-top: 20px;\">\n");
         writer.println("</form>");
         writer.println("</div>");
