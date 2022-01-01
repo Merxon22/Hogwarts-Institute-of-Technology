@@ -26,8 +26,6 @@ public class AddAss extends HttpServlet {
                 String assName = sep[1];
                 System.out.println(assName);
 
-
-
                 que = "ALTER TABLE " + className + "\n" +
                         "ADD COLUMN `" + assName + "` varchar(64) DEFAULT 'N/A';";
                 stmt.executeUpdate(que);
