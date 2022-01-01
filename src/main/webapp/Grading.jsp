@@ -108,7 +108,7 @@
                 for (int as = 0; as < assignments.size(); as++) {
                     writer.println("<tr><th>" + assignments.get(as) + "</th>");
                     for (int s = 0; s < stuids.size(); s++) {
-                        query3 = "select " + assignments.get(as) + " from " + clasx + " where student_id=" + stuids.get(s);
+                        query3 = "select `" + assignments.get(as) + "` from " + clasx + " where student_id=" + stuids.get(s);
                         ResultSet rs3 = stmt3.executeQuery(query3);
                         //System.out.println("Checkpoint2");
                         String Grade = "";
