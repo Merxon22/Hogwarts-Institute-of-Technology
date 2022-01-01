@@ -56,70 +56,74 @@
         writer.println("<div class=\"centerBox\" style=\"width: 80%; !important;\">");
         writer.println("<form action=Grading method=\"post\">");
 
-        for (String clasx: classes){
-            writer.println("<table class=\"table table-striped\" style=\"margin-top: 20px; text-align: center; !important;\">");
-            ArrayList<String> assignments = new ArrayList<>();
-            ArrayList<Integer> stuids = new ArrayList<>();
-            writer.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>Assign grade for " + clasx + "</b></h2>");
-            //选中这个课所有的quiz
+        //System.out.println(classes.length);
 
-            //Retrieving the data
-            rs = stmt.executeQuery("select * from " + clasx);
-            ResultSetMetaData rsMetaData = rs.getMetaData();
-            int count = rsMetaData.getColumnCount();
-            for(int i = 1; i<=count; i++) {
-                if (!(rsMetaData.getColumnName(i).equals("student_id") ||
-                        rsMetaData.getColumnName(i).equals("attendance"))){
-                    assignments.add(rsMetaData.getColumnName(i));
-                }
-                 //有了assignment
-            }
+        for (String clasx: classes) {
+            if (clasx.length() >= 2) {
+                writer.println("<table class=\"table table-striped\" style=\"margin-top: 20px; text-align: center; !important;\">");
+                ArrayList<String> assignments = new ArrayList<>();
+                ArrayList<Integer> stuids = new ArrayList<>();
+                writer.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>Assign grade for " + clasx + "</b></h2>");
+                //选中这个课所有的quiz
 
-            //获取当前成绩打出来
-
-
-            writer.println("<thead><tr class=\"table-dark\"><th>Assignments/Student names</th>");
-
-            rs = stmt2.executeQuery("select * from " + clasx);
-            ResultSet rs1;
-            while(rs.next()){ //打出标题所有学生的名字
-                int tmpid = rs.getInt("student_id");
-                stuids.add(tmpid);
-
-                String query2 = "select Firstname, Lastname from student where id=" + tmpid;
-
-                rs1 = stmt3.executeQuery(query2);
-
-                while (rs1.next()){
-                    System.out.println("Checkpoint1");
-                    String fn = rs1.getString("Firstname");
-                    String ln = rs1.getString("Lastname");
-
-                    String full = fn + " " + ln;
-                    writer.println("<th>" + full + "</th>");
-                }
-            }
-            writer.println("</tr></thead>");
-            String query3;
-            writer.println("<tbody>");
-            for (int as = 0; as < assignments.size(); as++){
-                writer.println("<tr><th>" + assignments.get(as) + "</th>");
-                for (int s = 0; s < stuids.size(); s++){
-                    query3 = "select " + assignments.get(as) + " from " + clasx + " where student_id=" + stuids.get(s);
-                    ResultSet rs3 = stmt3.executeQuery(query3);
-                    System.out.println("Checkpoint2");
-                    String Grade = "";
-                    while (rs3.next()){
-                        Grade = rs3.getString(assignments.get(as));
-                        System.out.println(Grade);
+                //Retrieving the data
+                rs = stmt.executeQuery("select * from " + clasx);
+                ResultSetMetaData rsMetaData = rs.getMetaData();
+                int count = rsMetaData.getColumnCount();
+                for (int i = 1; i <= count; i++) {
+                    if (!(rsMetaData.getColumnName(i).equals("student_id") ||
+                            rsMetaData.getColumnName(i).equals("attendance"))) {
+                        assignments.add(rsMetaData.getColumnName(i));
                     }
-                    writer.println("<td><input type=\"text\" name=\"" +
-                            clasx + assignments.get(as) + stuids.get(s) + "\"" +
-                            "value=\""+Grade+"\"></td>");
+                    //有了assignment
                 }
-                writer.println("</tr>");
+
+                //获取当前成绩打出来
+
+
+                writer.println("<thead><tr class=\"table-dark\"><th>Assignments/Student names</th>");
+
+                rs = stmt2.executeQuery("select * from " + clasx);
+                ResultSet rs1;
+                while (rs.next()) { //打出标题所有学生的名字
+                    int tmpid = rs.getInt("student_id");
+                    stuids.add(tmpid);
+
+                    String query2 = "select Firstname, Lastname from student where id=" + tmpid;
+
+                    rs1 = stmt3.executeQuery(query2);
+
+                    while (rs1.next()) {
+                        //System.out.println("Checkpoint1");
+                        String fn = rs1.getString("Firstname");
+                        String ln = rs1.getString("Lastname");
+
+                        String full = fn + " " + ln;
+                        writer.println("<th>" + full + "</th>");
+                    }
+                }
+                writer.println("</tr></thead>");
+                String query3;
+                writer.println("<tbody>");
+                for (int as = 0; as < assignments.size(); as++) {
+                    writer.println("<tr><th>" + assignments.get(as) + "</th>");
+                    for (int s = 0; s < stuids.size(); s++) {
+                        query3 = "select " + assignments.get(as) + " from " + clasx + " where student_id=" + stuids.get(s);
+                        ResultSet rs3 = stmt3.executeQuery(query3);
+                        //System.out.println("Checkpoint2");
+                        String Grade = "";
+                        while (rs3.next()) {
+                            Grade = rs3.getString(assignments.get(as));
+                            //System.out.println(Grade);
+                        }
+                        writer.println("<td><input type=\"text\" name=\"" +
+                                clasx + assignments.get(as) + stuids.get(s) + "\"" +
+                                "value=\"" + Grade + "\"></td>");
+                    }
+                    writer.println("</tr>");
+                }
+                writer.println("</tbody></table>");
             }
-            writer.println("</tbody></table>");
         }
         writer.println("<button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\" onclick=\"history.back()\">Back</button>\n");
         writer.println("<input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\" style=\"width: 80px; margin-top: 20px;\">\n");

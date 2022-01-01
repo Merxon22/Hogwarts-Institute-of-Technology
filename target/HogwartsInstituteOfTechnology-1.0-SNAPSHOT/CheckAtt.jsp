@@ -71,7 +71,7 @@ try {
                     "</script>");
         }
     }
-    if (flag){
+    if (flag) {
         writer.println("<html><head>\n" +
                 "    <title>Check Attendance</title>\n" +
                 "\n" +
@@ -90,63 +90,65 @@ try {
         ArrayList<String> times = new ArrayList<>();
 
         for (String clasx : classes) {
-            query = "select classinfo.time from classinfo where subject='" + clasx + "'";
-            //如果对上weekday是今天的，那么把这节课加到subjects，time里
+            if (clasx.length() >= 2) {
+                query = "select classinfo.time from classinfo where subject='" + clasx + "'";
+                //如果对上weekday是今天的，那么把这节课加到subjects，time里
 
-            rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                String[] timx = rs.getString("time").split("<br>");
-                for (String t : timx) {
-                    String[] whole = t.split(" ");
-                    String weekdayx = whole[0];
-                    String classtime = whole[1];
+                rs = stmt.executeQuery(query);
+                while (rs.next()) {
+                    String[] timx = rs.getString("time").split("<br>");
+                    for (String t : timx) {
+                        String[] whole = t.split(" ");
+                        String weekdayx = whole[0];
+                        String classtime = whole[1];
 
-                    if (weekdayx.equals(week)) {
-                        subjects.add(clasx);
-                        times.add(classtime);
-                        totalClass++;
+                        if (weekdayx.equals(week)) {
+                            subjects.add(clasx);
+                            times.add(classtime);
+                            totalClass++;
+                        }
                     }
                 }
             }
-        }
-        if (totalClass == 0) {
-            writer.println("<p>You have 0 classes today. Come back tomorrow.</p>");
-        } else {
-            writer.println("<p>You have " + totalClass + " classes today. Please Check in.</p>");
+            if (totalClass == 0) {
+                writer.println("<p>You have 0 classes today. Come back tomorrow.</p>");
+            } else {
+                writer.println("<p>You have " + totalClass + " classes today. Please Check in.</p>");
 
-            writer.println("<form method=\"post\" action=CheckAtt>");
-            for (int time = 0; time < totalClass; time++) { //对这个老师今天的每节课都搞过一次了，每个课就是一个table
-                String subj = subjects.get(time);
-                String classt = times.get(time);
+                writer.println("<form method=\"post\" action=CheckAtt>");
+                for (int time = 0; time < totalClass; time++) { //对这个老师今天的每节课都搞过一次了，每个课就是一个table
+                    String subj = subjects.get(time);
+                    String classt = times.get(time);
 
-                //做成list还是table好呢？
+                    //做成list还是table好呢？
 
-                writer.println("<table><tr><th colspan=\"3\">Check in for " + subj + " at " + classt + "</th></tr>");
-                writer.println("<tr><th>Name</th><th>Tick if he attended</th></tr>");
+                    writer.println("<table><tr><th colspan=\"3\">Check in for " + subj + " at " + classt + "</th></tr>");
+                    writer.println("<tr><th>Name</th><th>Tick if he attended</th></tr>");
 
-                query = "select student.Firstname, student.Lastname, student.id from student " +
-                        "join " + subj + " on " + subj + "." + "student_id = student.id";
+                    query = "select student.Firstname, student.Lastname, student.id from student " +
+                            "join " + subj + " on " + subj + "." + "student_id = student.id";
 
-                rs = stmt.executeQuery(query);
+                    rs = stmt.executeQuery(query);
 
-                while (rs.next()) {
-                    String fn = rs.getString("Firstname");
-                    String ln = rs.getString("Lastname");
-                    int stuid = rs.getInt("id");
-                    String full = fn + " " + ln;
-                    writer.println("<tr><td>" + full + "</td>");
-                    writer.println("<td><input type=\"checkbox\" name=" + classt + "_" + subj + "_" +
-                            stuid + " value=\"1\"></td></tr>");
+                    while (rs.next()) {
+                        String fn = rs.getString("Firstname");
+                        String ln = rs.getString("Lastname");
+                        int stuid = rs.getInt("id");
+                        String full = fn + " " + ln;
+                        writer.println("<tr><td>" + full + "</td>");
+                        writer.println("<td><input type=\"checkbox\" name=" + classt + "_" + subj + "_" +
+                                stuid + " value=\"1\"></td></tr>");
+                    }
+                    writer.println("</table>");
                 }
-                writer.println("</table>");
+                writer.println("<input type=\"submit\">");
             }
-            writer.println("<input type=\"submit\">");
+            writer.println("<a href=\"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px;\" type=\"button\">Back</button></a>\n");
+            writer.println("</div>");
+            writer.println("</div>");
+            request.getRequestDispatcher("module/footer.jsp").include(request, response);
+            writer.println("</center></body></html>");
         }
-        writer.println("<a href=\"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px;\" type=\"button\">Back</button></a>\n");
-        writer.println("</div>");
-        writer.println("</div>");
-        request.getRequestDispatcher("module/footer.jsp").include(request, response);
-        writer.println("</center></body></html>");
     }
 }catch (Exception exe){
     System.out.println(exe);
