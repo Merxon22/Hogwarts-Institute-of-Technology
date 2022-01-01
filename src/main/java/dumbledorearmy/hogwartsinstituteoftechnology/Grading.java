@@ -82,13 +82,13 @@ public class Grading extends HttpServlet {
 
                         for (int s = 0; s < stuids.size(); s++) {
 
-                            //System.out.println("Checkpoint2");
-                            String Grade = "";
-                            Grade = request.getParameter(clasx + assignments.get(as) + stuids.get(s));
+                        //System.out.println("Checkpoint2");
+                        String Grade = "";
+                        Grade = request.getParameter(clasx + assignments.get(as) + stuids.get(s));
 
-                            query3 = "update " + clasx +
-                                    " set `" + assignments.get(as) + "`='" + Grade
-                                    + "' where student_id=" + stuids.get(s);
+                        query3 = "update " + clasx +
+                                " set `" + assignments.get(as) + "`='" + Grade
+                        + "' where student_id=" + stuids.get(s);
 
 
                             System.out.println(query3);
