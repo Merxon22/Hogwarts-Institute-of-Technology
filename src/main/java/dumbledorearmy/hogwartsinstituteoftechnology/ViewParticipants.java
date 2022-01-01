@@ -86,7 +86,7 @@ public class ViewParticipants extends HttpServlet {
             }
             out.println("</tbody></table>");
         }
-            out.println("<input class=\"btn btn-primary\" type=\"button\" value=\"Back\" onclick=\"history.back();\" style=\"width: 80px; margin-top: 20px;\">\n");
+            out.println("<a href=\"TeaBack\"><input class=\"btn btn-primary\" type=\"button\" value=\"Back\"\" style=\"width: 80px; margin-top: 20px;\"></a>");
             out.println("</div>");
             out.println("</div>");
             request.getRequestDispatcher("module/footer.jsp").include(request, response);
@@ -99,10 +99,6 @@ public class ViewParticipants extends HttpServlet {
                 con.close();
             }catch (Exception e){}
         }
-
-
-
-
     }
 
 }
