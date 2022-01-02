@@ -29,7 +29,7 @@ public class StudentGradeView extends HttpServlet {
         ArrayList<String> sub = new ArrayList<String>();
         sub.add("Chinese");
         sub.add("Math");
-        sub.add("Computer");
+        sub.add("CS");
         try {
 
             Statement stmt1 = con.createStatement();
@@ -54,25 +54,28 @@ public class StudentGradeView extends HttpServlet {
             ArrayList<String> N=sub;
             Statement stmt = con.createStatement();
             for (int i = 0; i < sub.size(); i++) {
-                ResultSet rs = stmt.executeQuery("select * from "+N.get(i)+" where id="+id);
+                ResultSet rs = stmt.executeQuery("select * from "+N.get(i)+" where student_id="+id);
                 if(!rs.next()){
                     N.remove(N.get(i));
                 }
             }
             for (int i = 0; i < N.size(); i++) {
                 ArrayList<String[]> n= new ArrayList<String[]>();
-                ResultSet rp = stmt1.executeQuery("select * from " + N.get(i) + " where id=" + id);
-                ResultSet rp2 = stmt2.executeQuery("select COLUMN_NAME from information_schema.columns where table_name='" + sub.get(i) + "'");
-                while (rp2.next()) {
+                ResultSet rp = stmt1.executeQuery("select * from " + N.get(i) + " where student_id=" + id);
+                while(rp.next()){
+                    ResultSet rp2 = stmt2.executeQuery("select COLUMN_NAME from information_schema.columns where table_name='" + sub.get(i) + "'");
+                    while (rp2.next()) {
                     String name = rp2.getString("COLUMN_NAME");
                     String name2 = rp.getString(name);
                     n.add(new String[]{name, name2});
-                }
+                }}
                 StringBuilder query= new StringBuilder();
                 for (int x = 0; x < n.size()-2; x++) {
                     query.append("<th class=\"text-center\">").append(n.get(2 + x)[0]).append("</td>\n");
                 }
-                StringBuilder score= new StringBuilder("<tr>");
+                StringBuilder score= new StringBuilder("<tr><td>");
+                score.append(N.get(i));
+                score.append("</td>");
                 for (int z = 0; z < n.size()-2; z++) {
                     score.append("<td>").append(n.get(2 + z)[1]).append("</td>");
                 }
@@ -89,11 +92,11 @@ public class StudentGradeView extends HttpServlet {
 
             //out.println("<tr><td>Subject1</td><td>80</td><td>90</td><td>50/60</td></tr>");
             //out.println("<tr><td>Subject2</td><td>70</td><td>95</td><td>23/30</td></tr>");
-            con.commit();
+            //con.commit();
             con.close();
             out.println("</tbody>");
             out.println("</table>");
-            out.println("<a href=\"StuBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>\n<input class=\"btn btn-primary\" type=\"button\" value=\"Back\" style=\"width: 80px; margin-top: 20px;\"></a>");
+            out.println("<a href=\"StuBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>");
             out.println("</div>");
             out.println("</div>");
             request.getRequestDispatcher("module/footer.jsp").include(request, response);
