@@ -108,12 +108,8 @@
                 for (int as = 0; as < assignments.size(); as++) {
                     writer.println("<tr><th>" + assignments.get(as) + "</th>");
                     for (int s = 0; s < stuids.size(); s++) {
-<<<<<<< HEAD
-                        query3 = "select `" + assignments.get(as) + "` from " + clasx + " where student_id=" + stuids.get(s);                        ResultSet rs3 = stmt3.executeQuery(query3);
-=======
                         query3 = "select `" + assignments.get(as) + "` from " + clasx + " where student_id=" + stuids.get(s);
                         ResultSet rs3 = stmt3.executeQuery(query3);
->>>>>>> 2d2e1259ef03c585491039e249eb0d5cb3e17993
                         //System.out.println("Checkpoint2");
                         String Grade = "";
                         while (rs3.next()) {

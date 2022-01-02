@@ -20,7 +20,7 @@ public class DelStu extends HttpServlet {
             String req = request.getParameter("names");
             String allname[] = req.split("\n");
             for (int i = 0; i < allname.length; i++){
-                String query = "delete from Student where email='"+allname[i] + "'";
+                String query = "delete from student where email='"+allname[i] + "'";
                 System.out.println(query);
                 st.executeUpdate(query);
             }
