@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/mainStyle.css">
     <link rel="icon" href="ResourceFolder/Icon.png">
 </head>
-<body background="https://cdn.cdnparenting.com/articles/2018/06/471582446_H.webp" style="background-size: cover"><center>
+<body style="background-image: url('https://cdn.cdnparenting.com/articles/2018/06/471582446_H.webp'); background-size: cover; background-attachment: fixed;"><center>
     <%@include file="module/headerLoggedIn.jsp"%>
     <div id="containerBox">
         <div class="centerBox">

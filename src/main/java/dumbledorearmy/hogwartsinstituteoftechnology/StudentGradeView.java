@@ -50,7 +50,7 @@ public class StudentGradeView extends HttpServlet {
             out.println("<div id=\"containerBox\">");
             out.println("<div class=\"centerBox\" style=\"width: 60%; !important;\">");
             request.getRequestDispatcher("module/CheckLog.jsp").include(request, response);
-            out.println("<h2><b>View Grade</b></h2>");
+            out.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>View Grade</b></h2>");
             ArrayList<String> N=sub;
             Statement stmt = con.createStatement();
             for (int i = 0; i < sub.size(); i++) {
@@ -73,16 +73,16 @@ public class StudentGradeView extends HttpServlet {
                 for (int x = 0; x < n.size()-2; x++) {
                     query.append("<th class=\"text-center\">").append(n.get(2 + x)[0]).append("</td>\n");
                 }
-                StringBuilder score= new StringBuilder("<tr><td>");
+                StringBuilder score= new StringBuilder("<tr><td class=\"text-center table-dark\" style=\"width: 120px;\">");
                 score.append(N.get(i));
                 score.append("</td>");
                 for (int z = 0; z < n.size()-2; z++) {
                     score.append("<td>").append(n.get(2 + z)[1]).append("</td>");
                 }
-                score.append("</tr>");
-                out.println("<table class=\"table table-striped\" style=\"margin-top: 20px; text-align: center; !important;\">\n" +
+                score.append("</tr></tbody></table>");
+                out.println("<table class=\"table table-striped\" style=\"margin: 20px 0px; text-align: center; !important;\">\n" +
                         "        <thead><tr>\n" +
-                        "            <th class=\"text-center\">Subject</td>\n" + query+
+                        "            <th class=\"text-center table-dark\" style=\"width: 120px\">Subject</td>\n" + query+
                         "        </tr></thead>");
                 out.println("<tbody>");
                 out.println(score);
