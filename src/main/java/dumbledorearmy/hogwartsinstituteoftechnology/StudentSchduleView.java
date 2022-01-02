@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 @WebServlet(name = "StudentSchduleView", value = "/StudentSchduleView")
 public class StudentSchduleView extends HttpServlet {
@@ -63,14 +64,19 @@ public class StudentSchduleView extends HttpServlet {
             ArrayList<String> sub = new ArrayList<String>();
             sub.add("Chinese");
             sub.add("Math");
-            sub.add("Computer");
+            sub.add("CS");
 
             ArrayList<String> N=sub;
 
             int id = 0;
             Statement stmt = con.createStatement();
+            ResultSet rs3= stmt.executeQuery("select student.id from student where email='"+Email+"'");
+            while (rs3.next()){
+                id=rs3.getInt("id");
+            }
+
             for (int i = 0; i < sub.size(); i++) {
-                ResultSet rs = stmt.executeQuery("select * from "+N.get(i)+" where email='"+Email+"'");
+                ResultSet rs = stmt.executeQuery("select * from "+N.get(i)+" where student_id="+id);
                 if(!rs.next()){
                     N.remove(N.get(i));
                 }
@@ -113,11 +119,11 @@ public class StudentSchduleView extends HttpServlet {
                     "        <td style=\"background: grey; !important; color: white; !important;\">8:30-9:25</td>");
 
             for (int per = 0; per < 5; per++){
-                if (!(week[per][0]==null)){
-                    out.println("<td>" + week[0][per] + "</td>");
+                if (week[per][0]==null){
+                    out.println("<td>Free Period</td>");
                 }
                 else{
-                    out.println("<td>Free Period</td>");
+                    out.println("<td>" + week[per][0] + "</td>");
                 }
             }
 
@@ -204,7 +210,7 @@ public class StudentSchduleView extends HttpServlet {
                     "    </tbody>\n" +
                     "</table>");
 
-            out.println("<a href=\"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px;\" type=\"button\">Back</button></a>\n");
+            out.println("<a href=\"StuBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px;\" type=\"button\">Back</button></a>\n");
             out.println("</div>");
             out.println("</div>");
             request.getRequestDispatcher("module/footer.jsp").include(request, response);
