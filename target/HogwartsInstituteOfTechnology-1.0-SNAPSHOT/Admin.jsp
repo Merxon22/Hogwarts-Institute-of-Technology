@@ -19,6 +19,7 @@
 
     <div id="containerBox">
         <div class="centerBox">
+            <h2><b>Welcome, admin!</b></h2>
             <%@include file="module/CheckLog.jsp"%>
             <br>
             <div class="d-grid gap-4 mx-auto">
