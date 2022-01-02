@@ -63,7 +63,7 @@ public class StudentSchduleView extends HttpServlet {
             ArrayList<String> sub = new ArrayList<String>();
             sub.add("Chinese");
             sub.add("Math");
-            sub.add("Computer");
+            sub.add("CS");
 
             ArrayList<String> N=sub;
 
@@ -75,7 +75,7 @@ public class StudentSchduleView extends HttpServlet {
             }
 
             for (int i = 0; i < sub.size(); i++) {
-                ResultSet rs = stmt.executeQuery("select * from "+N.get(i)+" where id="+id);
+                ResultSet rs = stmt.executeQuery("select * from "+N.get(i)+" where student_id="+id);
                 if(!rs.next()){
                     N.remove(N.get(i));
                 }
@@ -209,7 +209,7 @@ public class StudentSchduleView extends HttpServlet {
                     "    </tbody>\n" +
                     "</table>");
 
-            out.println("<a href=\"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px;\" type=\"button\">Back</button></a>\n");
+            out.println("<a href=\"StuBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px;\" type=\"button\">Back</button></a>\n");
             out.println("</div>");
             out.println("</div>");
             request.getRequestDispatcher("module/footer.jsp").include(request, response);
