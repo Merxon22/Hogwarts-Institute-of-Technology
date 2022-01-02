@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:mysql://remotemysql.com:3306/cwE0Bj38Hg</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="HIT_backup" uuid="32e0e41c-7ee4-43aa-a0c0-f4088d1dc824">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://remotemysql.com:3306/cwE0Bj38Hg</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
