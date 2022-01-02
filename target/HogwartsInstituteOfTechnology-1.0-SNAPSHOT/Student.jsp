@@ -22,8 +22,8 @@
             <h2><b>Welcome, student!</b></h2>
             <br>
             <div class="d-grid gap-4 mx-auto">
-                <a href="AddTeacherAcc.jsp"><button class="btn btn-primary" style="width: 100%;" type="button">View my schedule</button></a>
-                <a href="AddStudentAcc.jsp"><button class="btn btn-primary" style="width: 100%;" type="button">View my grade</button></a>
+                <a href="StudentSchduleView"><button class="btn btn-primary" style="width: 100%;" type="button">View my schedule</button></a>
+                <a href="StudentGradeView"><button class="btn btn-primary" style="width: 100%;" type="button">View my grade</button></a>
                 <a href=Logout><button class="btn btn-primary" style="width: 100%;" type="button">Logout</button></a>
             </div>
         </div>

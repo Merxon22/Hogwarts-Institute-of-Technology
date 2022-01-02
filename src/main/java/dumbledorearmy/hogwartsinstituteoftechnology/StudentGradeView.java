@@ -8,7 +8,9 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
+import static java.lang.System.out;
 import static javax.swing.text.html.CSS.getAttribute;
 
 @WebServlet(name = "StudentGradeView", value = "/StudentGradeView")
@@ -17,17 +19,20 @@ public class StudentGradeView extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String Email = "";
-        if(session.getAttribute("email")!=null) {
+        String Email="";
+        if (session.getAttribute("email") != null) {
             Email = session.getAttribute("email").toString();
         }
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        Connection con=Provider.GetConn();
-        String[] S={"MagicChinese","MagicEconomics","MagicMathematics","MagicChemistry","MagicPhysics","MagicComputerScience"};
-
-        try{
+        Connection con = Provider.GetConn();
+        ArrayList<String> sub = new ArrayList<String>();
+        sub.add("Chinese");
+        sub.add("Math");
+        sub.add("Computer");
+        try {
             Statement stmt1 = con.createStatement();
+            Statement stmt2 = con.createStatement();
 
             out.println("<html>");
             out.println("<head>");
@@ -41,28 +46,46 @@ public class StudentGradeView extends HttpServlet {
             out.println("<div class=\"centerBox\" style=\"width: 60%; !important;\">");
             request.getRequestDispatcher("module/CheckLog.jsp").include(request, response);
             out.println("<h2><b>View Grade</b></h2>");
-            out.println("<table class=\"table table-striped\" style=\"margin-top: 20px; text-align: center; !important;\">\n" +
-                    "        <thead><tr>\n" +
-                    "            <th class=\"text-center\">Subject</td>\n" +
-                    "            <th class=\"text-center\">Mid-term</td>\n" +
-                    "            <th class=\"text-center\">Final</td>\n" +
-                    "            <th class=\"text-center\">Attendance</td>\n" +
-                    "        </tr></thead>");
-            out.println("<tbody>");
-            out.println("<tr><td>Subject1</td><td>80</td><td>90</td><td>50/60</td></tr>");
-            out.println("<tr><td>Subject2</td><td>70</td><td>95</td><td>23/30</td></tr>");
-//            for (int i = 0; i <6 ; i++) {
-//                ResultSet rp = stmt1.executeQuery("select * from student join "+S[i]+" on Student.email="+S[i]+".email where email='"+Email+"'");
-//                while (rp.next())
-//                {
-//                    String Subject=rp.getString("Subject");
-//                    String mid = rp.getString("mid-term");
-//                    String finalexam  = rp.getString("final");
-//                    String p=rp.getString("participate")+"/"+rp.getString("total");
-//
-//                    out.println("<tr><td>" + Subject + "</td><td>" + mid +"</td><td>"+finalexam+"</td><td>"+p+"</td></tr>");
-//                }
-//            }
+            ArrayList<String> N=sub;
+            Statement stmt = con.createStatement();
+            for (int i = 0; i < sub.size(); i++) {
+                ResultSet rs = stmt.executeQuery("select * from "+N.get(i)+" where email='"+Email+"'");
+                if(!rs.next()){
+                    N.remove(N.get(i));
+                }
+            }
+            for (int i = 0; i < N.size(); i++) {
+                ArrayList<String[]> n= new ArrayList<String[]>();
+                ResultSet rp = stmt1.executeQuery("select * from " + N.get(i) + " where email='" + Email + "'");
+                ResultSet rp2 = stmt2.executeQuery("select COLUMN_NAME from information_schema.columns where table_name='" + sub.get(i) + "'");
+                while (rp2.next()) {
+                    String name = rp2.getString("COLUMN_NAME");
+                    String name2 = rp.getString(name);
+                    n.add(new String[]{name, name2});
+                }
+                StringBuilder query= new StringBuilder();
+                for (int x = 0; x < n.size()-2; x++) {
+                    query.append("<th class=\"text-center\">").append(n.get(2 + x)[0]).append("</td>\n");
+                }
+                StringBuilder score= new StringBuilder("<tr>");
+                for (int z = 0; z < n.size()-2; z++) {
+                    score.append("<td>").append(n.get(2 + z)[1]).append("</td>");
+                }
+                score.append("</tr>");
+                out.println("<table class=\"table table-striped\" style=\"margin-top: 20px; text-align: center; !important;\">\n" +
+                        "        <thead><tr>\n" +
+                        "            <th class=\"text-center\">Subject</td>\n" + query+
+                        "        </tr></thead>");
+                out.println("<tbody>");
+                out.println(score);
+            }
+
+
+
+            //out.println("<tr><td>Subject1</td><td>80</td><td>90</td><td>50/60</td></tr>");
+            //out.println("<tr><td>Subject2</td><td>70</td><td>95</td><td>23/30</td></tr>");
+            con.commit();
+            con.close();
             out.println("</tbody>");
             out.println("</table>");
             out.println("<input class=\"btn btn-primary\" type=\"button\" value=\"Back\" onclick=\"history.back();\" style=\"width: 80px; margin-top: 20px;\">\n");
@@ -71,17 +94,10 @@ public class StudentGradeView extends HttpServlet {
             request.getRequestDispatcher("module/footer.jsp").include(request, response);
             out.println("</center></body>");
             out.println("</html>");
-//            con.commit();
-        } catch(Exception exe){
-            System.out.println("Exception caught"+exe);
-        }finally {
-            try{
-                con.close();
-            }catch (Exception e){}
+        } catch (Exception exe) {
+            System.out.println("Exception caught" + exe);
         }
     }
+    }
 
-
-
-}
 

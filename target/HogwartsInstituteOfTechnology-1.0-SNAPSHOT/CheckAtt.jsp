@@ -41,7 +41,6 @@ try {
     query = "select id, Class from teacher where email='" + em + "'";
 
     ResultSet rs = stmt.executeQuery(query);
-
     int teaid = 0;
     while (rs.next()) {
         classes = rs.getString("Class").split(",");
@@ -95,7 +94,6 @@ try {
 
             rs = stmt.executeQuery(query);
             while (rs.next()) {
-
                 String dd = rs.getString("date");
                 System.out.println(dd);
                 System.out.println(date);
@@ -122,8 +120,8 @@ try {
                 ArrayList<String> times = new ArrayList<>();
 
                 for (String clasx : classes) {
-                    System.out.println(clasx);
-                    System.out.println(clasx.length());
+//                    System.out.println(clasx);
+//                    System.out.println(clasx.length());
 
                     query = "select time from classinfo where subject=\"" + clasx + "\"";
                     //如果对上weekday是今天的，那么把这节课加到subjects，time里
