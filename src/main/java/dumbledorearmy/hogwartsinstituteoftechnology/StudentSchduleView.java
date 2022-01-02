@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 @WebServlet(name = "StudentSchduleView", value = "/StudentSchduleView")
 public class StudentSchduleView extends HttpServlet {
@@ -118,11 +119,11 @@ public class StudentSchduleView extends HttpServlet {
                     "        <td style=\"background: grey; !important; color: white; !important;\">8:30-9:25</td>");
 
             for (int per = 0; per < 5; per++){
-                if (!(week[per][0]==null)){
-                    out.println("<td>" + week[0][per] + "</td>");
+                if (week[per][0]==null){
+                    out.println("<td>Free Period</td>");
                 }
                 else{
-                    out.println("<td>Free Period</td>");
+                    out.println("<td>" + week[per][0] + "</td>");
                 }
             }
 
