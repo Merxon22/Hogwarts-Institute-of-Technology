@@ -69,8 +69,13 @@ public class StudentSchduleView extends HttpServlet {
 
             int id = 0;
             Statement stmt = con.createStatement();
+            ResultSet rs3= stmt.executeQuery("select student.id from student where email='"+Email+"'");
+            while (rs3.next()){
+                id=rs3.getInt("id");
+            }
+
             for (int i = 0; i < sub.size(); i++) {
-                ResultSet rs = stmt.executeQuery("select * from "+N.get(i)+" where email='"+Email+"'");
+                ResultSet rs = stmt.executeQuery("select * from "+N.get(i)+" where id="+id);
                 if(!rs.next()){
                     N.remove(N.get(i));
                 }

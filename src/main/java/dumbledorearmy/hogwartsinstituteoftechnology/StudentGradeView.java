@@ -31,9 +31,14 @@ public class StudentGradeView extends HttpServlet {
         sub.add("Math");
         sub.add("Computer");
         try {
+
             Statement stmt1 = con.createStatement();
             Statement stmt2 = con.createStatement();
-
+            int id = 0;
+            ResultSet rs3= stmt2.executeQuery("select student.id from student where email='"+Email+"'");
+            while (rs3.next()){
+                id=rs3.getInt("id");
+            }
             out.println("<html>");
             out.println("<head>");
             out.println("<title>View Grade</title>");
@@ -49,14 +54,14 @@ public class StudentGradeView extends HttpServlet {
             ArrayList<String> N=sub;
             Statement stmt = con.createStatement();
             for (int i = 0; i < sub.size(); i++) {
-                ResultSet rs = stmt.executeQuery("select * from "+N.get(i)+" where email='"+Email+"'");
+                ResultSet rs = stmt.executeQuery("select * from "+N.get(i)+" where id="+id);
                 if(!rs.next()){
                     N.remove(N.get(i));
                 }
             }
             for (int i = 0; i < N.size(); i++) {
                 ArrayList<String[]> n= new ArrayList<String[]>();
-                ResultSet rp = stmt1.executeQuery("select * from " + N.get(i) + " where email='" + Email + "'");
+                ResultSet rp = stmt1.executeQuery("select * from " + N.get(i) + " where id=" + id);
                 ResultSet rp2 = stmt2.executeQuery("select COLUMN_NAME from information_schema.columns where table_name='" + sub.get(i) + "'");
                 while (rp2.next()) {
                     String name = rp2.getString("COLUMN_NAME");
