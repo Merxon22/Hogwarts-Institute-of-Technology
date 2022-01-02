@@ -41,13 +41,19 @@ public class TeaLog extends HttpServlet {
                 }
             }
             if (flag){
-                RequestDispatcher rd = request.getRequestDispatcher("Teacher.jsp");
                 Cookie email = new Cookie("email", acc);
                 email.setMaxAge(60 * 60 * 24);
 
                 // Add both the cookies in the response header.
                 response.addCookie(email);
-                rd.include(request, response);
+
+                Cookie loginState = new Cookie("loginState", "teacher");
+                loginState.setMaxAge(60 * 60 * 24);
+                response.addCookie(loginState);
+
+                RequestDispatcher rd = request.getRequestDispatcher("Teacher.jsp");
+                response.sendRedirect("Teacher.jsp");
+//                rd.include(request, response);
                 out.println("<script>\n" +
                         "alert(\"Welcome, " + em +
                         "\");" +

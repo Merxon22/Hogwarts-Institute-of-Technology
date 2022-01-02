@@ -34,7 +34,7 @@ public class ViewStu extends HttpServlet {
             out.println("<div id=\"containerBox\">");
             out.println("<div class=\"centerBox\" style=\"width: 60%; !important;\">");
             request.getRequestDispatcher("module/CheckLog.jsp").include(request, response);
-            out.println("<h2><b>View Student</b></h2>");
+            out.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>View Student</b></h2>");
             out.println("<table class=\"table table-striped\" style=\"margin-top: 20px; text-align: center; !important;\">\n" +
                     "        <thead><tr>\n" +
                     "            <th class=\"text-center\">First Name</td>\n" +
