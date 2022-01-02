@@ -88,7 +88,7 @@ public class StudentGradeView extends HttpServlet {
             con.close();
             out.println("</tbody>");
             out.println("</table>");
-            out.println("<input class=\"btn btn-primary\" type=\"button\" value=\"Back\" onclick=\"history.back();\" style=\"width: 80px; margin-top: 20px;\">\n");
+            out.println("<a href=\"StuBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>\n<input class=\"btn btn-primary\" type=\"button\" value=\"Back\" style=\"width: 80px; margin-top: 20px;\"></a>");
             out.println("</div>");
             out.println("</div>");
             request.getRequestDispatcher("module/footer.jsp").include(request, response);

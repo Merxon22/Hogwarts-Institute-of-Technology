@@ -22,9 +22,15 @@
             <h2><b>Welcome, student!</b></h2>
             <br>
             <div class="d-grid gap-4 mx-auto">
+<<<<<<< HEAD
                 <a href="StudentSchduleView"><button class="btn btn-primary" style="width: 100%;" type="button">View my schedule</button></a>
                 <a href="StudentGradeView"><button class="btn btn-primary" style="width: 100%;" type="button">View my grade</button></a>
                 <a href=Logout><button class="btn btn-primary" style="width: 100%;" type="button">Logout</button></a>
+=======
+                <a href="AddTeacherAcc.jsp"><button class="btn btn-primary" style="width: 100%;" type="button">View my schedule</button></a>
+                <a href="AddStudentAcc.jsp"><button class="btn btn-primary" style="width: 100%;" type="button">View my grade</button></a>
+<%--                <a href=Logout><button class="btn btn-primary" style="width: 100%;" type="button">Logout</button></a>--%>
+>>>>>>> ab199d45f2e54041ceafc3850d282f55f0473bdd
             </div>
         </div>
     </div>

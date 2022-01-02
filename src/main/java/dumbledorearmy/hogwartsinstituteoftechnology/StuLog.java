@@ -39,13 +39,18 @@ public class StuLog extends HttpServlet {
             if (flag){
                 HttpSession session = request.getSession();
                 session.setAttribute("email", acc);
-                RequestDispatcher rd =request.getRequestDispatcher("Student.jsp");
                 Cookie email = new Cookie("email", acc);
 
                 email.setMaxAge(60 * 60 * 24);
                 // Add both the cookies in the response header.
+                Cookie loginState = new Cookie("loginState", "student");
+                loginState.setMaxAge(60 * 60 * 24);
+                response.addCookie(loginState);
+
                 response.addCookie(email);
-                rd.include(request, response);
+                RequestDispatcher rd =request.getRequestDispatcher("Student.jsp");
+                response.sendRedirect("Student.jsp");
+//                rd.include(request, response);
                 out.println("<script>\n" +
                         "alert(\"Welcome, " + em +
                         "\");" +

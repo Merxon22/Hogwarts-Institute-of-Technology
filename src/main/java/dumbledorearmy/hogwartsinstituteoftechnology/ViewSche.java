@@ -106,7 +106,7 @@ public class ViewSche extends HttpServlet {
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][0]==null)){
-                    out.println("<td>" + week[0][per] + "</td>");
+                    out.println("<td>" + week[per][0] + "</td>");
                 }
                 else{
                     out.println("<td>Free Period</td>");

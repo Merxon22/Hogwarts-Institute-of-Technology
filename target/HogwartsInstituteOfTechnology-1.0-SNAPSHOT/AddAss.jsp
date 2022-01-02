@@ -23,7 +23,7 @@
             <p>To add multiple, separate by the break of line.</p>
             <form action = AddAss method = "post" style="padding: 20px 0px;">
                 <textarea class="form-control" id="floatingTextarea2" name = "ass" style="height: 200px; resize: none"></textarea>
-                <button class="btn btn-primary" style="width: 80px; margin-top: 20px;" type="button" onclick="history.back()">Back</button>
+                <a href="TeaBack" style="width: 80px;"><button class="btn btn-primary" style="width: 80px; margin-top: 20px;" type="button">Back</button></a>
                 <input type="submit" class="btn btn-primary" value="Submit" style="width: 80px; margin-top: 20px;">
             </form>
         </div>
