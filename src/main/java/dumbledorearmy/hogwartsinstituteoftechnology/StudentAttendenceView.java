@@ -50,7 +50,7 @@ public class StudentAttendenceView extends HttpServlet {
             out.println("<div id=\"containerBox\">");
             out.println("<div class=\"centerBox\" style=\"width: 60%; !important;\">");
             request.getRequestDispatcher("module/CheckLog.jsp").include(request, response);
-            out.println("<h2><b>View Attendance</b></h2>");
+            out.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>View Attendance</b></h2>");
             ArrayList<String> N = new ArrayList<String>();
             N.add("Chinese");
             N.add("Math");
@@ -67,7 +67,7 @@ public class StudentAttendenceView extends HttpServlet {
                 }
             }
             out.println("<table class=\"table table-striped\" style=\"margin-top: 20px; text-align: center; !important;\">\n" +
-                    "        <thead><tr>\n" +
+                    "        <thead><tr class=\"table-dark\">\n" +
                     "            <th class=\"text-center\">Subject</td>\n" +
                     "            <th class=\"text-center\">Attendance</td>\n"+
                     "        </tr></thead>");
