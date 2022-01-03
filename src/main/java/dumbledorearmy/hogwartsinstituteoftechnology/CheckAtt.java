@@ -70,12 +70,13 @@ public class CheckAtt extends HttpServlet {
                         if (weekdayx.equals(week)) {
                             subjects.add(clasx);
                             times.add(classtime);
+                            String query3 = "update classinfo set total=" + (total+1) + " where subject='" + clasx + "'";
+                            stmt1.executeUpdate(query3);
                         }
                     }
                 }
 
-                String query3 = "update classinfo set total=" + (total+1);
-                stmt1.executeUpdate(query3);
+
             }
             //这步存了老师教的课，和课的时间
             //然后通过这个课找到学生的id
@@ -83,6 +84,7 @@ public class CheckAtt extends HttpServlet {
             for (int time = 0; time < subjects.size(); time++) { //对这个老师今天的每节课都搞过一次了，每个课就是一个table
                 String subj = subjects.get(time);
                 String classt = times.get(time);
+
 
                 //找到选这个课的学生的邮箱
 
