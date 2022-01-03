@@ -83,14 +83,23 @@ try {
         writer.println("<div class=\"centerBox\" style=\"width: 60%; !important;\">");
         writer.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>Check Attendance</b></h2>");
         writer.println("<h4>Today is " + date + ", " + week + "</h4><br>");
+        System.out.println(classes.length);
         System.out.println(classes[0]);
+
+        for (String x: classes){
+            System.out.println(x);
+        }
 
         ArrayList<String> subjects = new ArrayList<>();
         ArrayList<String> times = new ArrayList<>();
 
-        for (String clasx : classes) {
-            if (clasx.length() >= 2) {
-                query = "select classinfo.time from classinfo where subject='" + clasx + "'";
+        for (int i = 0; i < classes.length; i++) {
+            String claa = classes[i];
+
+            System.out.println(claa.length());
+            System.out.println(claa);
+            if (classes[i].length() >= 2) {
+                query = "select classinfo.time from classinfo where subject='" + claa + "'";
                 //如果对上weekday是今天的，那么把这节课加到subjects，time里
 
 
@@ -103,54 +112,61 @@ try {
                         String classtime = whole[1];
 
                         if (weekdayx.equals(week)) {
-                            subjects.add(clasx);
+                            System.out.println("equal" + claa);
+                            subjects.add(claa);
                             times.add(classtime);
                             totalClass++;
+                            System.out.println("after add" + totalClass);
                         }
                     }
                 }
             }
-            if (totalClass == 0) {
-                writer.println("<p>You have 0 classes today. Come back tomorrow.</p>");
-            } else {
-                writer.println("<p>You have " + totalClass + " class(es) today. Please Check in.</p>");
-
-                writer.println("<form method=\"post\" action=CheckAtt>");
-                for (int time = 0; time < totalClass; time++) { //对这个老师今天的每节课都搞过一次了，每个课就是一个table
-                    String subj = subjects.get(time);
-                    String classt = times.get(time);
-
-                    //做成list还是table好呢？
-
-                    writer.println("<table class=\"table table-striped\" style=\"margin-top: 20px; text-align: center; !important;\"><thead><tr class=\"table-dark\"><th colspan=\"3\" class=\"text-center\">Check in for " + subj + " at " + classt + "</th></tr>");
-                    writer.println("<tr><th class=\"text-center\" style=\"width: 50%;\">Name</th><th class=\"text-center\" style=\"width: 50px\">Tick if student is present</th></tr></thead>");
-
-                    writer.println("<tbody>");
-                    query = "select student.Firstname, student.Lastname, student.id from student " +
-                            "join " + subj + " on " + subj + "." + "student_id = student.id";
-
-                    rs = stmt.executeQuery(query);
-
-                    while (rs.next()) {
-                        String fn = rs.getString("Firstname");
-                        String ln = rs.getString("Lastname");
-                        int stuid = rs.getInt("id");
-                        String full = fn + " " + ln;
-                        writer.println("<tr><td>" + full + "</td>");
-                        writer.println("<td><input type=\"checkbox\" name=" + classt + "_" + subj + "_" +
-                                stuid + " value=\"1\"></td></tr>");
-                    }
-                    writer.println("</tbody></table>");
-                }
-                writer.println("<a href=\"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>\n");
-                writer.println("<input class=\"btn btn-primary\" type=\"submit\" value=\"Submit\" style=\"width: 80px; margin-top: 20px;\">\n");
-            }
-            writer.println("</div>");
-            writer.println("</div>");
-            request.getRequestDispatcher("module/footer.jsp").include(request, response);
-            writer.println("</center></body></html>");
         }
+
+
+        if (totalClass == 0) {
+            writer.println("<p>You have 0 classes today. Come back tomorrow.</p>");
+        } else {
+            System.out.println("should print " + subjects.size());
+
+            writer.println("<p>You have " + subjects.size() +" class(es) today. Please Check in.</p>");
+
+            writer.println("<form method=\"post\" action=CheckAtt>");
+            for (int time = 0; time < subjects.size(); time++) { //对这个老师今天的每节课都搞过一次了，每个课就是一个table
+                String subj = subjects.get(time);
+                String classt = times.get(time);
+
+                //做成list还是table好呢？
+
+                writer.println("<table class=\"table table-striped\" style=\"margin-top: 20px; text-align: center; !important;\"><thead><tr class=\"table-dark\"><th colspan=\"3\" class=\"text-center\">Check in for " + subj + " at " + classt + "</th></tr>");
+                writer.println("<tr><th class=\"text-center\" style=\"width: 50%;\">Name</th><th class=\"text-center\" style=\"width: 50px\">Tick if student is present</th></tr></thead>");
+
+                writer.println("<tbody>");
+                query = "select student.Firstname, student.Lastname, student.id from student " +
+                        "join " + subj + " on " + subj + "." + "student_id = student.id";
+
+                rs = stmt.executeQuery(query);
+
+                while (rs.next()) {
+                    String fn = rs.getString("Firstname");
+                    String ln = rs.getString("Lastname");
+                    int stuid = rs.getInt("id");
+                    String full = fn + " " + ln;
+                    writer.println("<tr><td>" + full + "</td>");
+                    writer.println("<td><input type=\"checkbox\" name=" + classt + "_" + subj + "_" +
+                            stuid + " value=\"1\"></td></tr>");
+                }
+                writer.println("</tbody></table>");
+            }
+            writer.println("<a href=\"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>\n");
+            writer.println("<input class=\"btn btn-primary\" type=\"submit\" value=\"Submit\" style=\"width: 80px; margin-top: 20px;\">\n");
+        }
+        writer.println("</div>");
+        writer.println("</div>");
+        request.getRequestDispatcher("module/footer.jsp").include(request, response);
+        writer.println("</center></body></html>");
     }
+
 }catch (Exception exe){
     System.out.println(exe);
 }finally {

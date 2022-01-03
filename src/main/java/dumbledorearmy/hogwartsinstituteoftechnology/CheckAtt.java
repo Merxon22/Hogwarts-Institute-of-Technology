@@ -41,6 +41,7 @@ public class CheckAtt extends HttpServlet {
             ResultSet rs = stmt.executeQuery(query);
 
             int teaid = 0;
+
             while(rs.next()){
                 classes = rs.getString("Class").split(",");
                 teaid = rs.getInt("id");
