@@ -112,7 +112,7 @@
                             String ln = rs1.getString("Lastname");
 
                             String full = fn + " " + ln;
-                            writer.println("<th>" + full + "</th>");
+                            writer.println("<th style=\"text-align: center;\">" + full + "</th>");
                         }
                     }
                 }
@@ -139,7 +139,7 @@
                 writer.println("</tbody></table>");
             }
         }
-        writer.println("<a href=\"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>\n");
+        writer.println("<a href= \"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></ a>\n");
         writer.println("<input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\" style=\"width: 80px; margin-top: 20px;\">\n");
         writer.println("</form>");
         writer.println("</div>");

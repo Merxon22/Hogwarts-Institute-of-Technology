@@ -122,8 +122,8 @@ try {
 
                     //做成list还是table好呢？
 
-                    writer.println("<table class=\"table table-striped\" style=\"margin-top: 20px; text-align: center; !important;\"><thead><tr class=\"table-dark\"><th colspan=\"3\" class=\"text-center\"Check in for " + subj + " at " + classt + "</th></tr>");
-                    writer.println("<tr><th class=\"text-center\">Name</th><th class=\"text-center\">Tick if he attended</th></tr></thead>");
+                    writer.println("<table class=\"table table-striped\" style=\"margin-top: 20px; text-align: center; !important;\"><thead><tr class=\"table-dark\"><th colspan=\"3\" class=\"text-center\">Check in for " + subj + " at " + classt + "</th></tr>");
+                    writer.println("<tr><th class=\"text-center\" style=\"width: 50%;\">Name</th><th class=\"text-center\" style=\"width: 50px\">Tick if student is present</th></tr></thead>");
 
                     writer.println("<tbody>");
                     query = "select student.Firstname, student.Lastname, student.id from student " +
@@ -142,9 +142,9 @@ try {
                     }
                     writer.println("</tbody></table>");
                 }
+                writer.println("<a href=\"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>\n");
                 writer.println("<input class=\"btn btn-primary\" type=\"submit\" value=\"Submit\" style=\"width: 80px; margin-top: 20px;\">\n");
             }
-            writer.println("<a href=\"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px;\" type=\"button\">Back</button></a>\n");
             writer.println("</div>");
             writer.println("</div>");
             request.getRequestDispatcher("module/footer.jsp").include(request, response);
