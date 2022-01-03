@@ -19,7 +19,12 @@ public class DelTea extends HttpServlet {
             Statement st = con.createStatement();
             String req = request.getParameter("names");
             String allname[] = req.split("\n");
+            String q1 = "SET FOREIGN_KEY_CHECKS=0;";
+            st.executeQuery(q1);
             for (int i = 0; i < allname.length; i++){
+                if (i != allname.length - 1) {
+                    allname[i] = allname[i].substring(0, allname[i].length() - 1);
+                }
                 String query = "delete from teacher where email='"+allname[i] + "'"; //small change
                 st.executeUpdate(query);
             }

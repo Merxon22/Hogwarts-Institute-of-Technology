@@ -52,7 +52,7 @@ public class ViewClass extends HttpServlet {
 //                tt = tt.substring(0, tt.length() - 2);
 //                System.out.println(tt);
 
-                int id = rp.getInt("id");
+                int id = rp.getInt("teacher_id");
                 System.out.println(id);
                 query2 = "select * from teacher where id=" + id;
                 ResultSet rs = stmt2.executeQuery(query2);
@@ -76,7 +76,7 @@ public class ViewClass extends HttpServlet {
             }            out.println("</table>");
             out.println("</tbody>");
             out.println("</table>");
-            out.println("<a href=\"AdmBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px;\" type=\"button\">Back</button></a>\n");
+            out.println("<a href= \"AdmBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px;\" type=\"button\">Back</button></a>\n");
             out.println("</div>");
             out.println("</div>");
             request.getRequestDispatcher("module/footer.jsp").include(request, response);
@@ -94,5 +94,3 @@ public class ViewClass extends HttpServlet {
 
 
 }
-
-

@@ -24,8 +24,12 @@
             <div class="d-grid gap-4 mx-auto">
                 <a href="StudentSchduleView"><button class="btn btn-primary" style="width: 100%;" type="button">View my schedule</button></a>
                 <a href="StudentGradeView"><button class="btn btn-primary" style="width: 100%;" type="button">View my grade</button></a>
+<<<<<<< HEAD
                 <a href="StudentAttendenceView"><button class="btn btn-primary" style="width: 100%;" type="button">View my Attendance</button></a>
                 <a href=Logout><button class="btn btn-primary" style="width: 100%;" type="button">Logout</button></a>
+=======
+<%--                <a href=Logout><button class="btn btn-primary" style="width: 100%;" type="button">Logout</button></a>--%>
+>>>>>>> 8167b42690c576bcc9bdc9de28265560765babc4
             </div>
         </div>
     </div>

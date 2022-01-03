@@ -25,7 +25,6 @@
                 <a href="StudentSchduleView"><button class="btn btn-primary" style="width: 100%;" type="button">View my schedule</button></a>
                 <a href="StudentGradeView"><button class="btn btn-primary" style="width: 100%;" type="button">View my grade</button></a>
                 <a href="StudentAttendenceView"><button class="btn btn-primary" style="width: 100%;" type="button">View my Attendance</button></a>
-                <a href=Logout><button class="btn btn-primary" style="width: 100%;" type="button">Logout</button></a>
             </div>
         </div>
     </div>
