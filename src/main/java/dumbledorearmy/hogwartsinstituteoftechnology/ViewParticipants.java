@@ -91,7 +91,7 @@ public class ViewParticipants extends HttpServlet {
             }
 
 
-            out.println("<a href=\"TeaBack\"><input class=\"btn btn-primary\" type=\"button\" value=\"Back\"\" style=\"width: 80px; margin-top: 20px;\"></a>");
+            out.println("<a href= \"TeaBack\"><input class=\"btn btn-primary\" type=\"button\" value=\"Back\"\" style=\"width: 80px; margin-top: 20px;\"></ a>");
             out.println("</div>");
             out.println("</div>");
             request.getRequestDispatcher("module/footer.jsp").include(request, response);
