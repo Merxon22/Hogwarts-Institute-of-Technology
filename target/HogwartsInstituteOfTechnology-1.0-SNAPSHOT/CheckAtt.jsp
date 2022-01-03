@@ -80,7 +80,7 @@ try {
         request.getRequestDispatcher("module/headerLoggedIn.jsp").include(request, response);
         request.getRequestDispatcher("module/CheckLog.jsp").include(request, response);
         writer.println("<div id=\"containerBox\">");
-        writer.println("<div class=\"centerBox\">");
+        writer.println("<div class=\"centerBox\" style=\"width: 60%; !important;\">");
         writer.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>Check Attendance</b></h2>");
         writer.println("<h4>Today is " + date + ", " + week + "</h4><br>");
         System.out.println(classes[0]);
@@ -113,7 +113,7 @@ try {
             if (totalClass == 0) {
                 writer.println("<p>You have 0 classes today. Come back tomorrow.</p>");
             } else {
-                writer.println("<p>You have " + totalClass + " classes today. Please Check in.</p>");
+                writer.println("<p>You have " + totalClass + " class(es) today. Please Check in.</p>");
 
                 writer.println("<form method=\"post\" action=CheckAtt>");
                 for (int time = 0; time < totalClass; time++) { //对这个老师今天的每节课都搞过一次了，每个课就是一个table
@@ -122,9 +122,10 @@ try {
 
                     //做成list还是table好呢？
 
-                    writer.println("<table><tr><th colspan=\"3\">Check in for " + subj + " at " + classt + "</th></tr>");
-                    writer.println("<tr><th>Name</th><th>Tick if he attended</th></tr>");
+                    writer.println("<table class=\"table table-striped\" style=\"margin-top: 20px; text-align: center; !important;\"><thead><tr class=\"table-dark\"><th colspan=\"3\" class=\"text-center\"Check in for " + subj + " at " + classt + "</th></tr>");
+                    writer.println("<tr><th class=\"text-center\">Name</th><th class=\"text-center\">Tick if he attended</th></tr></thead>");
 
+                    writer.println("<tbody>");
                     query = "select student.Firstname, student.Lastname, student.id from student " +
                             "join " + subj + " on " + subj + "." + "student_id = student.id";
 
@@ -139,9 +140,9 @@ try {
                         writer.println("<td><input type=\"checkbox\" name=" + classt + "_" + subj + "_" +
                                 stuid + " value=\"1\"></td></tr>");
                     }
-                    writer.println("</table>");
+                    writer.println("</tbody></table>");
                 }
-                writer.println("<input type=\"submit\">");
+                writer.println("<input class=\"btn btn-primary\" type=\"submit\" value=\"Submit\" style=\"width: 80px; margin-top: 20px;\">\n");
             }
             writer.println("<a href=\"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px;\" type=\"button\">Back</button></a>\n");
             writer.println("</div>");

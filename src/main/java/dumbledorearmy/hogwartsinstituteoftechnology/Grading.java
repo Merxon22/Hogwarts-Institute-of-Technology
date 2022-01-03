@@ -73,7 +73,6 @@ public class Grading extends HttpServlet {
                     while (rs.next()) { //打出标题所有学生的名字
                         int tmpid = rs.getInt("student_id");
                         stuids.add(tmpid);
-
                     }
                     String query3;
 

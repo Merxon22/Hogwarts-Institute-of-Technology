@@ -42,8 +42,13 @@ public class AdmLog extends HttpServlet {
 
                 email.setMaxAge(60 * 60 * 24);
                 // Add both the cookies in the response header.
+                Cookie loginState = new Cookie("loginState", "admin");
+                loginState.setMaxAge(60 * 60 * 24);
+                response.addCookie(loginState);
+
                 response.addCookie(email);
-                rd.include(request, response);
+                response.sendRedirect("Admin.jsp");
+//                rd.include(request, response);
 
                 out.println("<script>\n" +
                         "alert(\"Welcome, " + em +

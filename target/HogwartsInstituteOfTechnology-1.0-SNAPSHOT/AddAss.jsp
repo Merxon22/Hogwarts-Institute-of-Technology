@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/mainStyle.css">
     <link rel="icon" href="ResourceFolder/Icon.png">
 </head>
-<body background="https://cdn.cdnparenting.com/articles/2018/06/471582446_H.webp" style="background-size: cover"><center>
+<body style="background-image: url('https://cdn.cdnparenting.com/articles/2018/06/471582446_H.webp'); background-size: cover; background-attachment: fixed;"><center>
     <%@include file="module/headerLoggedIn.jsp"%>
     <div id="containerBox">
         <div class="centerBox">
@@ -23,7 +23,7 @@
             <p>To add multiple, separate by the break of line.</p>
             <form action = AddAss method = "post" style="padding: 20px 0px;">
                 <textarea class="form-control" id="floatingTextarea2" name = "ass" style="height: 200px; resize: none"></textarea>
-                <button class="btn btn-primary" style="width: 80px; margin-top: 20px;" type="button" onclick="history.back()">Back</button>
+                <a href="TeaBack" style="width: 80px;"><button class="btn btn-primary" style="width: 80px; margin-top: 20px;" type="button">Back</button></a>
                 <input type="submit" class="btn btn-primary" value="Submit" style="width: 80px; margin-top: 20px;">
             </form>
         </div>

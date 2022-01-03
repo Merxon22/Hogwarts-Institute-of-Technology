@@ -34,8 +34,20 @@
         String[] classes = {}; //记录下老师的所有课
 
         String query;
-        query = "select id, Class from teacher where email='" + em + "'";
+
+        ArrayList<Integer> stus = new ArrayList<>();
+
+        query = "select id from student";
         ResultSet rs = stmt.executeQuery(query);
+        while(rs.next()){
+            stus.add(rs.getInt("id"));
+        }
+
+
+
+
+        query = "select id, Class from teacher where email='" + em + "'";
+        rs = stmt.executeQuery(query);
         int teaid = 0;
         while (rs.next()){
             classes = rs.getString("Class").split(",");
@@ -87,19 +99,21 @@
                 ResultSet rs1;
                 while (rs.next()) { //打出标题所有学生的名字
                     int tmpid = rs.getInt("student_id");
-                    stuids.add(tmpid);
+                    if (stus.contains(tmpid)){
+                        stuids.add(tmpid);
 
-                    String query2 = "select Firstname, Lastname from student where id=" + tmpid;
+                        String query2 = "select Firstname, Lastname from student where id=" + tmpid;
 
-                    rs1 = stmt3.executeQuery(query2);
+                        rs1 = stmt3.executeQuery(query2);
 
-                    while (rs1.next()) {
-                        //System.out.println("Checkpoint1");
-                        String fn = rs1.getString("Firstname");
-                        String ln = rs1.getString("Lastname");
+                        while (rs1.next()) {
+                            //System.out.println("Checkpoint1");
+                            String fn = rs1.getString("Firstname");
+                            String ln = rs1.getString("Lastname");
 
-                        String full = fn + " " + ln;
-                        writer.println("<th>" + full + "</th>");
+                            String full = fn + " " + ln;
+                            writer.println("<th>" + full + "</th>");
+                        }
                     }
                 }
                 writer.println("</tr></thead>");
@@ -125,7 +139,7 @@
                 writer.println("</tbody></table>");
             }
         }
-        writer.println("<button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\" onclick=\"history.back()\">Back</button>\n");
+        writer.println("<a href=\"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>\n");
         writer.println("<input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\" style=\"width: 80px; margin-top: 20px;\">\n");
         writer.println("</form>");
         writer.println("</div>");

@@ -57,7 +57,7 @@ public class AddStu extends HttpServlet {
             out.println("<script>\n" +
                     "alert(\"Student(s) added!\")" +
                     "</script>");
-        con.close();
+            con.close();
 
         } catch (Exception exe) {
             System.out.println("Exception caught" + exe);

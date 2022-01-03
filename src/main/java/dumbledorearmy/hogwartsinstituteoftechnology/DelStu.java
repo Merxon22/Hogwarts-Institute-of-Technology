@@ -28,12 +28,7 @@ public class DelStu extends HttpServlet {
             }
 
 
-//            query = "SET FOREIGN_KEY_CHECKS=0;";
-
-
             for (int i = 0; i < allname.length; i++){
-                String q1 = "SET FOREIGN_KEY_CHECKS=0;";
-                st.executeQuery(q1);
                 if (i != allname.length - 1) {
                     allname[i] = allname[i].substring(0, allname[i].length() - 1);
                 }
