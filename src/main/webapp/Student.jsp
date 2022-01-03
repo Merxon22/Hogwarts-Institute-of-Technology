@@ -47,7 +47,7 @@
                     <div class="card shadow-sm">
                         <img width="100%" height="225" src="https://mitrefinch.com/wp-content/uploads/2016/09/Attendance-Tracking-Software-for-Schools.jpg" style="object-fit: cover; border-radius: 2px;">
                         <div class="card-body">
-                            <h4 class="card-text" style="margin-bottom: 10px"><b>Check Attendance</b></h4>
+                            <h4 class="card-text" style="margin-bottom: 10px"><b>View My Attendance</b></h4>
                         </div>
                     </div>
                 </div></a>
