@@ -20,7 +20,7 @@ public class AddAss extends HttpServlet {
             String que;
             Statement stmt = con.createStatement();
             for (String as: allAss){
-                String sep[] = as.split("/");
+                String sep[]  = as.split("/");
                 String cN = sep[0];
                 String className = cN.substring(0, 1).toUpperCase() + cN.substring(1, cN.length());
                 String assName = sep[1];
