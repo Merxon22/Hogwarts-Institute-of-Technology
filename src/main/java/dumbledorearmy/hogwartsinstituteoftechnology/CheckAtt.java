@@ -52,12 +52,15 @@ public class CheckAtt extends HttpServlet {
             ArrayList<String> times = new ArrayList<>();
 
             for (String clasx : classes) {
-                query = "select classinfo.time from classinfo where subject='" + clasx + "'";
+                query = "select classinfo.time, classinfo.total from classinfo where subject='" + clasx + "'";
                 //如果对上weekday是今天的，那么把这节课加到subjects，time里
+                int total = 0;
 
                 rs = stmt.executeQuery(query);
                 while (rs.next()) {
                     String[] timx = rs.getString("time").split("<br>");
+                    total = rs.getInt("total");
+
                     for (String t : timx) {
                         String[] whole = t.split(" ");
                         String weekdayx = whole[0];
@@ -69,6 +72,9 @@ public class CheckAtt extends HttpServlet {
                         }
                     }
                 }
+
+                String query3 = "update classinfo set total=" + (total+1);
+                stmt1.executeUpdate(query3);
             }
             //这步存了老师教的课，和课的时间
             //然后通过这个课找到学生的id
@@ -82,6 +88,7 @@ public class CheckAtt extends HttpServlet {
                 query = "select student_id from " + subj;
 
                 rs = stmt.executeQuery(query);
+
 
                 while (rs.next()) {
                     int stuid = rs.getInt("student_id");
