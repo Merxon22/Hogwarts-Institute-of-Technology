@@ -53,7 +53,10 @@ public class ViewClass extends HttpServlet {
 //                System.out.println(tt);
 
                 int id = rp.getInt("teacher_id");
-                System.out.println(id);
+                System.out.println("teacherid" + id);
+
+
+
                 query2 = "select * from teacher where id=" + id;
                 ResultSet rs = stmt2.executeQuery(query2);
 
