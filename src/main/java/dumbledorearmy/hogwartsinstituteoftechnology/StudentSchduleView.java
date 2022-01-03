@@ -65,8 +65,10 @@ public class StudentSchduleView extends HttpServlet {
             sub.add("Chinese");
             sub.add("Math");
             sub.add("CS");
-
-            ArrayList<String> N=sub;
+            sub.add("Physics");
+            sub.add("Chemistry");
+            sub.add("MacroEconomics");
+            sub.add("MicroEconomics");
 
             int id = 0;
             Statement stmt = con.createStatement();
@@ -75,10 +77,18 @@ public class StudentSchduleView extends HttpServlet {
                 id=rs3.getInt("id");
             }
 
+            ArrayList<String> N = new ArrayList<String>();
+            N.add("Chinese");
+            N.add("Math");
+            N.add("CS");
+            N.add("Physics");
+            N.add("Chemistry");
+            N.add("MacroEconomics");
+            N.add("MicroEconomics");
             for (int i = 0; i < sub.size(); i++) {
-                ResultSet rs = stmt.executeQuery("select * from "+N.get(i)+" where student_id="+id);
+                ResultSet rs = stmt.executeQuery("select * from "+sub.get(i)+" where student_id="+id);
                 if(!rs.next()){
-                    N.remove(N.get(i));
+                    N.remove(sub.get(i));
                 }
             }
 
@@ -216,6 +226,7 @@ public class StudentSchduleView extends HttpServlet {
             request.getRequestDispatcher("module/footer.jsp").include(request, response);
             out.println("</center></body>");
             out.println("</html>");
+            N.clear();
         }catch (Exception exe){
             System.out.println(exe);
         }finally {
