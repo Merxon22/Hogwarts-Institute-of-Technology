@@ -36,6 +36,12 @@ public class AddStu extends HttpServlet {
                 String Firstname = allinfos[0];
                 String Lastname = allinfos[1];
                 String email = allinfos[2];
+
+                if (i != allinfo.length - 1){
+                    email = email.substring(0, email.length() - 1);
+                }
+                System.out.println(email.length());
+
                 String pwd = InitialPwGenerator.generate();
                 String query = "insert into student (Firstname, Lastname, email, password) values (" +
                         "'" + Firstname + "'," +

@@ -17,13 +17,27 @@ public class DelStu extends HttpServlet {
             response.setContentType("text/html");
             Connection con = Provider.GetConn();
             Statement st = con.createStatement();
+
             String req = request.getParameter("names");
             String allname[] = req.split("\n");
+            System.out.println(allname.length);
+
             for (int i = 0; i < allname.length; i++){
-                String query = "delete from Student where email='"+allname[i] + "'";
+                System.out.println(allname[i]);
+                System.out.println(allname[i].substring(allname[i].length() - 1));
+            }
+
+
+            for (int i = 0; i < allname.length; i++){
+                if (i != allname.length - 1) {
+                    allname[i] = allname[i].substring(0, allname[i].length() - 1);
+                }
+//
+                String query = "delete from student where email='"+ allname[i] + "'"; //small change
                 System.out.println(query);
                 st.executeUpdate(query);
             }
+
             RequestDispatcher rd = request.getRequestDispatcher("Admin.jsp");
             rd.include(request, response);
             out.println("<script>\n" +

@@ -20,7 +20,10 @@ public class DelTea extends HttpServlet {
             String req = request.getParameter("names");
             String allname[] = req.split("\n");
             for (int i = 0; i < allname.length; i++){
-                String query = "delete from Teacher where email='"+allname[i] + "'"; //small change
+                if (i != allname.length - 1) {
+                    allname[i] = allname[i].substring(0, allname[i].length() - 1);
+                }
+                String query = "delete from teacher where email='"+allname[i] + "'"; //small change
                 st.executeUpdate(query);
             }
             RequestDispatcher rd =request.getRequestDispatcher("Admin.jsp");
