@@ -102,8 +102,11 @@ public class StudentGradeView extends HttpServlet {
                 out.println("<tbody>");
                 out.println(score);
                 n.clear();
+
             }
+
             N.clear();
+
 
 
 
