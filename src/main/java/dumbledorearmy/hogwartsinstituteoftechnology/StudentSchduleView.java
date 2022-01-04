@@ -45,6 +45,7 @@ public class StudentSchduleView extends HttpServlet {
             out.println("<head>");
             out.println("<title>View Schedule</title>");
             out.println("<link rel=\"stylesheet\" href=\"css/mainStyle.css\">");
+            out.println("<link rel=\"stylesheet\" href=\"css/schedule.css\">");
             out.println("<link rel=\"icon\" href=\"ResourceFolder/Icon.png\">");
             out.println("</head>");
             out.println("<body background=\"https://www.gozetim.com/images/kirtasiye-testleri.jpg\" style=\"background-size: cover\"><center>");
@@ -114,112 +115,113 @@ public class StudentSchduleView extends HttpServlet {
                 }
             }
             }
-            out.println("<table id=\"scheduleTable\" class=\"table table-striped\" style=\"margin-top: 20px; text-align: center; !important;\">\n" +
-                    "    <tr class=\"table-dark\">\n" +
-                    "        <th class=\"text-center\">Time/Weekday</th>\n" +
-                    "        <th class=\"text-center\">Monday</th>\n" +
-                    "        <th class=\"text-center\">Tuesday</th>\n" +
-                    "        <th class=\"text-center\">Wednesday</th>\n" +
-                    "        <th class=\"text-center\">Thursday</th>\n" +
-                    "        <th class=\"text-center\">Friday</th>\n" +
+            out.println("<table id=\"scheduleTable\">\n" +
+                    "    <tr id=\"scheduleHeader\" style=\"height: 40px; !important;\">\n" +
+                    "        <th class=\"text-center\" style=\"width: 20%;\">Time/Weekday</th>\n" +
+                    "        <th class=\"text-center\" style=\"width: 16%;\">Monday</th>\n" +
+                    "        <th class=\"text-center\" style=\"width: 16%;\">Tuesday</th>\n" +
+                    "        <th class=\"text-center\" style=\"width: 16%;\">Wednesday</th>\n" +
+                    "        <th class=\"text-center\" style=\"width: 16%;\">Thursday</th>\n" +
+                    "        <th class=\"text-center\" style=\"width: 16%;\">Friday</th>\n" +
                     "    </tr>\n" +
                     "    </thead>\n" +
-                    "    <tbody style=\"font-size: 13px\">\n" +
+                    "    <tbody id=\"scheduleBody\">\n" +
                     "    <tr>\n" +
-                    "        <td style=\"background: grey; !important; color: white; !important;\">8:30-9:25</td>");
+                    "        <td class=\"timePeriod\">8:30-9:25</td>");
 
             for (int per = 0; per < 5; per++){
-                if (week[per][0]==null){
-                    out.println("<td>Free Period</td>");
+                if (!(week[per][0]==null)){
+                    out.println("<td style=\"" + GetStyle(week[per][0]) + "\">" + week[per][0] + "</td>");
                 }
                 else{
-                    out.println("<td style=\"" + GetStyle(week[per][0]) + "\">" + week[per][0] + "</td>");
+                    out.println("<td class=\"freePeriod\">Free Period</td>");
                 }
             }
 
             out.print("</tr>\n" +
                     "    <tr>\n" +
-                    "        <td style=\"background: grey; !important; color: white; !important;\">9:30-10:25</td>");
+                    "        <td class=\"timePeriod\">9:30-10:25</td>");
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][1] == null)){
                     out.println("<td style=\"" + GetStyle(week[per][1]) + "\">" + week[per][1] + "</td>");
                 }
                 else{
-                    out.println("<td>Free Period</td>");
+                    out.println("<td class=\"freePeriod\">Free Period</td>");
                 }
             }
 
             out.println("</tr>\n" +
                     "    <tr>\n" +
-                    "        <td style=\"background: grey; !important; color: white; !important;\">10:30-11:25</td>");
+                    "        <td class=\"timePeriod\">10:30-11:25</td>");
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][2]==null)){
                     out.println("<td style=\"" + GetStyle(week[per][2]) + "\">" + week[per][2] + "</td>");
                 }
                 else{
-                    out.println("<td>Free Period</td>");
+                    out.println("<td class=\"freePeriod\">Free Period</td>");
                 }
             }
             out.println("</tr>\n" +
                     "    <tr>\n" +
-                    "        <td style=\"background: grey; !important; color: white; !important;\">11:30-12:25</td>");
+                    "        <td class=\"timePeriod\">11:30-12:25</td>");
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][3]==null)){
                     out.println("<td style=\"" + GetStyle(week[per][3]) + "\">" + week[per][3] + "</td>");
                 }
                 else{
-                    out.println("<td>Free Period</td>");
+                    out.println("<td class=\"freePeriod\">Free Period</td>");
                 }
             }
 
             out.println("</tr>\n" +
                     "    <tr>\n" +
-                    "       <td style=\"background: grey; !important; color: white; !important;\">12:30-13:15</td>" +
-                    "       <td id = \"spec\" colspan=\"5\" style=\"background-color: lightgrey; color: white; font-weight: bold\">Lunch Break</td>\n" +
+                    "       <td class=\"timePeriod\">12:30-13:15</td>" +
+                    "       <td id = \"spec\" colspan=\"5\" style=\"background: #cccccc\"><b>Lunch Break</b></td>\n" +
                     "    </tr>\n" +
                     "    <tr>\n" +
-                    "        <td style=\"background: grey; !important; color: white; !important;\">13:15-14:10</td>");
+                    "        <td class=\"timePeriod\">13:15-14:10</td>");
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][4]==null)){
                     out.println("<td style=\"" + GetStyle(week[per][4]) + "\">" + week[per][4] + "</td>");
                 }
                 else{
-                    out.println("<td>Free Period</td>");
+                    out.println("<td class=\"freePeriod\">Free Period</td>");
                 }
             }
             out.println("</tr>\n" +
                     "    <tr>\n" +
-                    "        <td style=\"background: grey; !important; color: white; !important;\">14:15-15:10</td>");
+                    "        <td class=\"timePeriod\">14:15-15:10</td>");
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][5]==null)){
                     out.println("<td style=\"" + GetStyle(week[per][5]) + "\">" + week[per][5] + "</td>");
                 }
                 else{
-                    out.println("<td>Free Period</td>");
+                    out.println("<td class=\"freePeriod\">Free Period</td>");
                 }
             }
 
             out.println("</tr>\n" +
                     "    <tr>\n" +
-                    "        <td style=\"background: grey; !important; color: white; !important;\">15:15-16:10</td>");
+                    "        <td class=\"timePeriod\">15:15-16:10</td>");
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][6]==null)){
                     out.println("<td style=\"" + GetStyle(week[per][6]) + "\">" + week[per][6] + "</td>");
                 }
                 else{
-                    out.println("<td>Free Period</td>");
+                    out.println("<td class=\"freePeriod\">Free Period</td>");
                 }
             }
             out.println("</tr>\n" +
                     "    </tbody>\n" +
                     "</table>");
 
+<<<<<<< HEAD
             out.println("<table><tr><th>Your Subject</th><th>Teacher</th><th>Email</th></tr><tbody>");
             for (int i = 0; i < N.size(); i++) {
                 ResultSet rp8= stmt.executeQuery("select classinfo.teacher_id, teacher.Firstname, teacher.Lastname, teacher.email from classinfo join teacher on classinfo.teacher_id = teacher.id where subject='"+N.get(i)+"'");
@@ -236,6 +238,9 @@ public class StudentSchduleView extends HttpServlet {
 
 
             out.println("<a href=\"StuBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px;\" type=\"button\">Back</button></a>\n");
+=======
+            out.println("<a href=\"StuBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>\n");
+>>>>>>> 2505f00c69aecc7deeca758fe41d6c1c3b240fc4
             out.println("</div>");
             out.println("</div>");
             request.getRequestDispatcher("module/footer.jsp").include(request, response);
