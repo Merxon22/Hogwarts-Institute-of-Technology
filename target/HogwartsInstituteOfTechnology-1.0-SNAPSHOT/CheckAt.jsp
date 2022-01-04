@@ -48,22 +48,11 @@
 
             }
         }
+        boolean flag2 = false;
         if (flag) {
             String claa = classNow;
-            writer.println("<html><head>\n" +
-                    "    <title>Check Attendance</title>\n" +
-                    "\n" +
-                    "    <link rel=\"stylesheet\" href=\"css/mainStyle.css\">\n" +
-                    "    <link rel=\"icon\" href=\"ResourceFolder/Icon.png\">\n" +
-                    "</head><body background=\"https://ww2.kqed.org/app/uploads/sites/23/2015/05/Beard-Algorithm-1440x811.jpg\" style=\"background-size: cover\"><center>\n");
-            request.getRequestDispatcher("module/headerLoggedIn.jsp").include(request, response);
-            request.getRequestDispatcher("module/CheckLog.jsp").include(request, response);
-            writer.println("<div id=\"containerBox\">");
-            writer.println("<div class=\"centerBox\" style=\"width: 60%; !important;\">");
-            writer.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>Check Attendance</b></h2>");
-            writer.println("<h4>Today is " + date + ", " + week + "</h4><br>");
 
-            String subj = classNow;
+
 
             System.out.println(claa.length());
             System.out.println(claa);
@@ -82,6 +71,20 @@
 
 
                     if (weekdayx.equals(week)) {
+                        flag2 = true;
+
+                        writer.println("<html><head>\n" +
+                                "    <title>Check Attendance</title>\n" +
+                                "\n" +
+                                "    <link rel=\"stylesheet\" href=\"css/mainStyle.css\">\n" +
+                                "    <link rel=\"icon\" href=\"ResourceFolder/Icon.png\">\n" +
+                                "</head><body background=\"https://ww2.kqed.org/app/uploads/sites/23/2015/05/Beard-Algorithm-1440x811.jpg\" style=\"background-size: cover\"><center>\n");
+                        request.getRequestDispatcher("module/headerLoggedIn.jsp").include(request, response);
+                        request.getRequestDispatcher("module/CheckLog.jsp").include(request, response);
+                        writer.println("<div id=\"containerBox\">");
+                        writer.println("<div class=\"centerBox\" style=\"width: 60%; !important;\">");
+                        writer.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>Check Attendance</b></h2>");
+                        writer.println("<h4>Today is " + date + ", " + week + "</h4><br>");
 
                         writer.println("<form method=\"post\" action=CheckAt>");
                         writer.println("<input type=\"hidden\" value=\"" + claa + "\" name=clasx");
@@ -107,15 +110,24 @@
 
                         writer.println("<a href= \"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></ a>\n");
                         writer.println("<input class=\"btn btn-primary\" type=\"submit\" value=\"Submit\" style=\"width: 80px; margin-top: 20px;\">\n");
+                        writer.println("</div>");
+                        writer.println("</div>");
+                        request.getRequestDispatcher("module/footer.jsp").include(request, response);
+                        writer.println("</center></body></html>");
                         break;
                     }
 
                 }
-                writer.println("</div>");
-                writer.println("</div>");
-                request.getRequestDispatcher("module/footer.jsp").include(request, response);
-                writer.println("</center></body></html>");
             }
+            if (!flag2){
+                RequestDispatcher rd2 = request.getRequestDispatcher("Attendance.jsp");
+                rd2.include(request, response);
+                writer.println("<script>\n" +
+                        "alert(\"You do not have this class today!\")" +
+                        "</script>");
+
+            }
+
         }
 
     }catch (Exception exe){
