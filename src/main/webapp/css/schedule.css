@@ -1,0 +1,39 @@
+#scheduleTable{
+    width: 100%;
+    text-align: center;
+    border-radius: 20px;
+    border-collapse: separate;
+    overflow: hidden;
+}
+
+#scheduleHeader{
+    background: #404040;
+    color: white;
+}
+
+th, td{
+    border: white solid 1px;
+}
+
+.timePeriod{
+    background: gray;
+    color: white;
+    font-weight: bold;
+}
+
+#scheduleBody{
+    font-size: 13px;
+}
+
+th{
+    text-align: center;
+}
+
+
+tr{
+    height: 30px;
+}
+
+.freePeriod{
+    background: #fafafa;
+}
