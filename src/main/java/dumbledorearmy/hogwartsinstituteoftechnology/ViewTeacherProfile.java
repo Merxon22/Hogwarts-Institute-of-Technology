@@ -14,10 +14,12 @@ import java.sql.Statement;
 public class ViewTeacherProfile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    int id= (int) request.getAttribute("id");
+    String Sid= request.getParameter("id");
+    int id=Integer.parseInt(Sid);
     response.setContentType("text/html");
     PrintWriter out = response.getWriter();
     Connection con = Provider.GetConn();
+    StringBuffer buf=new StringBuffer();
     try{
         Statement stmt1=con.createStatement();
 
@@ -33,6 +35,7 @@ public class ViewTeacherProfile extends HttpServlet {
             String nation=rs.getString("nation");
             String des=rs.getString("des");
             String phone=rs.getString("phone");
+            buf.append(course);
             out.println("<html>");
             out.println("<head>");
             out.println("<title>View Grade</title>");
@@ -46,7 +49,7 @@ public class ViewTeacherProfile extends HttpServlet {
             out.println("<div><label>Nationality</label> "+nation+"</div>");
             out.println("<div><label>Phone Number</label> "+phone+"</div>");
             out.println("<div><label>Email</label> "+email+"</div>");
-            out.println("<div><label>Teaching Courses</label> "+course+"</div>");
+            out.println("<div><label>Teaching Courses</label> "+buf.substring(0,buf.length()-1)+"</div>");
             out.println("<div><label>Degrees</label> "+degree+"</div>");
             out.println("<br>");
             out.println("<div><p>"+des+"</p></div>");
