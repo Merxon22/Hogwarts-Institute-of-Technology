@@ -38,7 +38,7 @@ public class ViewTeacherProfile extends HttpServlet {
             buf.append(course);
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>View Grade</title>");
+            out.println("<title>View Teacher Profile</title>");
             out.println("<link rel=\"stylesheet\" href=\"css/mainStyle.css\">");
             out.println("<link rel=\"icon\" href=\"ResourceFolder/Icon.png\">");
             out.println("</head>");
