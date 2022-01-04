@@ -220,6 +220,21 @@ public class StudentSchduleView extends HttpServlet {
                     "    </tbody>\n" +
                     "</table>");
 
+            out.println("<table><tr><th>Your Subject</th><th>Teacher</th><th>Email</th></tr><tbody>");
+            for (int i = 0; i < N.size(); i++) {
+                ResultSet rp8= stmt.executeQuery("select classinfo.teacher_id, teacher.Firstname, teacher.Lastname, teacher.email from classinfo join teacher on classinfo.teacher_id = teacher.id where subject='"+N.get(i)+"'");
+                while(rp8.next()){
+                    String tid=rp8.getString("teacher_id");
+                    String fname=rp8.getString("Firstname");
+                    String lname= rp8.getString("Lastname");
+                    String email= rp8.getString("email");
+
+                    out.println("<tr><td>"+N.get(i)+"</td><td><a href=\"ViewTeacherProfile?id="+tid+"\">"+fname+" "+lname+"</a></td><td>"+email+"</td></tr>");
+                }
+            }
+            out.println("</tbody></table>");
+
+
             out.println("<a href=\"StuBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px;\" type=\"button\">Back</button></a>\n");
             out.println("</div>");
             out.println("</div>");
