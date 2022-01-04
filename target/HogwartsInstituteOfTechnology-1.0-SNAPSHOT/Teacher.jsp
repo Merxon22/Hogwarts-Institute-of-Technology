@@ -45,7 +45,7 @@
                     </div>
                 </div>
             </div></a>
-            <a href=CheckAtt.jsp><div class="col">
+            <a href=Attendance.jsp><div class="col">
                 <div class="card shadow-sm">
                     <img width="100%" height="225" src="https://www.gradelink.com/wp-content/uploads/2016/03/DigitalAttendance2.jpg" style="object-fit: cover; border-radius: 2px;">
                     <div class="card-body">
