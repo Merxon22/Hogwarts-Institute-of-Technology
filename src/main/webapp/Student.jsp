@@ -51,6 +51,14 @@
                         </div>
                     </div>
                 </div></a>
+                <a href="EditMyProfile"><div class="col">
+                    <div class="card shadow-sm">
+                        <img width="100%" height="225" src="https://images.assetsdelivery.com/compings_v2/triken/triken1608/triken160800029.jpg" style="object-fit: cover; border-radius: 2px;">
+                        <div class="card-body">
+                            <h4 class="card-text" style="margin-bottom: 10px"><b>My Profile</b></h4>
+                        </div>
+                    </div>
+                </div></a>
             </div>
         </div>
     </div>
