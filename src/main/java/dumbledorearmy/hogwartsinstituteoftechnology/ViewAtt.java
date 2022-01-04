@@ -23,10 +23,21 @@ public class ViewAtt extends HttpServlet {
             Statement stmt1 = con.createStatement();
             Statement stmt2 = con.createStatement();
 
-            String query = "select " + classNow + " .attendance, student.Firstname, student.Lastname" +
+            String query = "select total from classinfo where subject='" + classNow + "'";
+            ResultSet rs = stmt.executeQuery(query);
+
+            int total;
+            while(rs.next()){
+                total = rs.getInt("total");
+                out.println("<h3>You have totally " + total + " " + classNow + " before checking today</h3>");
+
+            }
+            query = "select " + classNow + " .attendance, student.Firstname, student.Lastname" +
                     " from " + classNow +" join student on " + classNow + ".student_id=student.id";
 
-            ResultSet rs = stmt.executeQuery(query);
+            rs = stmt.executeQuery(query);
+
+
 
             out.println("<table><tr><th>Student Name</th><th>His Total Attendance</tr>");
             while(rs.next()){
