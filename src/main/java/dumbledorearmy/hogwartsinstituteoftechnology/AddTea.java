@@ -35,6 +35,7 @@ public class AddTea extends HttpServlet {
                 if (i != allinfo.length - 1){
                     classes = classes.substring(0, classes.length() - 1);
                 }
+                classes += ",";
                 String query = "insert into teacher (Firstname, Lastname, email, password, Class) values (" +
                         "'" + Firstname + "'," +
                         "'" + Lastname + "'," +
