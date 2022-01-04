@@ -4,20 +4,15 @@
 <%@ page import="dumbledorearmy.hogwartsinstituteoftechnology.Provider" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--
   Created by IntelliJ IDEA.
   User: assassin-001
   Date: 2022/1/4
   Time: 11:20 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Attendance</title>
-</head>
-<body>
-<h3>Choose the class you want to View/Check Attendance</h3>
 <%
     PrintWriter writer = response.getWriter();
     response.setContentType("text/html");
@@ -49,6 +44,17 @@
             System.out.println("teacherid" + teaid);
         }
 
+        writer.println("<html><head>\n" +
+                "    <title>Attendance</title>\n" +
+                "\n" +
+                "    <link rel=\"stylesheet\" href=\"css/mainStyle.css\">\n" +
+                "    <link rel=\"icon\" href=\"ResourceFolder/Icon.png\">\n" +
+                "</head><body background=\"https://ww2.kqed.org/app/uploads/sites/23/2015/05/Beard-Algorithm-1440x811.jpg\" style=\"background-size: cover\"><center>\n");
+                request.getRequestDispatcher("module/headerLoggedIn.jsp").include(request, response);
+        request.getRequestDispatcher("module/CheckLog.jsp").include(request, response);
+        writer.println("<div id=\"containerBox\">");
+        writer.println("<div class=\"centerBox\" style=\"width: 60%; !important;\">");
+        writer.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>Choose the class you want to View/Check Attendance</b></h2>\n");
         writer.println("<table><tr><th>Subjects</th></tr>");
         for (int i = 0; i < classes.length; i++) {
             if (classes[i].length() >= 2){
@@ -59,9 +65,11 @@
                 writer.println("<input type=\"submit\" name=\"clasx\" value=\"" + claa + "\"></td></tr></form>");
             }
         }
-        writer.println("</table>");
-
-
+            writer.println("</table>");
+            writer.println("</div>");
+            writer.println("</div>");
+            request.getRequestDispatcher("module/footer.jsp").include(request, response);
+            writer.println("</center></body></html>");
     }catch (Exception exe){
         System.out.println(exe);
     }finally {
