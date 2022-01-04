@@ -71,25 +71,28 @@ public class StudentGradeView extends HttpServlet {
                     N.remove(sub.get(i));
                 }
             }
+            ArrayList<String[]> n= new ArrayList<String[]>();
             for (int i = 0; i < N.size(); i++) {
-                ArrayList<String[]> n= new ArrayList<String[]>();
+
                 ResultSet rp = stmt1.executeQuery("select * from " + N.get(i) + " where student_id=" + id);
                 while(rp.next()){
+                    System.out.println(N.get(i));
                     ResultSet rp2 = stmt2.executeQuery("select COLUMN_NAME from information_schema.columns where table_name='" + sub.get(i) + "'");
                     while (rp2.next()) {
                     String name = rp2.getString("COLUMN_NAME");
+                    System.out.println(name);
                     String name2 = rp.getString(name);
                     n.add(new String[]{name, name2});
                 }}
                 StringBuilder query= new StringBuilder();
                 for (int x = 0; x < n.size()-2; x++) {
-                    query.append("<th class=\"text-center\">").append(n.get(2 + x)[0]).append("</td>\n");
+                    query.append("<th class=\"text-center\">").append(n.get(1 + x)[0]).append("</td>\n");
                 }
                 StringBuilder score= new StringBuilder("<tr><td class=\"text-center table-dark\" style=\"width: 120px;\">");
                 score.append(N.get(i));
                 score.append("</td>");
                 for (int z = 0; z < n.size()-2; z++) {
-                    score.append("<td>").append(n.get(2 + z)[1]).append("</td>");
+                    score.append("<td>").append(n.get(1 + z)[1]).append("</td>");
                 }
                 score.append("</tr></tbody></table>");
                 out.println("<table class=\"table table-striped\" style=\"margin: 20px 0px; text-align: center; !important;\">\n" +
@@ -98,8 +101,13 @@ public class StudentGradeView extends HttpServlet {
                         "        </tr></thead>");
                 out.println("<tbody>");
                 out.println(score);
+                n.clear();
+
             }
+
             N.clear();
+
+
 
 
 
