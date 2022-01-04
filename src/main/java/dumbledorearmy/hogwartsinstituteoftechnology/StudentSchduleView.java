@@ -220,8 +220,8 @@ public class StudentSchduleView extends HttpServlet {
             out.println("</tr>\n" +
                     "    </tbody>\n" +
                     "</table>");
-
-            out.println("<table><tr><th>Your Subject</th><th>Teacher</th><th>Email</th></tr><tbody>");
+            out.println("<h4 style=\"padding-top: 20px; margin: 20px 0px; border-top: 1px solid darkgrey\"><b>My Teachers</b></h4>");
+            out.println("<div class=\"list-group\">");
             for (int i = 0; i < N.size(); i++) {
                 ResultSet rp8= stmt.executeQuery("select classinfo.teacher_id, teacher.Firstname, teacher.Lastname, teacher.email from classinfo join teacher on classinfo.teacher_id = teacher.id where subject='"+N.get(i)+"'");
                 while(rp8.next()){
@@ -229,12 +229,35 @@ public class StudentSchduleView extends HttpServlet {
                     String fname=rp8.getString("Firstname");
                     String lname= rp8.getString("Lastname");
                     String email= rp8.getString("email");
-
-                    out.println("<tr><td>"+N.get(i)+"</td><td><a href=\"ViewTeacherProfile?id="+tid+"\">"+fname+" "+lname+"</a></td><td>"+email+"</td></tr>");
+                    out.println("<a href=\"ViewTeacherProfile?id=" + tid + "\" class=\"list-group-item list-group-item-action d-flex gap-3 py-3\" aria-current=\"true\">");
+                    out.println("<svg height=\"40\" width=\"40\"><circle cx=\"20\" cy=\"20\" r=\"8\"fill=\"" + GetColor(N.get(i)) + "\" /></svg>");
+                    //                    out.println("<img src=\"https://github.com/twbs.png\" alt=\"twbs\" width=\"32\" height=\"32\" class=\"rounded-circle flex-shrink-0\">");
+                    out.println("<div class=\"d-flex gap-2 w-100 justify-content-between\">\n");
+                    out.println("<h4><b>" + N.get(i) + "</b></h4>");
+                    out.println("<div>");
+                    out.println("<h5 class=\"mb-0\">" + fname + " " + lname + "</h5>\n");
+                    out.println("<p class=\"mb-0 opacity-75\"><u>" + email + "</u></p>");
+                    out.println("</div>");
+                    out.println("</div>");
+                    out.println("</a>");
+//                    out.println("<tr><td>"+N.get(i)+"</td><td><a href=\"ViewTeacherProfile?id="+tid+"\">"+fname+" "+lname+"</a></td><td>"+email+"</td></tr>");
                 }
             }
-            out.println("</tbody></table>");
+            out.println("</div>");
 
+//            out.println("<table><tr><th>Your Subject</th><th>Teacher</th><th>Email</th></tr><tbody>");
+//            for (int i = 0; i < N.size(); i++) {
+//                ResultSet rp8= stmt.executeQuery("select classinfo.teacher_id, teacher.Firstname, teacher.Lastname, teacher.email from classinfo join teacher on classinfo.teacher_id = teacher.id where subject='"+N.get(i)+"'");
+//                while(rp8.next()){
+//                    String tid=rp8.getString("teacher_id");
+//                    String fname=rp8.getString("Firstname");
+//                    String lname= rp8.getString("Lastname");
+//                    String email= rp8.getString("email");
+//
+//                    out.println("<tr><td>"+N.get(i)+"</td><td><a href=\"ViewTeacherProfile?id="+tid+"\">"+fname+" "+lname+"</a></td><td>"+email+"</td></tr>");
+//                }
+//            }
+//            out.println("</tbody></table>");
 
             out.println("<a href=\"StuBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>\n");
             out.println("</div>");
@@ -253,30 +276,34 @@ public class StudentSchduleView extends HttpServlet {
     }
 
     private String GetStyle(String className){
-        String style = "";
+        return "background-color: " + GetColor(className) + "; color: white; font-weight: bold;";
+    }
+
+    private String GetColor(String className){
+        String color = "";
         switch (className){
             case "Math":
-                style = "background-color: #d79888; color: white; font-weight: bold;";
+                color = "#d79888";
                 break;
             case "Chinese":
-                style = "background-color: #cbc462; color: white; font-weight: bold;";
+                color = "#cbc462";
                 break;
             case "CS":
-                style = "background-color: #88a7d7; color: white; font-weight: bold;";
+                color = "#88a7d7";
                 break;
             case "Physics":
-                style = "background-color: #d07e5d; color: white; font-weight: bold;";
+                color = "#d07e5d";
                 break;
             case "Chemistry":
-                style = "background-color: #87cb80; color: white; font-weight: bold;";
+                color = "#87cb80";
                 break;
             case "MacroEconomics":
-                style = "background-color: #84c8c3; color: white; font-weight: bold;";
+                color = "#84c8c3";
                 break;
             case "MicroEconomics":
-                style = "background-color: #b784c8; color: white; font-weight: bold;";
+                color = "#b784c8";
                 break;
         }
-        return style;
+        return color;
     }
 }
