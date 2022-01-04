@@ -21,7 +21,6 @@ public class AddAss extends HttpServlet {
             Statement stmt = con.createStatement();
             int count = 0;
             for (String as: allAss){
-
                 String sep[] = as.split("/");
                 String cN = sep[0];
                 String className = cN.substring(0, 1).toUpperCase() + cN.substring(1, cN.length());
