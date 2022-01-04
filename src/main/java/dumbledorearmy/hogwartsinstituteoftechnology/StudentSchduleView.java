@@ -221,7 +221,6 @@ public class StudentSchduleView extends HttpServlet {
                     "    </tbody>\n" +
                     "</table>");
 
-<<<<<<< HEAD
             out.println("<table><tr><th>Your Subject</th><th>Teacher</th><th>Email</th></tr><tbody>");
             for (int i = 0; i < N.size(); i++) {
                 ResultSet rp8= stmt.executeQuery("select classinfo.teacher_id, teacher.Firstname, teacher.Lastname, teacher.email from classinfo join teacher on classinfo.teacher_id = teacher.id where subject='"+N.get(i)+"'");
@@ -238,9 +237,7 @@ public class StudentSchduleView extends HttpServlet {
 
 
             out.println("<a href=\"StuBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px;\" type=\"button\">Back</button></a>\n");
-=======
-            out.println("<a href=\"StuBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>\n");
->>>>>>> 2505f00c69aecc7deeca758fe41d6c1c3b240fc4
+
             out.println("</div>");
             out.println("</div>");
             request.getRequestDispatcher("module/footer.jsp").include(request, response);
