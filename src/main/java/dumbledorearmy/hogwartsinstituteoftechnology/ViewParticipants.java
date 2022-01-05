@@ -82,7 +82,7 @@ public class ViewParticipants extends HttpServlet {
                     out.println("</thead><tbody>");
                     while (rs.next()) {
                         int id = rs.getInt("id");
-                        out.println("<tr onclick=\"window.location='#';\"><td><a href=\"ViewStudentProfile?id=" + rs.getInt("id") + "\" style=\"display: block\">" + rs.getString("Firstname") + "</a></td>");
+                        out.println("<tr><td><a href=\"ViewStudentProfile?id=" + rs.getInt("id") + "\" style=\"display: block\">" + rs.getString("Firstname") + "</a></td>");
                         out.println("<td>" + rs.getString("Lastname") + "</td>");
                         out.println("<td>" + rs.getString("Email") + "</td></tr>");
                     }
