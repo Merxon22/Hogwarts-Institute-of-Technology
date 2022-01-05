@@ -26,32 +26,41 @@ public class ViewAtt extends HttpServlet {
             String query = "select total from classinfo where subject='" + classNow + "'";
             ResultSet rs = stmt.executeQuery(query);
 
-            int total;
+            out.println("<html><head>\n" +
+                    "    <title>Check Attendance</title>\n" +
+                    "\n" +
+                    "    <link rel=\"stylesheet\" href=\"css/mainStyle.css\">\n" +
+                    "    <link rel=\"icon\" href=\"ResourceFolder/Icon.png\">\n" +
+                    "</head><body background=\"https://ww2.kqed.org/app/uploads/sites/23/2015/05/Beard-Algorithm-1440x811.jpg\" style=\"background-size: cover\"><center>\n");
+            request.getRequestDispatcher("module/headerLoggedIn.jsp").include(request, response);
+            request.getRequestDispatcher("module/CheckLog.jsp").include(request, response);
+            out.println("<div class=\"centerBox\">");
+            out.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>Checking Attendance for " + classNow + "</b></h2>");
+            int total=0;
             while(rs.next()){
                 total = rs.getInt("total");
-                out.println("<h3>You have totally " + total + " " + classNow + " before checking today</h3>");
-
+//                out.println("<h5>You have totally " + total + " " + classNow + " before checking today</h5>");
             }
+
+            out.println("<table class=\"table table-stripped text-center\"><tr class=\"table-dark\"><th class=\"text-center\" style=\"width: 50%\">Student Name</th><th class=\"text-center\" style=\"width: 50%\">His/her Total Attendance</tr>");
             query = "select " + classNow + " .attendance, student.Firstname, student.Lastname" +
                     " from " + classNow +" join student on " + classNow + ".student_id=student.id";
 
             rs = stmt.executeQuery(query);
-
-
-
-            out.println("<table><tr><th>Student Name</th><th>His Total Attendance</tr>");
             while(rs.next()){
                 String full = rs.getString("Firstname") + " " + rs.getString("Lastname");
                 int att = rs.getInt("attendance");
 
                 out.println("<tr><td>" + full + "</td>");
-                out.println("<td>" + att + "</td><tr>");
+                out.println("<td>" + att + "/" + total + "</td><tr>");
             }
-
             out.println("</table>");
-            out.println("<form action=\"CheckAt.jsp\" method=\"post\">");
-            out.println("<input type=\"hidden\" name=\"clasx\" value=\"" + classNow + "\">");
-            out.println("<input type=\"submit\" value=\"Add Attendance for Today\"></form>");
+//            out.println("<input type=\"hidden\" name=\"clasx\" value=\"" + classNow + "\">");
+            out.println("<a href=\"TeaBackAtt\"><button class=\"btn btn-primary\" style=\"width: 160px; margin-top: 20px;\">Back</button></a>");
+            out.println("<a href=\"CheckAt.jsp?clasx=" + classNow + "\"><input class=\"btn btn-primary\" type=\"submit\" value=\"Update Attendance\" style=\"width: 160px; margin-top: 20px;\"></a>");
+            out.println("</div>");
+            request.getRequestDispatcher("module/footer.jsp").include(request, response);
+            out.println("</center></body></html>");
         }catch (Exception exe){
             System.out.println(exe);
         }

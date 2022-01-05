@@ -118,7 +118,7 @@ public class ViewTeacherProfile extends HttpServlet {
                     week[weekday][period] = rs.getString("subject");
                 }
             }
-            out.println("<h4 style=\"padding-bottom: 20px; margin: 20px 0px` ; border-bottom: 1px solid darkgrey\"><b>View Teacher's Schedule</b></h4>");
+            out.println("<h4 style=\"padding-bottom: 20px; margin: 20px 0px` ; border-bottom: 1px solid darkgrey; margin-top: 30px\"><b>Teacher's Schedule</b></h4>");
             out.println("<table id=\"scheduleTable\"><thead>" +
                     "    <tr class=\"scheduleHeader\" style=\"height: 40px; !important; background: #404040; color: white;\">\n" +
                     "        <th class=\"text-center\" style=\"width: 20%;\">Time/Weekday</th>\n" +

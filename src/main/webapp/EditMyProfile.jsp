@@ -9,52 +9,61 @@
 <html>
 <head>
     <title>Add Student</title>
-</head>
-<body>
-<form action="AddStu2" method="post">
-    <div>
-        <label>Firstname</label>
-        <input type=text name="fname" required="required">
-    </div>
-    <div>
-        <label>Lastname</label>
-        <input type=text name="lname" required="required">
-    </div>
-    <div>
-        <label>Email</label>
-        <input type=email name="email" placeholder="...@hit.edu" required="required">
-    </div>
-    <div>
-        <label>Gender</label>
-        <input type=text name="gender">
-    </div>
-    <div>
-        <label>Date of Birth</label>
-        <input type=text name="birth">
-    </div>
-    <div>
-        <label>Nationality</label>
-        <input type=text name="nation">
-    </div>
-    <div>
-        <label>Address</label>
-        <input type=text name="add">
-    </div>
-    <div>
-        <label>Phone Number</label>
-        <input type=text name="phone">
-    </div>
-    <div>
-        <label>Parent Phone Number</label>
-        <input type=text name="pphone">
-    </div>
-    <div>
-        <label>Home Number</label>
-        <input type=text name="hphone">
-    </div>
-    <a href="AdmBack"><button type="button">Back</button></a>
-    <button type="submit" >Submit</button>
-</form>
 
-</body>
+    <link rel="stylesheet" href="css/mainStyle.css">
+    <link rel="icon" href="ResourceFolder/Icon.png">
+</head>
+<body background="https://tjn-blog-images.s3.amazonaws.com/wp-content/uploads/2015/09/20003023/Which-Fields-Have-the-Highest-Paying-Administrative-Jobs.jpg" style="background-size: cover"><center>
+    <%@include file="module/headerLoggedIn.jsp"%>
+    <div class="centerBox">
+        <h2 style="padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey"><b>Add Student</b></h2>
+        <form action="AddStu2" method="post" style="width: 60%">
+            <div style="padding: 10px">
+                <label>Firstname</label>
+                <input class="form-control" type=text name="fname" required="required">
+            </div>
+            <div style="padding: 10px">
+                <label>Lastname</label>
+                <input class="form-control" type=text name="lname" required="required">
+            </div>
+            <div style="padding: 10px">
+                <label>Email</label>
+                <input class="form-control" type=email name="email" placeholder="...@hit.edu" required="required">
+            </div>
+            <div style="padding: 10px">
+                <label>Gender</label><br>
+                <input type=radio name="gender" value="Male" style="transform: scale(1)" id="male"><label for="male">Male</label><br>
+                <input type=radio name="gender" value="Female" style="transform: scale(1)" id="female"><label for="female">Female</label>
+            </div>
+            <div style="padding: 10px">
+                <label>Date of Birth</label>
+                <input class="form-control" type=date name="birth" required="required">
+            </div>
+            <div style="padding: 10px">
+                <label>Nationality</label>
+                <input class="form-control" type=text name="nation" required="required">
+            </div>
+            <div style="padding: 10px">
+                <label>Address</label>
+                <input class="form-control" type=text name="add" required="required">
+            </div>
+            <div style="padding: 10px">
+                <label>Phone Number</label>
+                <input class="form-control" type=tel name="phone" required="required">
+            </div>
+            <div style="padding: 10px">
+                <label>Parent Phone Number</label>
+                <input class="form-control" type=tel name="pphone" required="required">
+            </div>
+            <div style="padding: 10px">
+                <label>Home Number</label>
+                <input class="form-control" type=tel name="hphone" required="required">
+            </div>
+            <a href="AdmBack"><button class="btn btn-primary" type="button" style="width: 80px; margin-top: 20px">Back</button></a>
+            <button class="btn btn-primary" type="submit" style="width: 80px; margin-top: 20px">Submit</button>
+        </form>
+    </div>
+
+    <%@include file="module/footer.jsp"%>
+</center></body>
 </html>
