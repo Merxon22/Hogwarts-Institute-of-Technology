@@ -56,7 +56,7 @@ public class EditMyProfileT extends HttpServlet {
                 out.println("<link rel=\"icon\" href=\"ResourceFolder/Icon.png\">");
                 out.println("</head>");
                 out.println("<body>");
-                out.println("<h2>"+fname+" "+lname+" Profile</h2><a href=\"EditMyProfileT2?id="+id+"\"><button>Edit</button></a>");
+                out.println("<h2>"+fname+" "+lname+" Profile</h2>");
                 out.println("<div><label>Date of Birth</label> "+birth+"</div>");
                 out.println("<div><label>Gender</label> "+gender+"</div>");
                 out.println("<div><label>Nationality</label> "+nation+"</div>");

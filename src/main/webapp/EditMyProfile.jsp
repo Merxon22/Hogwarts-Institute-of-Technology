@@ -12,7 +12,10 @@
 </head>
 <body>
 <form action=\"EditMyProfile2?id="+id+"\" method="get">
-
+    <div>
+        <label>Email address</label>
+        <input type="email" id="exampleInputEmail1" value="default">
+    </div>
 </form>
 
 </body>
