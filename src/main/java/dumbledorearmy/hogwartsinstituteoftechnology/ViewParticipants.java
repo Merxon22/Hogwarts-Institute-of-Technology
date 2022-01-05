@@ -18,6 +18,7 @@ public class ViewParticipants extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection con = Provider.GetConn();
         try {
+            int para=0;
             PrintWriter out = response.getWriter();
             response.setContentType("text/html");
             out.println("<html>");
