@@ -20,6 +20,7 @@ public class ViewTea extends HttpServlet {
         try{
             Statement stmt = con.createStatement();
             String x;
+            int tid=0;
             ResultSet rs;
             x = "select * from teacher";
             rs = stmt.executeQuery(x);
@@ -44,6 +45,7 @@ public class ViewTea extends HttpServlet {
                     "        </tr></thead>");
             out.println("<tbody>");
             while (rs.next()){
+                tid=rs.getInt("id");
                 out.println("<tr>\n" +
                         "            <td>" + rs.getString("Firstname") + "</td>\n" +
                         "            <td>" + rs.getString("Lastname") + "</td>\n" +
