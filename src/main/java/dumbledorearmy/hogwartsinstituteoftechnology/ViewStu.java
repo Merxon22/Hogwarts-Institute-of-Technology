@@ -46,7 +46,7 @@ public class ViewStu extends HttpServlet {
             while (rs.next()){
                 sid=rs.getInt("id");
                 out.println("<tr>\n" +
-                        "            <td>" + rs.getString("Firstname") + "</td>\n" +
+                        "            <td><a href=\"ViewStudentProfile?id=" + rs.getString("id") + "\" style=\"display: block\">" + rs.getString("Firstname") + "</a></td>\n" +
                         "            <td>" + rs.getString("Lastname") + "</td>\n" +
                         "            <td>" + rs.getString("email") + "</td>\n" +
                         "            <td>" + rs.getString("password") + "</td>\n" +

@@ -40,3 +40,25 @@
     text-align: justify;
     padding: 10px;
 }
+
+#bottomLeftBox{
+    border-left: 2px solid #404040;
+    border-right: 1px solid #404040;
+    border-bottom: 2px solid #404040;
+    border-top: 1px solid #404040;
+    border-bottom-left-radius: 10px;
+    text-align: left;
+    padding: 10px;
+    width: 50%;
+}
+
+#bottomRightBox{
+    border-left: 1px solid #404040;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+    border-top: 1px solid #404040;
+    border-bottom-right-radius: 10px;
+    text-align: left;
+    padding: 10px;
+    width: 50%;
+}

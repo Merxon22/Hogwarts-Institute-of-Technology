@@ -71,7 +71,7 @@
             </div></a>
             <a href="EditMyProfileT"><div class="col">
                 <div class="card shadow-sm">
-                    <img width="100%" height="225" src="https://images.assetsdelivery.com/compings_v2/triken/triken1608/triken160800029.jpg" style="object-fit: cover; border-radius: 2px;">
+                    <img width="100%" height="225" src="https://img.freepik.com/free-photo/profile-serious-woman-with-healthy-pure-skin-has-bushy-hairstyle_273609-44522.jpg?size=626&ext=jpg&ga=GA1.2.1006149401.1635465600" style="object-fit: cover; border-radius: 2px;">
                     <div class="card-body">
                         <h4 class="card-text" style="margin-bottom: 10px"><b>My Profile</b></h4>
                     </div>

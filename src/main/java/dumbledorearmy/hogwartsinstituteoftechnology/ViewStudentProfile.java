@@ -44,32 +44,50 @@ public class ViewStudentProfile extends HttpServlet {
                 String hphone=rs.getString("hphone");
                 out.println("<html>");
                 out.println("<head>");
-                out.println("<title>View Student Profile</title>");
+                out.println("<title>My Profile</title>");
                 out.println("<link rel=\"stylesheet\" href=\"css/mainStyle.css\">");
+                out.println("<link rel=\"stylesheet\" href=\"css/profile.css\">");
+                out.println("<link rel=\"stylesheet\" href=\"css/schedule.css\">");
                 out.println("<link rel=\"icon\" href=\"ResourceFolder/Icon.png\">");
                 out.println("</head>");
-                out.println("<body>");
-                out.println("<h2>"+fname+" "+lname+" Profile</h2>");
-                out.println("<div><label>Date of Birth</label> "+birth+"</div>");
-                out.println("<div><label>Gender</label> "+gender+"</div>");
-                out.println("<div><label>Nationality</label> "+nation+"</div>");
-                out.println("<div><label>Phone Number</label> "+phone+"</div>");
-                out.println("<div><label>Parent's Phone Number</label> "+pphone+"</div>");
-                out.println("<div><label>Home Number</label> "+hphone+"</div>");
-                out.println("<div><label>Email</label> "+email+"</div>");
-                StringBuilder Class=new StringBuilder();
+                out.println("<body background=\"https://www.gozetim.com/images/kirtasiye-testleri.jpg\" style=\"background-size: cover\"><center>");
+                request.getRequestDispatcher("module/headerLoggedIn.jsp").include(request, response);
+                out.println("<div id=\"containerBox\">");
+                out.println("<div class=\"centerBox\" style=\"width: 60%; !important;\">");
+                request.getRequestDispatcher("module/CheckLog.jsp").include(request, response);
+                out.println("<div id=\"mainInfo\">");
+                out.println("<div>");
+                out.println("<h5 style=\"color: #dddddd; margin-bottom: -10px\"><i>Student</i></h5>");
+                out.println("<h2><b>"+fname+" "+lname+"</h2><a href=\"EditMyProfileT2?id="+id+"\"></b></h2></a>");
+                out.println("</div>");
+                out.println("<svg width=\"40\" height=\"40\"><circle cx=\"20\" cy=\"20\" r=\"16\" fill=\"888888\"></svg>");
+                out.println("</div>");
+                out.println("<div style=\"display: flex; justify-content: space-between; flex-direction: row\">");
+                out.println("<div id=\"bottomLeftBox\">");
+                out.println("<div><label>Email:</label> "+email+"</div>");
+                out.println("<div><label>Phone Number:</label> "+phone+"</div>");
+                out.println("<div><label>Parent's Phone Number:</label> "+pphone+"</div>");
+                out.println("<div><label>Gender:</label>"+gender+"</div>");
+                out.println("<div><label>Home Number:</label> "+hphone+"</div>");
+                out.println("<div><label>Address:</label>"+add+"</div>");
+                out.println("</div>");
+                out.println("<div id=\"bottomRightBox\">");
+                StringBuilder Class =new StringBuilder();
                 for (int i = 0; i <sub.size(); i++) {
                     ResultSet rp2=stmt2.executeQuery("select * from "+sub.get(i)+" where student_id="+id);
-                    while(rp2.next()){
-                        Class.append(sub.get(i)+" ");
+                    while(rp2.next()) {
+                        Class.append("<br>" + sub.get(i));
                     }
                 }
-
-                out.println("<div><label>Class taken</label> "+Class+"</div>");
-                out.println("<div><label>Address</label> "+add+"</div>");
-                out.println("<br>");
-                out.println("<a href=\"StuBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>");
-                out.println("</body>");
+                out.println("<div><p><b>Class taken:</b>"+Class+"</p></div>");
+                out.println("</div>");
+                out.println("</div>");
+                out.println("<button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" onclick=\"history.back()\">Back</button>");
+//                out.println("<a href=\"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>");
+                out.println("</div>");
+                out.println("</div>");
+                request.getRequestDispatcher("module/footer.jsp").include(request, response);
+                out.println("</center></body>");
                 out.println("</html>");
 
 

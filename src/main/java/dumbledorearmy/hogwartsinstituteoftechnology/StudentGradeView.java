@@ -105,7 +105,7 @@ public class StudentGradeView extends HttpServlet {
                 score.append("</tr></tbody></table>");
                 out.println("<table class=\"table table-striped\" style=\"margin: 20px 0px; text-align: center; !important;\">\n" +
                         "        <thead><tr>\n" +
-                        "            <th class=\"text-center table-dark\" style=\"width: 120px\">Subject</td>\n" + query+
+                        "            <th class=\"text-center table-dark\" style=\"width: 20%\">Subject</td>\n" + query+
                         "        </tr></thead>");
                 out.println("<tbody>");
                 out.println(score);

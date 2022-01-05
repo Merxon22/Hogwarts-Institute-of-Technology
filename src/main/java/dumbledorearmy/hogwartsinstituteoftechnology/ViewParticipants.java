@@ -62,7 +62,7 @@ public class ViewParticipants extends HttpServlet {
             for (String clasx : classes) { //注意这里前段得考虑一个老师教多个课的情况，虽然我们现在不需要
                 if (clasx.length() >= 2) {
                     System.out.println(clasx);
-                    query = "select student.Firstname, student.Lastname, student.email from student " +
+                    query = "select student.id, student.Firstname, student.Lastname, student.email from student " +
                             "join " + clasx + " on " + clasx + "." + "student_id = student.id";
                     System.out.println(query);
                     rs = stmt.executeQuery(query);
@@ -82,8 +82,8 @@ public class ViewParticipants extends HttpServlet {
                             "            </th></tr>");
                     out.println("</thead><tbody>");
                     while (rs.next()) {
-                        para=rs.getInt("id");
-                        out.println("<tr><td>" + rs.getString("Firstname") + "</td>");
+                        int id = rs.getInt("id");
+                        out.println("<tr><td><a href=\"ViewStudentProfile?id=" + rs.getInt("id") + "\" style=\"display: block\">" + rs.getString("Firstname") + "</a></td>");
                         out.println("<td>" + rs.getString("Lastname") + "</td>");
                         out.println("<td>" + rs.getString("Email") + "</td></tr>");
                     }

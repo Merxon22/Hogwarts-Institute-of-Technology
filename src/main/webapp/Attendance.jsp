@@ -5,6 +5,7 @@
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="dumbledorearmy.hogwartsinstituteoftechnology.ScheduleManager" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--
   Created by IntelliJ IDEA.
@@ -55,21 +56,22 @@
         writer.println("<div id=\"containerBox\">");
         writer.println("<div class=\"centerBox\" style=\"width: 60%; !important;\">");
         writer.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>Choose the class you want to View/Check Attendance</b></h2>\n");
-        writer.println("<table><tr><th>Subjects</th></tr>");
+        writer.println("<h4><b>Subjects</b></h4>");
+        writer.println("<div class=\"list-group\">");
         for (int i = 0; i < classes.length; i++) {
             if (classes[i].length() >= 2){
-                writer.println("<tr><td>");
-
                 String claa = classes[i];
-                writer.println("<form method=\"get\" action=ViewAtt>");
-                writer.println("<input type=\"submit\" name=\"clasx\" value=\"" + claa + "\"></td></tr></form>");
+                writer.println("<a href=\"ViewAtt?clasx=" + claa + "\" class=\"list-group-item list-group-item-action\" style=\"width: 40%; display: flex; justify-content: center; align-items: center; margin-left: auto; margin-right: auto\">");
+                writer.println("<svg width=\"40\" height=\"40\"><circle cx=\"20\" cy=\"20\" r=\"16\" fill=\"" + ScheduleManager.GetColor(claa) + "\"></svg>");
+                writer.println("<h4>" + claa + "</h4></input>");
+                writer.println("</a>");
             }
         }
-            writer.println("</table>");
-            writer.println("</div>");
-            writer.println("</div>");
-            request.getRequestDispatcher("module/footer.jsp").include(request, response);
-            writer.println("</center></body></html>");
+        writer.println("<a href=\"TeaBack\" style=\"width: 80px; margin: auto\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>");
+        writer.println("</div>");
+        writer.println("</div>");
+        request.getRequestDispatcher("module/footer.jsp").include(request, response);
+        writer.println("</center></body></html>");
     }catch (Exception exe){
         System.out.println(exe);
     }finally {

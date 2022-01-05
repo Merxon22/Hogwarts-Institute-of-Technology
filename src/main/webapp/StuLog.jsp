@@ -16,7 +16,6 @@
 
 <body background="https://londoninformaticsacademy.com/wp-content/uploads/2019/01/Gordon-College.jpg" style="background-size: cover; background-position: center"><center>
     <%@include file="module/header.jsp"%>
-    <div id="containerBox">
         <div class="centerBox">
             <form action = "StuLog" method = "get">
                 <h2><b>Student Login</b></h2>
@@ -31,7 +30,6 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
-        </div>
     </div>
     <%@include file="module/footer.jsp"%>
 </center></body>

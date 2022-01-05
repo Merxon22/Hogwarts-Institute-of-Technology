@@ -118,9 +118,9 @@ public class ViewTeacherProfile extends HttpServlet {
                     week[weekday][period] = rs.getString("subject");
                 }
             }
-            out.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>View Teacher's Schedule</b></h2>");
-            out.println("<table id=\"scheduleTable\" style=\">\n" +
-                    "    <tr id=\"scheduleHeader\" style=\"height: 40px; !important;\">\n" +
+            out.println("<h4 style=\"padding-bottom: 20px; margin: 20px 0px` ; border-bottom: 1px solid darkgrey; margin-top: 30px\"><b>Teacher's Schedule</b></h4>");
+            out.println("<table id=\"scheduleTable\"><thead>" +
+                    "    <tr class=\"scheduleHeader\" style=\"height: 40px; !important; background: #404040; color: white;\">\n" +
                     "        <th class=\"text-center\" style=\"width: 20%;\">Time/Weekday</th>\n" +
                     "        <th class=\"text-center\" style=\"width: 16%;\">Monday</th>\n" +
                     "        <th class=\"text-center\" style=\"width: 16%;\">Tuesday</th>\n" +
@@ -225,7 +225,7 @@ public class ViewTeacherProfile extends HttpServlet {
                     "    </tbody>\n" +
                     "</table>");
 
-            out.println("<a href=\"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>");
+            out.println("<button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\" onclick=\"history.back()\">Back</button>");
             out.println("</div>");
             out.println("</div>");
             request.getRequestDispatcher("module/footer.jsp").include(request, response);
