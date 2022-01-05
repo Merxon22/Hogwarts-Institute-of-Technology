@@ -87,10 +87,10 @@ public class StudentGradeView extends HttpServlet {
                     ResultSet rp2 = stmt2.executeQuery("select COLUMN_NAME from information_schema.columns where table_name='" + sub.get(i) + "'");
                     while (rp2.next()) {
                     String name = rp2.getString("COLUMN_NAME");
-                    if(!name.equals("student_id")&&!name.equals("attendance"))
+                    if(!name.equals("student_id")&&!name.equals("attendance")){
                     System.out.println(name);
                     String name2 = rp.getString(name);
-                    n.add(new String[]{name, name2});
+                    n.add(new String[]{name, name2});}
                 }}
                 StringBuilder query= new StringBuilder();
                 for (int x = 0; x < n.size(); x++) {
