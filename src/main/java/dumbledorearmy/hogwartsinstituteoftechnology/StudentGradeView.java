@@ -19,9 +19,16 @@ public class StudentGradeView extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String Email="";
+        String Email2="";
         if (session.getAttribute("email") != null) {
-            Email = session.getAttribute("email").toString();
+            Email2 = session.getAttribute("email").toString();
+        }
+        String Email="";
+        Cookie[] cookies = request.getCookies();
+        for (Cookie c: cookies){
+            if (c.getName().equals("email")){
+                Email = c.getValue();
+            }
         }
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -80,19 +87,20 @@ public class StudentGradeView extends HttpServlet {
                     ResultSet rp2 = stmt2.executeQuery("select COLUMN_NAME from information_schema.columns where table_name='" + sub.get(i) + "'");
                     while (rp2.next()) {
                     String name = rp2.getString("COLUMN_NAME");
+                    if(!name.equals("student_id")&&!name.equals("attendance"))
                     System.out.println(name);
                     String name2 = rp.getString(name);
                     n.add(new String[]{name, name2});
                 }}
                 StringBuilder query= new StringBuilder();
-                for (int x = 0; x < n.size()-2; x++) {
-                    query.append("<th class=\"text-center\">").append(n.get(1 + x)[0]).append("</td>\n");
+                for (int x = 0; x < n.size(); x++) {
+                    query.append("<th class=\"text-center\">").append(n.get(x)[0]).append("</td>\n");
                 }
                 StringBuilder score= new StringBuilder("<tr><td class=\"text-center table-dark\" style=\"width: 120px;\">");
                 score.append(N.get(i));
                 score.append("</td>");
-                for (int z = 0; z < n.size()-2; z++) {
-                    score.append("<td>").append(n.get(1 + z)[1]).append("</td>");
+                for (int z = 0; z < n.size(); z++) {
+                    score.append("<td>").append(n.get(z)[1]).append("</td>");
                 }
                 score.append("</tr></tbody></table>");
                 out.println("<table class=\"table table-striped\" style=\"margin: 20px 0px; text-align: center; !important;\">\n" +
