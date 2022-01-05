@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="EditMyProfile" method="get">
+<form action=\"EditMyProfile2?id="+id+"\" method="get">
 
 </form>
 
