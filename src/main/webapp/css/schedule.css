@@ -6,9 +6,9 @@
     overflow: hidden;
 }
 
-#scheduleHeader{
-    background: #404040;
-    color: white;
+.scheduleHeader{
+    background: #404040; !important;
+    color: white; !important;
 }
 
 th, td{

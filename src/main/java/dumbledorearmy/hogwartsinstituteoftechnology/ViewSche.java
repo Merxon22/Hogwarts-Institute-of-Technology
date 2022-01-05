@@ -91,8 +91,8 @@ public class ViewSche extends HttpServlet {
                     week[weekday][period] = rs.getString("subject");
                 }
             }
-            out.println("<table id=\"scheduleTable\">\n" +
-                    "    <tr id=\"scheduleHeader\" style=\"height: 40px; !important;\">\n" +
+            out.println("<table id=\"scheduleTable\"><thead>\n" +
+                    "    <tr class=\"scheduleHeader\" style=\"height: 40px; !important; background: #404040; color: white;\">\n" +
                     "        <th class=\"text-center\" style=\"width: 20%;\">Time/Weekday</th>\n" +
                     "        <th class=\"text-center\" style=\"width: 16%;\">Monday</th>\n" +
                     "        <th class=\"text-center\" style=\"width: 16%;\">Tuesday</th>\n" +
