@@ -62,7 +62,7 @@ public class EditMyProfileT extends HttpServlet {
                 out.println("<div class=\"centerBox\" style=\"width: 60%; !important;\">");
                 request.getRequestDispatcher("module/CheckLog.jsp").include(request, response);
                 out.println("<div id=\"mainInfo\">");
-                out.println("<h2>"+fname+" "+lname+"</h2><a href=\"EditMyProfileT2?id="+id+"\"><button>Edit</button></a>");
+                out.println("<h2>"+fname+" "+lname+"</h2><a href=\"EditMyProfileT2?id="+id+"\"></a>");
                 out.println("<svg width=\"40\" height=\"40\"><circle cx=\"20\" cy=\"20\" r=\"16\" fill=\"888888\"></svg>");
                 out.println("</div>");
                 out.println("<div><label>Date of Birth</label> "+birth+"</div>");
