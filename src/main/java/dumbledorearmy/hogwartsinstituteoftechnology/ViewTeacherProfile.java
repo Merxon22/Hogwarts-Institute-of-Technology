@@ -42,8 +42,8 @@ public class ViewTeacherProfile extends HttpServlet {
             out.println("<link rel=\"stylesheet\" href=\"css/mainStyle.css\">");
             out.println("<link rel=\"icon\" href=\"ResourceFolder/Icon.png\">");
             out.println("</head>");
-            out.println("<body>");
-            out.println("<h2>"+fname+" "+lname+" Profile</h2>");
+            out.println("<body background=\"https://ww2.kqed.org/app/uploads/sites/23/2015/05/Beard-Algorithm-1440x811.jpg\" style=\"background-size: cover\">");
+            out.println("<h2 style=\"text-align: left\">"+fname+" "+lname+" Profile</h2>");
             out.println("<div><label>Date of Birth</label> "+birth+"</div>");
             out.println("<div><label>Gender</label> "+gender+"</div>");
             out.println("<div><label>Nationality</label> "+nation+"</div>");
@@ -53,7 +53,7 @@ public class ViewTeacherProfile extends HttpServlet {
             out.println("<div><label>Degrees</label> "+degree+"</div>");
             out.println("<br>");
             out.println("<div><p>"+des+"</p></div>");
-            out.println("<a href=\"StuBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>");
+            out.println("<a href=\"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>");
             out.println("</body>");
             out.println("</html>");
 

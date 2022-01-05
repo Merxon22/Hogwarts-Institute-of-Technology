@@ -51,12 +51,20 @@ public class EditMyProfileT extends HttpServlet {
                 buf.append(course);
                 out.println("<html>");
                 out.println("<head>");
-                out.println("<title>View Teacher Profile</title>");
+                out.println("<title>My Profile</title>");
                 out.println("<link rel=\"stylesheet\" href=\"css/mainStyle.css\">");
+                out.println("<link rel=\"stylesheet\" href=\"css/profile.css\">");
                 out.println("<link rel=\"icon\" href=\"ResourceFolder/Icon.png\">");
                 out.println("</head>");
-                out.println("<body>");
-                out.println("<h2>"+fname+" "+lname+" Profile</h2><a href=\"EditMyProfileT2?id="+id+"\"><button>Edit</button></a>");
+                out.println("<body background=\"https://www.gozetim.com/images/kirtasiye-testleri.jpg\" style=\"background-size: cover\"><center>");
+                request.getRequestDispatcher("module/headerLoggedIn.jsp").include(request, response);
+                out.println("<div id=\"containerBox\">");
+                out.println("<div class=\"centerBox\" style=\"width: 60%; !important;\">");
+                request.getRequestDispatcher("module/CheckLog.jsp").include(request, response);
+                out.println("<div id=\"mainInfo\">");
+                out.println("<h2>"+fname+" "+lname+"</h2><a href=\"EditMyProfileT2?id="+id+"\"><button>Edit</button></a>");
+                out.println("<svg width=\"40\" height=\"40\"><circle cx=\"20\" cy=\"20\" r=\"16\" fill=\"888888\"></svg>");
+                out.println("</div>");
                 out.println("<div><label>Date of Birth</label> "+birth+"</div>");
                 out.println("<div><label>Gender</label> "+gender+"</div>");
                 out.println("<div><label>Nationality</label> "+nation+"</div>");
@@ -67,12 +75,11 @@ public class EditMyProfileT extends HttpServlet {
                 out.println("<br>");
                 out.println("<div><p>"+des+"</p></div>");
                 out.println("<a href=\"StuBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>");
-                out.println("</body>");
+                out.println("</div>");
+                out.println("</div>");
+                request.getRequestDispatcher("module/footer.jsp").include(request, response);
+                out.println("</center></body>");
                 out.println("</html>");
-
-
-
-
             }
 
 

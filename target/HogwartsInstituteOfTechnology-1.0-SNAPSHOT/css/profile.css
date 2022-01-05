@@ -1,0 +1,7 @@
+#mainInfo{
+    text-align: left;
+    background: #eeeeee;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
