@@ -18,6 +18,7 @@ public class ViewParticipants extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection con = Provider.GetConn();
         try {
+            int para=0;
             PrintWriter out = response.getWriter();
             response.setContentType("text/html");
             out.println("<html>");
@@ -81,6 +82,7 @@ public class ViewParticipants extends HttpServlet {
                             "            </th></tr>");
                     out.println("</thead><tbody>");
                     while (rs.next()) {
+                        para=rs.getInt("id");
                         out.println("<tr><td>" + rs.getString("Firstname") + "</td>");
                         out.println("<td>" + rs.getString("Lastname") + "</td>");
                         out.println("<td>" + rs.getString("Email") + "</td></tr>");
