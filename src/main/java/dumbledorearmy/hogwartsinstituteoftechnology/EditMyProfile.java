@@ -15,9 +15,16 @@ public class EditMyProfile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String Email="";
+        String Email2="";
         if (session.getAttribute("email") != null) {
-            Email = session.getAttribute("email").toString();
+            Email2 = session.getAttribute("email").toString();
+        }
+        String Email="";
+        Cookie[] cookies = request.getCookies();
+        for (Cookie c: cookies){
+            if (c.getName().equals("email")){
+                Email = c.getValue();
+            }
         }
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -59,7 +66,7 @@ public class EditMyProfile extends HttpServlet {
                 out.println("<link rel=\"icon\" href=\"ResourceFolder/Icon.png\">");
                 out.println("</head>");
                 out.println("<body>");
-                out.println("<h2>"+fname+" "+lname+" Profile</h2> <a href=\"EditMyProfile2?id="+id+"\"><button>Edit</button></a>");
+                out.println("<h2>"+fname+" "+lname+" Profile</h2>");
                 out.println("<div><label>Date of Birth</label> "+birth+"</div>");
                 out.println("<div><label>Gender</label> "+gender+"</div>");
                 out.println("<div><label>Nationality</label> "+nation+"</div>");

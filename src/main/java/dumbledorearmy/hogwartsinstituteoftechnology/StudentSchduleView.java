@@ -18,9 +18,16 @@ public class StudentSchduleView extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String Email="";
+        String Email2="";
         if (session.getAttribute("email") != null) {
-            Email = session.getAttribute("email").toString();
+            Email2 = session.getAttribute("email").toString();
+        }
+        String Email="";
+        Cookie[] cookies = request.getCookies();
+        for (Cookie c: cookies){
+            if (c.getName().equals("email")){
+                Email = c.getValue();
+            }
         }
         HashMap<String, Integer> mapWeek = new HashMap<>();
         HashMap<String, Integer> mapClass = new HashMap<>();
@@ -55,13 +62,6 @@ public class StudentSchduleView extends HttpServlet {
             request.getRequestDispatcher("module/CheckLog.jsp").include(request, response);
             out.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>View Schedule</b></h2>");
 
-            Cookie[] cookies = request.getCookies();
-            String em = "";
-            for (Cookie c: cookies){
-                if (c.getName().equals("email")){
-                    em = c.getValue();
-                }
-            }
             ArrayList<String> sub = new ArrayList<String>();
             sub.add("Chinese");
             sub.add("Math");
