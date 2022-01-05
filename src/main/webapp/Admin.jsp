@@ -34,7 +34,7 @@
 <%--            </div>--%>
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <a href="AddStudentAcc.jsp"><div class="col">
+                <a href="EditMyProfile.jsp"><div class="col">
                     <div class="card shadow-sm">
                         <img width="100%" height="225" src="https://image.cnbcfm.com/api/v1/image/106922887-1628206615260-gettyimages-887132600-as1700__08.jpeg?v=1628206641" style="object-fit: cover; border-radius: 2px;">
                         <div class="card-body">
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                 </div></a>
-                <a href="AddTeacherAcc.jsp"><div class="col">
+                <a href="EditMyProfileT.jsp"><div class="col">
                     <div class="card shadow-sm">
                         <img width="100%" height="225" src="https://www.acenet.edu/PublishingImages/Interior-Page-Heroes/For-Faculty-Credit-Transcipts.jpg?RenditionID=10" style="object-fit: cover; border-radius: 2px;">
                         <div class="card-body">
