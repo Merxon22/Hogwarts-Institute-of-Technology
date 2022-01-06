@@ -40,7 +40,7 @@
         for (int i = 1; i <= count; i++) {
           if (!(rsMetaData.getColumnName(i).equals("student_id") ||
                   rsMetaData.getColumnName(i).equals("attendance") ||
-                  rsMetaData.getColumnName(i).equals("Final"))) {
+                  rsMetaData.getColumnName(i).equals("GPA"))) {
             assignments.add(rsMetaData.getColumnName(i));
           }
           //有了assignment
