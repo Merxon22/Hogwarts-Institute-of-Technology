@@ -59,8 +59,19 @@ public class CalFinal extends HttpServlet {
                 rd.forward(request, response);
             }
             else{
-                stmt.executeUpdate("alter table " + claa + " drop column GPA");
-                stmt.executeUpdate("alter table " + claa + " add column GPA int default 0");
+
+                String query4 = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" + claa + "' AND COLUMN_NAME='GPA'";
+
+                ResultSet rs3 = stmt.executeQuery(query4);
+                int ct = 0;
+                while (rs3.next()){
+                    ct = rs3.getInt("COUNT(*)");
+                }
+
+                if (ct == 0){
+                    stmt.executeUpdate("alter table " + claa + " add column GPA int default 0");
+                }
+
 
                 //update final for each student
                 String query = "select student_id from " + claa;
