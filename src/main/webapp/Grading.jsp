@@ -139,8 +139,11 @@
                 writer.println("</tbody></table>");
                 writer.println("<a href= \"CalFinal.jsp?clasx=" + clasx + "\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 100px; margin-top: 20px;\" type=\"button\">Update Final</button></a>\n");
 
+
+
             }
         }
+        writer.println("<input type=\"submit\" value=\"confirm changes!\">");
         writer.println("<a href= \"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></ a>\n");
 
         writer.println("</form>");
