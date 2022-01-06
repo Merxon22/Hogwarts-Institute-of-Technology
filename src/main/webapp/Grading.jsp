@@ -57,7 +57,7 @@
 
         response.setContentType("text/html");
         writer.println("<html><head>\n" +
-                "    <title>Check Attendance</title>\n" +
+                "    <title>Assign Grades</title>\n" +
                 "\n" +
                 "    <link rel=\"stylesheet\" href=\"css/mainStyle.css\">\n" +
                 "    <link rel=\"icon\" href=\"ResourceFolder/Icon.png\">\n" +
@@ -137,11 +137,20 @@
                     writer.println("</tr>");
                 }
                 writer.println("</tbody></table>");
+                writer.println("<a href= \"CalFinal.jsp?clasx=" + clasx + "\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 100px; margin-top: 20px;\" type=\"button\">Update Final</button></a>\n");
+
+
+
             }
         }
+        writer.println("<input type=\"submit\" value=\"confirm changes!\">");
         writer.println("<a href= \"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></ a>\n");
-        writer.println("<input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\" style=\"width: 80px; margin-top: 20px;\">\n");
+
         writer.println("</form>");
+
+
+
+
         writer.println("</div>");
         writer.println("</div>");
         request.getRequestDispatcher("module/footer.jsp").include(request, response);
