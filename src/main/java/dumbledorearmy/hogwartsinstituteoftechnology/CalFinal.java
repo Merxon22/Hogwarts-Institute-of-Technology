@@ -37,7 +37,7 @@ public class CalFinal extends HttpServlet {
             for (int i = 1; i <= count; i++) {
                 if (!(rsMetaData.getColumnName(i).equals("student_id") ||
                         rsMetaData.getColumnName(i).equals("attendance")
-                || rsMetaData.getColumnName(i).equals("Final"))) {
+                || rsMetaData.getColumnName(i).equals("GPA"))) {
                     assignments.add(rsMetaData.getColumnName(i));
                 }
                 //有了assignment
@@ -59,8 +59,19 @@ public class CalFinal extends HttpServlet {
                 rd.forward(request, response);
             }
             else{
-                stmt.executeUpdate("alter table " + claa + " drop column Final");
-                stmt.executeUpdate("alter table " + claa + " add column Final int default 0");
+
+                String query4 = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" + claa + "' AND COLUMN_NAME='GPA'";
+
+                ResultSet rs3 = stmt.executeQuery(query4);
+                int ct = 0;
+                while (rs3.next()){
+                    ct = rs3.getInt("COUNT(*)");
+                }
+
+                if (ct == 0){
+                    stmt.executeUpdate("alter table " + claa + " add column GPA int default 0");
+                }
+
 
                 //update final for each student
                 String query = "select student_id from " + claa;
@@ -86,7 +97,7 @@ public class CalFinal extends HttpServlet {
                         //把final update进去
 
 
-                        String query3 = "update " + claa + " set Final =" + fin + " where student_id=" + stu;
+                        String query3 = "update " + claa + " set GPA =" + fin + " where student_id=" + stu;
                         stmt2.executeUpdate(query3);
                     }
                 }
@@ -94,7 +105,7 @@ public class CalFinal extends HttpServlet {
             RequestDispatcher rd2 = request.getRequestDispatcher("Grading.jsp");
             rd2.include(request, response);
             out.println("<script>\n" +
-                    "alert(\"You have updated final!!\")" +
+                    "alert(\"You have updated GPA!!\")" +
                     "</script>");
 
 
