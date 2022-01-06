@@ -83,13 +83,13 @@
                         request.getRequestDispatcher("module/CheckLog.jsp").include(request, response);
                         writer.println("<div id=\"containerBox\">");
                         writer.println("<div class=\"centerBox\" style=\"width: 60%; !important;\">");
-                        writer.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>Check Attendance</b></h2>");
+                        writer.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>Check Attendance For " + classNow + "</b></h2>");
                         writer.println("<h4>Today is " + date + ", " + week + "</h4><br>");
 
                         writer.println("<form method=\"post\" action=CheckAt>");
-                        writer.println("<input type=\"hidden\" value=\"" + claa + "\" name=clasx");
+                        writer.println("<input type=\"hidden\" value=\"" + claa + "\" name=\"clasx\">");
 
-                        writer.println("<table><thead><tr><th>Name</th><th>Tick if he attends</th></tr></thead>");
+                        writer.println("<table class=\"table table-striped text-center\"><thead><tr class=\"table-dark\"><th class=\"text-center\" width=\"50%\">Name</th><th class=\"text-center\" width=\"50%\">Tick if student presents</th></tr></thead>");
 
                         writer.println("<tbody>");
                         query = "select student.Firstname, student.Lastname, student.id from student " +
@@ -104,12 +104,12 @@
                             String full = fn + " " + ln;
                             writer.println("<tr><td>" + full + "</td>");
                             writer.println("<td><input type=\"checkbox\" name=\"" + classt + "_" + claa + "_" +
-                                    stuid + "\" value=\"1\"></td></tr>");
+                                    stuid + "\" value=\"1\" style=\"transform: scale(2)\"></td></tr>");
                         }
                         writer.println("</tbody></table>");
 
-                        writer.println("<a href= \"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></ a>\n");
-                        writer.println("<input class=\"btn btn-primary\" type=\"submit\" value=\"Submit\" style=\"width: 80px; margin-top: 20px;\">\n");
+                        writer.println("<a href=\"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>");
+                        writer.println("<input class=\"btn btn-primary\" type=\"submit\" value=\"Submit\" style=\"width: 80px; margin-top: 20px;\"></form>");
                         writer.println("</div>");
                         writer.println("</div>");
                         request.getRequestDispatcher("module/footer.jsp").include(request, response);

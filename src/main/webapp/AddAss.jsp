@@ -16,7 +16,6 @@
 <body style="background-image: url('https://cdn.cdnparenting.com/articles/2018/06/471582446_H.webp'); background-size: cover; background-attachment: fixed;"><center>
     <%@include file="module/headerLoggedIn.jsp"%>
     <div id="containerBox">
-        <div class="centerBox">
             <h2 style="padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey"><b>Upload Assignments</b></h2>
             <p>Type the assignments you want to add, in the format of class name/assignment name.</p>
             <p>e.g. math/final</p>

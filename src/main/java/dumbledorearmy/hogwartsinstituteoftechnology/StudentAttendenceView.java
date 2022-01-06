@@ -15,9 +15,16 @@ public class StudentAttendenceView extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String Email="";
+        String Email2="";
         if (session.getAttribute("email") != null) {
-            Email = session.getAttribute("email").toString();
+            Email2 = session.getAttribute("email").toString();
+        }
+        String Email="";
+        Cookie[] cookies = request.getCookies();
+        for (Cookie c: cookies){
+            if (c.getName().equals("email")){
+                Email = c.getValue();
+            }
         }
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();

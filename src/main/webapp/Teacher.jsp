@@ -53,8 +53,6 @@
                     </div>
                 </div>
             </div></a>
-        </div>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3" style="width: 66.67%; margin-top: 8px">
             <a href="AddAss.jsp"><div class="col">
                 <div class="card shadow-sm">
                     <img width="100%" height="225" src="https://ltl.lincoln.ac.nz/wp-content/uploads/sites/20/2016/02/Actively-reading-the-assignment-question.jpg" style="object-fit: cover; border-radius: 2px;">
@@ -71,10 +69,9 @@
                     </div>
                 </div>
             </div></a>
-
             <a href="EditMyProfileT"><div class="col">
                 <div class="card shadow-sm">
-                    <img width="100%" height="225" src="https://images.assetsdelivery.com/compings_v2/triken/triken1608/triken160800029.jpg" style="object-fit: cover; border-radius: 2px;">
+                    <img width="100%" height="225" src="https://img.freepik.com/free-photo/profile-serious-woman-with-healthy-pure-skin-has-bushy-hairstyle_273609-44522.jpg?size=626&ext=jpg&ga=GA1.2.1006149401.1635465600" style="object-fit: cover; border-radius: 2px;">
                     <div class="card-body">
                         <h4 class="card-text" style="margin-bottom: 10px"><b>My Profile</b></h4>
                     </div>

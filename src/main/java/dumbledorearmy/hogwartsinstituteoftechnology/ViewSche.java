@@ -91,8 +91,8 @@ public class ViewSche extends HttpServlet {
                     week[weekday][period] = rs.getString("subject");
                 }
             }
-            out.println("<table id=\"scheduleTable\">\n" +
-                    "    <tr id=\"scheduleHeader\" style=\"height: 40px; !important;\">\n" +
+            out.println("<table id=\"scheduleTable\"><thead>\n" +
+                    "    <tr class=\"scheduleHeader\" style=\"height: 40px; !important; background: #404040; color: white;\">\n" +
                     "        <th class=\"text-center\" style=\"width: 20%;\">Time/Weekday</th>\n" +
                     "        <th class=\"text-center\" style=\"width: 16%;\">Monday</th>\n" +
                     "        <th class=\"text-center\" style=\"width: 16%;\">Tuesday</th>\n" +
@@ -107,7 +107,7 @@ public class ViewSche extends HttpServlet {
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][0]==null)){
-                    out.println("<td style=\"" + GetStyle(week[per][0]) + "\">" + week[per][0] + "</td>");
+                    out.println("<td style=\"" + ScheduleManager.GetStyle(week[per][0]) + "\">" + week[per][0] + "</td>");
                 }
                 else{
                     out.println("<td class=\"freePeriod\">Free Period</td>");
@@ -120,7 +120,7 @@ public class ViewSche extends HttpServlet {
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][1] == null)){
-                    out.println("<td style=\"" + GetStyle(week[per][1]) + "\">" + week[per][1] + "</td>");
+                    out.println("<td style=\"" + ScheduleManager.GetStyle(week[per][1]) + "\">" + week[per][1] + "</td>");
                 }
                 else{
                     out.println("<td class=\"freePeriod\">Free Period</td>");
@@ -133,7 +133,7 @@ public class ViewSche extends HttpServlet {
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][2]==null)){
-                    out.println("<td style=\"" + GetStyle(week[per][2]) + "\">" + week[per][2] + "</td>");
+                    out.println("<td style=\"" + ScheduleManager.GetStyle(week[per][2]) + "\">" + week[per][2] + "</td>");
                 }
                 else{
                     out.println("<td class=\"freePeriod\">Free Period</td>");
@@ -145,7 +145,7 @@ public class ViewSche extends HttpServlet {
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][3]==null)){
-                    out.println("<td style=\"" + GetStyle(week[per][3]) + "\">" + week[per][3] + "</td>");
+                    out.println("<td style=\"" + ScheduleManager.GetStyle(week[per][3]) + "\">" + week[per][3] + "</td>");
                 }
                 else{
                     out.println("<td class=\"freePeriod\">Free Period</td>");
@@ -162,7 +162,7 @@ public class ViewSche extends HttpServlet {
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][4]==null)){
-                    out.println("<td style=\"" + GetStyle(week[per][4]) + "\">" + week[per][4] + "</td>");
+                    out.println("<td style=\"" + ScheduleManager.GetStyle(week[per][4]) + "\">" + week[per][4] + "</td>");
                 }
                 else{
                     out.println("<td class=\"freePeriod\">Free Period</td>");
@@ -174,7 +174,7 @@ public class ViewSche extends HttpServlet {
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][5]==null)){
-                    out.println("<td style=\"" + GetStyle(week[per][5]) + "\">" + week[per][5] + "</td>");
+                    out.println("<td style=\"" + ScheduleManager.GetStyle(week[per][5]) + "\">" + week[per][5] + "</td>");
                 }
                 else{
                     out.println("<td class=\"freePeriod\">Free Period</td>");
@@ -187,7 +187,7 @@ public class ViewSche extends HttpServlet {
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][6]==null)){
-                    out.println("<td style=\"" + GetStyle(week[per][6]) + "\">" + week[per][6] + "</td>");
+                    out.println("<td style=\"" + ScheduleManager.GetStyle(week[per][6]) + "\">" + week[per][6] + "</td>");
                 }
                 else{
                     out.println("<td class=\"freePeriod\">Free Period</td>");
@@ -210,33 +210,5 @@ public class ViewSche extends HttpServlet {
                 con.close();
             }catch (Exception e){}
         }
-    }
-
-    private String GetStyle(String className){
-        String style = "";
-        switch (className){
-            case "Math":
-                style = "background-color: #d79888; color: white; font-weight: bold;";
-                break;
-            case "Chinese":
-                style = "background-color: #cbc462; color: white; font-weight: bold;";
-                break;
-            case "CS":
-                style = "background-color: #88a7d7; color: white; font-weight: bold;";
-                break;
-            case "Physics":
-                style = "background-color: #d07e5d; color: white; font-weight: bold;";
-                break;
-            case "Chemistry":
-                style = "background-color: #87cb80; color: white; font-weight: bold;";
-                break;
-            case "MacroEconomics":
-                style = "background-color: #84c8c3; color: white; font-weight: bold;";
-                break;
-            case "MicroEconomics":
-                style = "background-color: #b784c8; color: white; font-weight: bold;";
-                break;
-        }
-        return style;
     }
 }

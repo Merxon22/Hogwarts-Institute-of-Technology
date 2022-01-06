@@ -18,9 +18,16 @@ public class StudentSchduleView extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String Email="";
+        String Email2="";
         if (session.getAttribute("email") != null) {
-            Email = session.getAttribute("email").toString();
+            Email2 = session.getAttribute("email").toString();
+        }
+        String Email="";
+        Cookie[] cookies = request.getCookies();
+        for (Cookie c: cookies){
+            if (c.getName().equals("email")){
+                Email = c.getValue();
+            }
         }
         HashMap<String, Integer> mapWeek = new HashMap<>();
         HashMap<String, Integer> mapClass = new HashMap<>();
@@ -55,13 +62,6 @@ public class StudentSchduleView extends HttpServlet {
             request.getRequestDispatcher("module/CheckLog.jsp").include(request, response);
             out.println("<h2 style=\"padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid darkgrey\"><b>View Schedule</b></h2>");
 
-            Cookie[] cookies = request.getCookies();
-            String em = "";
-            for (Cookie c: cookies){
-                if (c.getName().equals("email")){
-                    em = c.getValue();
-                }
-            }
             ArrayList<String> sub = new ArrayList<String>();
             sub.add("Chinese");
             sub.add("Math");
@@ -116,7 +116,7 @@ public class StudentSchduleView extends HttpServlet {
             }
             }
             out.println("<table id=\"scheduleTable\">\n" +
-                    "    <tr id=\"scheduleHeader\" style=\"height: 40px; !important;\">\n" +
+                    "    <tr class=\"scheduleHeader\" style=\"height: 40px; !important; background: #404040; color: white;\">\n" +
                     "        <th class=\"text-center\" style=\"width: 20%;\">Time/Weekday</th>\n" +
                     "        <th class=\"text-center\" style=\"width: 16%;\">Monday</th>\n" +
                     "        <th class=\"text-center\" style=\"width: 16%;\">Tuesday</th>\n" +
@@ -131,7 +131,7 @@ public class StudentSchduleView extends HttpServlet {
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][0]==null)){
-                    out.println("<td style=\"" + GetStyle(week[per][0]) + "\">" + week[per][0] + "</td>");
+                    out.println("<td style=\"" + ScheduleManager.GetStyle(week[per][0]) + "\">" + week[per][0] + "</td>");
                 }
                 else{
                     out.println("<td class=\"freePeriod\">Free Period</td>");
@@ -144,7 +144,7 @@ public class StudentSchduleView extends HttpServlet {
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][1] == null)){
-                    out.println("<td style=\"" + GetStyle(week[per][1]) + "\">" + week[per][1] + "</td>");
+                    out.println("<td style=\"" + ScheduleManager.GetStyle(week[per][1]) + "\">" + week[per][1] + "</td>");
                 }
                 else{
                     out.println("<td class=\"freePeriod\">Free Period</td>");
@@ -157,7 +157,7 @@ public class StudentSchduleView extends HttpServlet {
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][2]==null)){
-                    out.println("<td style=\"" + GetStyle(week[per][2]) + "\">" + week[per][2] + "</td>");
+                    out.println("<td style=\"" + ScheduleManager.GetStyle(week[per][2]) + "\">" + week[per][2] + "</td>");
                 }
                 else{
                     out.println("<td class=\"freePeriod\">Free Period</td>");
@@ -169,7 +169,7 @@ public class StudentSchduleView extends HttpServlet {
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][3]==null)){
-                    out.println("<td style=\"" + GetStyle(week[per][3]) + "\">" + week[per][3] + "</td>");
+                    out.println("<td style=\"" + ScheduleManager.GetStyle(week[per][3]) + "\">" + week[per][3] + "</td>");
                 }
                 else{
                     out.println("<td class=\"freePeriod\">Free Period</td>");
@@ -186,7 +186,7 @@ public class StudentSchduleView extends HttpServlet {
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][4]==null)){
-                    out.println("<td style=\"" + GetStyle(week[per][4]) + "\">" + week[per][4] + "</td>");
+                    out.println("<td style=\"" + ScheduleManager.GetStyle(week[per][4]) + "\">" + week[per][4] + "</td>");
                 }
                 else{
                     out.println("<td class=\"freePeriod\">Free Period</td>");
@@ -198,7 +198,7 @@ public class StudentSchduleView extends HttpServlet {
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][5]==null)){
-                    out.println("<td style=\"" + GetStyle(week[per][5]) + "\">" + week[per][5] + "</td>");
+                    out.println("<td style=\"" + ScheduleManager.GetStyle(week[per][5]) + "\">" + week[per][5] + "</td>");
                 }
                 else{
                     out.println("<td class=\"freePeriod\">Free Period</td>");
@@ -211,7 +211,7 @@ public class StudentSchduleView extends HttpServlet {
 
             for (int per = 0; per < 5; per++){
                 if (!(week[per][6]==null)){
-                    out.println("<td style=\"" + GetStyle(week[per][6]) + "\">" + week[per][6] + "</td>");
+                    out.println("<td style=\"" + ScheduleManager.GetStyle(week[per][6]) + "\">" + week[per][6] + "</td>");
                 }
                 else{
                     out.println("<td class=\"freePeriod\">Free Period</td>");
@@ -230,7 +230,7 @@ public class StudentSchduleView extends HttpServlet {
                     String lname= rp8.getString("Lastname");
                     String email= rp8.getString("email");
                     out.println("<a href=\"ViewTeacherProfile?id=" + tid + "\" class=\"list-group-item list-group-item-action d-flex gap-3 py-3\" aria-current=\"true\">");
-                    out.println("<svg height=\"40\" width=\"40\"><circle cx=\"20\" cy=\"20\" r=\"8\"fill=\"" + GetColor(N.get(i)) + "\" /></svg>");
+                    out.println("<svg height=\"40\" width=\"40\"><circle cx=\"20\" cy=\"20\" r=\"8\"fill=\"" + ScheduleManager.GetColor(N.get(i)) + "\" /></svg>");
                     //                    out.println("<img src=\"https://github.com/twbs.png\" alt=\"twbs\" width=\"32\" height=\"32\" class=\"rounded-circle flex-shrink-0\">");
                     out.println("<div class=\"d-flex gap-2 w-100 justify-content-between\">\n");
                     out.println("<h4><b>" + N.get(i) + "</b></h4>");
@@ -273,37 +273,5 @@ public class StudentSchduleView extends HttpServlet {
                 con.close();
             }catch (Exception e){}
         }
-    }
-
-    private String GetStyle(String className){
-        return "background-color: " + GetColor(className) + "; color: white; font-weight: bold;";
-    }
-
-    private String GetColor(String className){
-        String color = "";
-        switch (className){
-            case "Math":
-                color = "#d79888";
-                break;
-            case "Chinese":
-                color = "#cbc462";
-                break;
-            case "CS":
-                color = "#88a7d7";
-                break;
-            case "Physics":
-                color = "#d07e5d";
-                break;
-            case "Chemistry":
-                color = "#87cb80";
-                break;
-            case "MacroEconomics":
-                color = "#84c8c3";
-                break;
-            case "MicroEconomics":
-                color = "#b784c8";
-                break;
-        }
-        return color;
     }
 }

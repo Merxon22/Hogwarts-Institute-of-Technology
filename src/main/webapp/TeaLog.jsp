@@ -17,7 +17,6 @@
 
 <body background="https://ww2.kqed.org/app/uploads/sites/23/2015/05/Beard-Algorithm-1440x811.jpg" style="background-size: cover"><center>
 <%@include file="module/header.jsp"%>
-<div id="containerBox">
     <div class="centerBox">
         <form action="TeaLog" method="get">
             <h2><b>Teacher Login</b></h2>
@@ -33,8 +32,6 @@
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
     </div>
-</div>
-
 <%@include file="module/footer.jsp"%>
 </center></body>
 </html>
