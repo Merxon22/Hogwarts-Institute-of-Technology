@@ -15,7 +15,7 @@ public class ViewStu extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-
+        int sid=0;
         Connection con = Provider.GetConn();
         try{
             Statement stmt = con.createStatement();
@@ -44,6 +44,7 @@ public class ViewStu extends HttpServlet {
                     "        </tr></thead>");
             out.println("<tbody>");
             while (rs.next()){
+                sid=rs.getInt("id");
                 out.println("<tr>\n" +
                         "            <td><a href=\"ViewStudentProfile?id=" + rs.getString("id") + "\" style=\"display: block\">" + rs.getString("Firstname") + "</a></td>\n" +
                         "            <td>" + rs.getString("Lastname") + "</td>\n" +
