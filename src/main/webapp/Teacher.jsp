@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div></a>
-            <a href="Grading.jsp"><div class="col">
+            <a href="Grades.jsp"><div class="col">
                 <div class="card shadow-sm">
                     <img width="100%" height="225" src="https://s18670.pcdn.co/wp-content/uploads/Untitled-design-52-1.png" style="object-fit: cover; border-radius: 2px;">
                     <div class="card-body">

@@ -19,9 +19,8 @@ public class CalFinal extends HttpServlet {
         try{
             PrintWriter out = response.getWriter();
             response.setContentType("text/html");
-            String primary[] = request.getParameter("clasx").split("~");
-
-            String claa = primary[0];
+            String assignments[] = request.getParameter("tests").split(",");
+            String claa = request.getParameter("clasx");
 
             int sum=0;
             Connection con = Provider.GetConn();
@@ -29,17 +28,19 @@ public class CalFinal extends HttpServlet {
             Statement stmt1 = con.createStatement();
             Statement stmt2 = con.createStatement();
 
+            System.out.println(assignments.length);
+
             ResultSet rs;
             ArrayList<Integer> percentage = new ArrayList<>();
-            String[] assignments = primary[1].split(",");
-
             for (String cc: assignments){
-                System.out.println(cc);
-                String txx = request.getParameter(claa + "_" + cc);
-                System.out.println(txx);
-                int tmp = Integer.parseInt(txx);
-                percentage.add(tmp);
-                sum += tmp;
+                if (cc.length() >= 2) {
+                    System.out.println(cc);
+                    String txx = request.getParameter(claa + "_" + cc);
+                    System.out.println(txx);
+                    int tmp = Integer.parseInt(txx);
+                    percentage.add(tmp);
+                    sum += tmp;
+                }
             }
 
             if (sum != 100){
@@ -79,7 +80,14 @@ public class CalFinal extends HttpServlet {
                     }
                 }
             }
-            RequestDispatcher rd2 = request.getRequestDispatcher("Grading.jsp");
+            request.removeAttribute("clasx");
+            request.removeAttribute("clasx");
+            request.removeAttribute("clasx");
+            request.setAttribute("clasx", claa);
+            System.out.println(claa);
+            RequestDispatcher rd2 = request.getRequestDispatcher("Grading2.jsp");
+
+
             rd2.include(request, response);
             out.println("<script>\n" +
                     "alert(\"You have updated GPA!!\")" +

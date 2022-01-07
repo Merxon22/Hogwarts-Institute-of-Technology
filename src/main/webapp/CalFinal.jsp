@@ -74,7 +74,8 @@
         System.out.println(param);
 
 
-        writer.println("<input type=\"hidden\" name=\"clasx\" value=\"" + claa + "~" + param + "\">");
+        writer.println("<input type=\"hidden\" name=\"clasx\" value=\"" + claa + "\">");
+        writer.println("<input type=\"hidden\" name=\"tests\" value=\"" + param + "\">");
 
 
 
