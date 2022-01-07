@@ -124,13 +124,14 @@ public class EditMyProfile extends HttpServlet {
                 for (int i = 0; i <sub.size(); i++) {
                     ResultSet rp2=stmt2.executeQuery("select * from "+sub.get(i)+" where student_id="+id);
                     while(rp2.next()) {
-                        Class.append(sub.get(i) + "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+                        Class.append("<br>" + sub.get(i));
                     }
                 }
-                out.println("<div><label>Class taken:</label>"+Class+"</div>");
+                out.println("<div><p><b>Class taken:</b>"+Class+"</p></div>");
                 out.println("</div>");
                 out.println("</div>");
-                out.println("<a href=\"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>");
+                out.println("<button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" onclick=\"history.back()\">Back</button>");
+//                out.println("<a href=\"TeaBack\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></a>");
                 out.println("</div>");
                 out.println("</div>");
                 request.getRequestDispatcher("module/footer.jsp").include(request, response);
