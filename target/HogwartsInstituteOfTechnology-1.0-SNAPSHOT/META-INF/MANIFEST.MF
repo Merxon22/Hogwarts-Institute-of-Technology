@@ -1,13 +1,5 @@
-<<<<<<< HEAD
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
 Built-By: 12576
-Build-Jdk: version 16.0.2
+Build-Jdk: Amazon Corretto version 16.0.2
 
-=======
-Manifest-Version: 1.0
-Created-By: IntelliJ IDEA
-Built-By: assassin-001
-Build-Jdk: 16.0.2
-
->>>>>>> e94b5cb53173b4a6f0b18c1d7b41f364dbd04f8b
