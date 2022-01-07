@@ -19,6 +19,7 @@
     try{
 
 
+
         Connection con = Provider.GetConn();
         Statement stmt = con.createStatement();
         PrintWriter writer = response.getWriter();
@@ -60,14 +61,25 @@
         writer.println("</tr>");
         writer.println("<tr>");
 
+        String param = "";
+
         for (String cc: assignments){
             if (cc.length() >= 2){
+                param += cc;
+                param += ",";
                 writer.println("<th><input type=\"text\" name=\"" + claa + "_" + cc + "\" value=\"0\">");
             }
         }
         writer.println("</tr>");
-        writer.println("<input type=\"hidden\" name=\"clasx\" value=\"" + claa + "\">");
+        System.out.println(param);
+
+
+        writer.println("<input type=\"hidden\" name=\"clasx\" value=\"" + claa + "~" + param + "\">");
+
+
+
         writer.println("<input type=\"submit\" value=\"Confirm!\">");
+
 
     }catch (Exception exe){
       System.out.println(exe);

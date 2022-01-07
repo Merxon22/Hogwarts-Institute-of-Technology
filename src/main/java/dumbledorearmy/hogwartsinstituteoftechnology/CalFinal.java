@@ -19,29 +19,19 @@ public class CalFinal extends HttpServlet {
         try{
             PrintWriter out = response.getWriter();
             response.setContentType("text/html");
-            String claa = request.getParameter("clasx");
+            String primary[] = request.getParameter("clasx").split("~");
+
+            String claa = primary[0];
+
             int sum=0;
             Connection con = Provider.GetConn();
             Statement stmt = con.createStatement();
             Statement stmt1 = con.createStatement();
             Statement stmt2 = con.createStatement();
 
-
-
-            ResultSet rs = stmt.executeQuery("select * from " + claa);
-            ResultSetMetaData rsMetaData = rs.getMetaData();
-            ArrayList<String> assignments = new ArrayList<>();
+            ResultSet rs;
             ArrayList<Integer> percentage = new ArrayList<>();
-
-            int count = rsMetaData.getColumnCount();
-            for (int i = 1; i <= count; i++) {
-                if (!(rsMetaData.getColumnName(i).equals("student_id") ||
-                        rsMetaData.getColumnName(i).equals("attendance")
-                || rsMetaData.getColumnName(i).equals("GPA"))) {
-                    assignments.add(rsMetaData.getColumnName(i));
-                }
-                //有了assignment
-            }
+            String[] assignments = primary[1].split(",");
 
             for (String cc: assignments){
                 System.out.println(cc);
@@ -53,50 +43,37 @@ public class CalFinal extends HttpServlet {
             }
 
             if (sum != 100){
-//                request.setAttribute("clasx", claa);
-//                request.setAttribute("msg", "1");
                 RequestDispatcher rd = request.getRequestDispatcher("CalFinal.jsp?clasx=" + claa + "&msg=1");
                 rd.forward(request, response);
             }
             else{
 
                 String query4 = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" + claa + "' AND COLUMN_NAME='GPA'";
-
                 ResultSet rs3 = stmt.executeQuery(query4);
                 int ct = 0;
                 while (rs3.next()){
                     ct = rs3.getInt("COUNT(*)");
                 }
-
                 if (ct == 0){
                     stmt.executeUpdate("alter table " + claa + " add column GPA int default 0");
                 }
-
-
-                //update final for each student
                 String query = "select student_id from " + claa;
 
-                //
-
                 rs = stmt1.executeQuery(query);
-
                 while (rs.next()) {
                     int stu = rs.getInt("student_id");
                     int fin = 0;
 
-                    for (int as = 0; as < assignments.size(); as++) {
+                    for (int as = 0; as < assignments.length; as++) {
                         //fin += percentage.get(as);
-
-                        String query2 = "select `" + assignments.get(as) + "` from " + claa + " where " +
+                        String query2 = "select `" + assignments[as] + "` from " + claa + " where " +
                                 "student_id=" + stu;
                         ResultSet rs2 = stmt2.executeQuery(query2);
                         while (rs2.next()) {
-                            int original = rs2.getInt(assignments.get(as));
+                            int original = rs2.getInt(assignments[as]);
                             fin += original * percentage.get(as) / 100;
                         }
                         //把final update进去
-
-
                         String query3 = "update " + claa + " set GPA =" + fin + " where student_id=" + stu;
                         stmt2.executeUpdate(query3);
                     }
