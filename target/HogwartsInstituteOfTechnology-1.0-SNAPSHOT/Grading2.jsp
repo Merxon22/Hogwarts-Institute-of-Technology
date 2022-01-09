@@ -117,28 +117,47 @@
         writer.println("</tr></thead>");
         String query3;
         writer.println("<tbody>");
+        String finalLine = "";
         for (int as = 0; as < assignments.size(); as++) {
-            writer.println("<tr><th>" + assignments.get(as) + "</th>");
-            for (int s = 0; s < stuids.size(); s++) {
-                query3 = "select `" + assignments.get(as) + "` from " + clasx + " where student_id=" + stuids.get(s);
-                ResultSet rs3 = stmt3.executeQuery(query3);
-                //System.out.println("Checkpoint2");
-                String Grade = "";
-                while (rs3.next()) {
-                    Grade = rs3.getString(assignments.get(as));
-                    //System.out.println(Grade);
+            String assignmentName = assignments.get(as);
+            if (!assignmentName.equals("SemesterScore")) {
+                writer.println("<tr><th>" + assignments.get(as) + "</th>");
+                for (int s = 0; s < stuids.size(); s++) {
+                    query3 = "select `" + assignments.get(as) + "` from " + clasx + " where student_id=" + stuids.get(s);
+                    ResultSet rs3 = stmt3.executeQuery(query3);
+                    //System.out.println("Checkpoint2");
+                    String Grade = "";
+                    while (rs3.next()) {
+                        Grade = rs3.getString(assignments.get(as));
+                        //System.out.println(Grade);
+                    }
+                    writer.println("<td><input class=\"text-center\" type=\"text\" name=\"" +
+                            clasx + assignments.get(as) + stuids.get(s) + "\"" +
+                            "value=\"" + Grade + "\"></td>");
                 }
-                writer.println("<td><input type=\"text\" name=\"" +
-                        clasx + assignments.get(as) + stuids.get(s) + "\"" +
-                        "value=\"" + Grade + "\"></td>");
+                writer.println("</tr>");
+            }else{
+                finalLine = "<tr class=\"table-primary\"><th>Semester Score</th>";
+                for (int s = 0; s < stuids.size(); s++) {
+                    query3 = "select `" + assignments.get(as) + "` from " + clasx + " where student_id=" + stuids.get(s);
+                    ResultSet rs3 = stmt3.executeQuery(query3);
+                    //System.out.println("Checkpoint2");
+                    String Grade = "";
+                    while (rs3.next()) {
+                        Grade = rs3.getString(assignments.get(as));
+                        //System.out.println(Grade);
+                    }
+                        finalLine += "<td class=\"text-center\">" + Grade + "</td>";
+                }
+                finalLine += "</tr>";
             }
-            writer.println("</tr>");
         }
+        writer.println(finalLine);
         writer.println("</tbody></table>");
-        writer.println("<a href= \"CalFinal.jsp?clasx=" + clasx + "\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 100px; margin-top: 20px;\" type=\"button\">Update GPA</button></a>\n");
+        writer.println("<a href=\"CalFinal.jsp?clasx=" + clasx + "\" style=\"width: 200px;\"><button class=\"btn btn-primary\" style=\"width: 200px; margin-top: 20px;\" type=\"button\">Update Semester Score</button></a>\n");
 
 
-        writer.println("<input type=\"submit\" value=\"confirm changes!\">");
+        writer.println("<input class=\"btn btn-primary\" type=\"submit\" style=\"margin-top: 20px\" value=\"Confirm Changes\">");
         writer.println("<a href= \"Grades.jsp\" style=\"width: 80px;\"><button class=\"btn btn-primary\" style=\"width: 80px; margin-top: 20px;\" type=\"button\">Back</button></ a>\n");
 
         writer.println("</form>");

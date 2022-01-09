@@ -49,14 +49,14 @@ public class CalFinal extends HttpServlet {
             }
             else{
 
-                String query4 = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" + claa + "' AND COLUMN_NAME='GPA'";
+                String query4 = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" + claa + "' AND COLUMN_NAME='SemesterScore'";
                 ResultSet rs3 = stmt.executeQuery(query4);
                 int ct = 0;
                 while (rs3.next()){
                     ct = rs3.getInt("COUNT(*)");
                 }
                 if (ct == 0){
-                    stmt.executeUpdate("alter table " + claa + " add column GPA int default 0");
+                    stmt.executeUpdate("alter table " + claa + " add column SemesterScore int default 0");
                 }
                 String query = "select student_id from " + claa;
 
@@ -75,7 +75,7 @@ public class CalFinal extends HttpServlet {
                             fin += original * percentage.get(as) / 100;
                         }
                         //把final update进去
-                        String query3 = "update " + claa + " set GPA =" + fin + " where student_id=" + stu;
+                        String query3 = "update " + claa + " set SemesterScore =" + fin + " where student_id=" + stu;
                         stmt2.executeUpdate(query3);
                     }
                 }
@@ -90,7 +90,7 @@ public class CalFinal extends HttpServlet {
 
             rd2.include(request, response);
             out.println("<script>\n" +
-                    "alert(\"You have updated GPA!!\")" +
+                    "alert(\"You have updated semester score!!\")" +
                     "</script>");
 
 
