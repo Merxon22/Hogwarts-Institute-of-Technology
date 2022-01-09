@@ -104,13 +104,18 @@ public class StudentGradeView extends HttpServlet {
 //                    score.append("<td>").append(n.get(z)[1]).append("</td>");
 //                }score.append("</tr></tbody></table>");
                 out.println("<table class=\"table table-striped\" style=\"margin: 20px 0px; text-align: center; !important;\">\n" +
-                        "        <thead><tr>\n" +
-                        "            <th class=\"text-center table-dark\" style=\"width: 20%\">Subject</th>\n<td>"+N.get(i)+"</td>"+
-                        "        </tr></thead>");
+                        "        <thead><tr class=\"text-center table-dark\" >\n" +
+                        "            <th style=\"width: 50%\" class=\"text-center\">Subject</th>\n<th class=\"text-center\">"+N.get(i)+"</th>"+
+                        "        </tr></thead><tbody>");
+                    String finalLine = "";
                     for (int j = 0; j < n.size(); j++) {
-                    out.println("<tr><th class=\"text-center\">"+n.get(j)[0]+"</th><td>"+n.get(j)[1]+"</td></tr>");
-                }
-                out.println("<tbody>");
+                        if (!n.get(j)[0].equals("SemesterScore")) {
+                            out.println("<tr><th class=\"text-center\">" + n.get(j)[0] + "</th><td>" + n.get(j)[1] + "</td></tr>");
+                        }else{
+                            finalLine += "<tr class=\"table-primary\"><th class=\"text-center\">Semester Score</th><td>" + n.get(j)[1] + "</td></tr>";
+                        }
+                    }
+                    out.println(finalLine);
 //                out.println(score);
                 n.clear();
 

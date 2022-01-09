@@ -57,26 +57,28 @@ public class Grading2 extends HttpServlet {
 
 
             for (int as = 0; as < assignments.size(); as++) {
+                if(!assignments.get(as).equals("SemesterScore")) {
+                    for (int s = 0; s < stuids.size(); s++) {
 
-                for (int s = 0; s < stuids.size(); s++) {
+                        //System.out.println("Checkpoint2");
+                        String Grade = "";
+                        Grade = request.getParameter(clasx + assignments.get(as) + stuids.get(s));
 
-                    //System.out.println("Checkpoint2");
-                    String Grade = "";
-                    Grade = request.getParameter(clasx + assignments.get(as) + stuids.get(s));
-
-                    query3 = "update " + clasx +
-                            " set `" + assignments.get(as) + "`='" + Grade
-                            + "' where student_id=" + stuids.get(s);
+                        query3 = "update " + clasx +
+                                " set `" + assignments.get(as) + "`='" + Grade
+                                + "' where student_id=" + stuids.get(s);
 
 
-                    System.out.println(query3);
-                    stmt3.executeUpdate(query3);
+                        System.out.println(query3);
+                        stmt3.executeUpdate(query3);
+                    }
                 }
 
             }
 
             RequestDispatcher rd = request.getRequestDispatcher("Grading2.jsp?clasx=" + clasx);
-            rd.include(request, response);
+//            rd.include(request, response);
+            rd.forward(request, response);
             writer.println("<script>\n" +
                     "alert(\"Grade(s) uploaded!\")" +
                     "</script>");
