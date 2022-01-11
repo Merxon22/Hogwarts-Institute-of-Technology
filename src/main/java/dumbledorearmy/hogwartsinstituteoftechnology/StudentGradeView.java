@@ -41,6 +41,8 @@ public class StudentGradeView extends HttpServlet {
         sub.add("Chemistry");
         sub.add("MacroEconomics");
         sub.add("MicroEconomics");
+        sub.add("English");
+        sub.add("Philosophy");
         try {
 
             Statement stmt1 = con.createStatement();
@@ -71,6 +73,8 @@ public class StudentGradeView extends HttpServlet {
             N.add("Chemistry");
             N.add("MacroEconomics");
             N.add("MicroEconomics");
+            N.add("English");
+            N.add("Philosophy");
             Statement stmt = con.createStatement();
             for (int i = 0; i < sub.size(); i++) {
                 ResultSet rs = stmt.executeQuery("select * from "+sub.get(i)+" where student_id="+id);
@@ -84,7 +88,7 @@ public class StudentGradeView extends HttpServlet {
                 ResultSet rp = stmt1.executeQuery("select * from " + N.get(i) + " where student_id=" + id);
                 while(rp.next()){
                     System.out.println(N.get(i));
-                    ResultSet rp2 = stmt2.executeQuery("select COLUMN_NAME from information_schema.columns where table_name='" + sub.get(i) + "'");
+                    ResultSet rp2 = stmt2.executeQuery("select COLUMN_NAME from information_schema.columns where table_name='" + sub.get(i) + "'order by ordinal_position");
                     while (rp2.next()) {
                     String name = rp2.getString("COLUMN_NAME");
                     if(!name.equals("student_id")&&!name.equals("attendance")){

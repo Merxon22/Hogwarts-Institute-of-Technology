@@ -28,6 +28,12 @@ public class ScheduleManager {
             case "MicroEconomics":
                 color = "#b784c8";
                 break;
+            case "Philosophy":
+                color = "#fc8c03";
+                break;
+            case "English":
+                color = "#630000";
+                break;
         }
         return color;
     }
