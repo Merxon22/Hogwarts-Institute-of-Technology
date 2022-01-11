@@ -37,6 +37,8 @@ public class StudentAttendenceView extends HttpServlet {
         sub.add("Chemistry");
         sub.add("MacroEconomics");
         sub.add("MicroEconomics");
+        sub.add("English");
+        sub.add("Philosophy");
         try {
 
             Statement stmt1 = con.createStatement();
@@ -66,6 +68,8 @@ public class StudentAttendenceView extends HttpServlet {
             N.add("Chemistry");
             N.add("MacroEconomics");
             N.add("MicroEconomics");
+            N.add("English");
+            N.add("Philosophy");
             Statement stmt = con.createStatement();
             for (int i = 0; i < sub.size(); i++) {
                 ResultSet rs = stmt.executeQuery("select * from "+sub.get(i)+" where student_id="+id);

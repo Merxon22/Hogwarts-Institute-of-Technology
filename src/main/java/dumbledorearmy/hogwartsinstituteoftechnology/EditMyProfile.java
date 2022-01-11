@@ -37,6 +37,8 @@ public class EditMyProfile extends HttpServlet {
         sub.add("Chemistry");
         sub.add("MacroEconomics");
         sub.add("MicroEconomics");
+        sub.add("English");
+        sub.add("Philosophy");
         try{
             Statement stmt1=con.createStatement();
             Statement stmt2=con.createStatement();
