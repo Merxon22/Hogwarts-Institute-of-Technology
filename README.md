@@ -38,13 +38,13 @@ This is the main page for HIT system:
 There are three portals for different users:
 
 **Student portal**
-![Main](https://drive.google.com/uc?export=view&id=1NqOc4z-O_OPJ2ZHLLOzYra8sZeXuoAUj)
+![Main](https://drive.google.com/uc?export=view&id=1sRMIoSABcA7FVlWdBuNjEZQm83PGEH88)
 
 **Teacher portal**
-![Main](https://drive.google.com/uc?export=view&id=111HanQzFMaWCa9RVyM3_BCKF0Vy2iOeb)
+![Main](https://drive.google.com/uc?export=view&id=1piCsIjotwf20sjm1pLVnWlNEzIOXZtkG)
 
 **Admin portal**
-![Main](https://drive.google.com/uc?export=view&id=1ja0SPcaO0xBh7yEgtRneYEn8hR8J2Aaf)
+![Main](https://drive.google.com/uc?export=view&id=1SrUNV5qJCd1eoWidwTH0pm9k7Gpf7U71)
 
 ## View HIT management system release
 Release presentation slides: [https://drive.google.com/file/d/1y8cnupTjHzz6X2xP2enOgHkVHkfm3R04/view?usp=sharing](https://drive.google.com/file/d/1y8cnupTjHzz6X2xP2enOgHkVHkfm3R04/view?usp=sharing)
